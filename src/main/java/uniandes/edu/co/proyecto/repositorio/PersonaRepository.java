@@ -27,7 +27,7 @@ public interface PersonaRepository extends JpaRepository<Persona, Integer> {
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE Personas SET nombre = :nombre, datosContacto = :datosContacto, direccionFisica = :direccionFisica, direccionElectronica = :direccionElectronica, telefono = :telefono, ciudad = :ciudad, departamento = :departamento, codigoPostal = :codigoPostal, fechaRegistro = :fechaRegistro, identificacion = :identificacion WHERE id = :id", nativeQuery=true)
+    @Query(value = "UPDATE Personas SET nombre = :nombre, datosContacto = :datosContacto, direccionFisica = :direccionFisica, direccionElectronica = :direccionElectronica, telefono = :telefono, ciudad = :ciudad, departamento = :departamento, codigoPostal = :codigoPostal, fechaRegistro = :fechaRegistro, identificacion = :identificacion WHERE ID = :ID", nativeQuery=true)
     void actualizarPersona(@Param("ID") int ID,@Param("nombre") String nombre, @Param("datosContacto") String datosContacto, @Param("direccionFisica") String direccionFisica,@Param("direccionElectronica") String direccionElectronica, @Param("telefono") int telefono,@Param("ciudad") String ciudad,@Param("departamento") String departamento,@Param("codigoPostal") int codigoPostal,@Param("fechaRegistro") Date fechaRegistro, @Param("identificacion") Identificacion identificacion);
 
     @Modifying
