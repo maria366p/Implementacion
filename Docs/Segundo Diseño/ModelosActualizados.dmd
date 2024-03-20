@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="ModelosActualizados" id="4C092D24-32B8-90E5-63E8-84D359D41F2D" version="3.5">
+<createdBy>Andres Ortiz</createdBy>
+<createdTime>2024-02-19 00:20:40 UTC</createdTime>
+<ownerDesignName>ModelER</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>4C092D24-32B8-90E5-63E8-84D359D41F2D</designId>
+<usedDesignStorageDescriptors>
+<designDescr class="oracle.dbtools.crest.model.design.Design$DesignStorageDesc" id="2227A44E-9252-78B7-38AB-0A6A22B352F3">
+<designStoragePath>D:\Model</designStoragePath>
+</designDescr>
+</usedDesignStorageDescriptors>
+</OSDM_Design>
