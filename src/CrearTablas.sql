@@ -47,7 +47,7 @@ CREATE TABLE Cuentas (
     idCliente INTEGER NOT NULL,
     EstadoCuenta VARCHAR2(30) NOT NULL,
     CONSTRAINT TipoCuenta CHECK (TipoCuenta in ('Ahorros', 'Corriente', 'AFC')),
-    CONSTRAINT EstadoCuenta CHECK (EstadoCuenta in ('Activada', 'Cerrada', 'Desactivada'))
+    CONSTRAINT EstadoCuenta CHECK (EstadoCuenta in ('Activada', 'Cerrada', 'Desactivada')),
     CONSTRAINT IDCliente FOREIGN KEY (IDCliente) REFERENCES Clientes (ID)
 );
 
@@ -89,12 +89,14 @@ CREATE TABLE UsuariosCliente(
 );
 
 
+
 CREATE TABLE Identificaciones (
-    id Number
+    id Number,
     TipoId INTEGER,
     DocId INTEGER,
     PRIMARY KEY (id)
 );
+
 
 CREATE TABLE PuntosAtencion (
     IDPuntoAtencion Integer PRIMARY KEY,
