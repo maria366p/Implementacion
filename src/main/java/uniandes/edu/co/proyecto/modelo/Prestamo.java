@@ -41,7 +41,7 @@ public class Prestamo {
     }
 
     public Prestamo(){
-
+        ;
     }
     
     public float getMonto() {

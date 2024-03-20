@@ -36,6 +36,10 @@ public class Cuenta {
         IDCliente = iDCliente;
     }
 
+    public Cuenta(){
+        ;
+    }
+
     public TipoCuenta getTipoCuenta() {
         return tipoCuenta;
     }

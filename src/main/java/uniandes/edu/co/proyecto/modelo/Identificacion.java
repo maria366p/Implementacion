@@ -13,12 +13,12 @@ public class Identificacion {
     
     @Id
     private int numero; // numero es la primary key de identificacion
-    private int tipo;
+    private String tipo;
 
-    @OneToOne(mappedBy = "docId")
+    @OneToOne(mappedBy = "DOCID")
     private Persona persona;
 
-    public Identificacion(int numero, int tipo) {
+    public Identificacion(int numero, String tipo) {
         this.numero = numero;
         this.tipo = tipo;
     }
@@ -33,11 +33,11 @@ public class Identificacion {
         this.numero = numero;
     }
 
-    public int getTipo() {
+    public String getTipo() {
         return tipo;
     }
 
-    public void setTipo(int tipo) {
+    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 

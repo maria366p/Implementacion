@@ -41,6 +41,10 @@ public class OperacionPrestamo {
         IDPuntoAtencion = iDPuntoAtencion;
     }
 
+    public OperacionPrestamo(){
+        ;
+    }
+
     public int getIDOperacionPrestamo() {
         return IDOperacionPrestamo;
     }

@@ -40,6 +40,10 @@ public class OperacionCuenta {
         IDPuntoAtencion = iDPuntoAtencion;
     }
 
+    public OperacionCuenta(){
+        ;
+    }
+
     public int getMonto() {
         return monto;
     }

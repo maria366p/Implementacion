@@ -44,6 +44,10 @@ public class OperacionTransferencia {
         IDPuntoAtencion = iDPuntoAtencion;
     }
 
+    public OperacionTransferencia(){
+        ;
+    }
+
     public int getMonto() {
         return monto;
     }

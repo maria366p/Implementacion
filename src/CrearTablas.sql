@@ -26,10 +26,10 @@ CREATE TABLE Personas (
 
 
 CREATE TABLE Clientes (
-    ID INTEGER,
+    IDCliente INTEGER,
     rolC VARCHAR2(80) NOT NULL,
-    CONSTRAINT FK_cliente_persona FOREIGN KEY (ID) REFERENCES Personas (ID),
-    CONSTRAINT PK_Cliente PRIMARY KEY (ID),
+    CONSTRAINT FK_cliente_persona FOREIGN KEY (IDCliente) REFERENCES Personas (ID),
+    CONSTRAINT PK_Cliente PRIMARY KEY (IDCliente),
     CONSTRAINT tipo_rolC check(RolC in ('Natural', 'Juridico'))
 
 );
@@ -56,12 +56,12 @@ CREATE TABLE Oficinas (
 
 
 CREATE TABLE Empleados (
-    id INTEGER  NOT NULL PRIMARY KEY,
+    IDEmpleado INTEGER  NOT NULL PRIMARY KEY,
     IDCargo INTEGER NOT NULL,
     IDOficina INTEGER NOT NULL,
     CONSTRAINT EMPLEADO_CARGO_FK FOREIGN KEY (IDCargo) REFERENCES Cargos (IDCargo),
     CONSTRAINT EMPLEADO_OFICINA_FK FOREIGN KEY (IDOficina) REFERENCES Oficinas (IDOficina),
-    CONSTRAINT EMPLEADO_PERSONA_FK FOREIGN KEY (ID) REFERENCES Personas (ID)
+    CONSTRAINT EMPLEADO_PERSONA_FK FOREIGN KEY (IDEmpleado) REFERENCES Personas (ID)
 );
 
 
@@ -83,7 +83,7 @@ CREATE TABLE UsuariosClientes(
 
 CREATE TABLE Identificaciones (
     tipo VARCHAR2(10) ,
-    numero INTEGER,
+    numero INTEGER NOT NULL,
     PRIMARY KEY (numero )
 );
 
@@ -150,6 +150,7 @@ CREATE TABLE OperacionesTransferencias (
     CONSTRAINT OPERACIONTRANSFERENCIA_PUNTOATENCION_FK FOREIGN KEY (IDPuntoAtencion) REFERENCES PuntosAtencion (IDPuntoAtencion)
     
 );
+
 
 /*DROP TABLE usuariosempleados;
 DROP TABLE usuariosclientes;

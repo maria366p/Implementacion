@@ -32,6 +32,9 @@ public class PuntoAtencion {
         IDOficina = iDOficina;
     }
 
+    public PuntoAtencion(){
+        ;
+    }
     public TipoA getTipo() {
         return tipo;
     }

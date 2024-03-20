@@ -3,12 +3,13 @@ package uniandes.edu.co.proyecto.modelo;
 import java.sql.Date;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinColumns;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -19,45 +20,47 @@ public class Persona {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int ID;
 
-    private String nombre;
-    private String datosContacto;
-    private String direccionFisica; 
-    private String direccionElectronica;
-    private int telefono;
-    private String ciudad;
-    private String departamento;
+    private String NOMBRE;
+    private String DATOSCONTACTO;
+    private String DIRECCIONFISICA; 
+    private String DIRECCIONELECTRONICA;
+    private int TELEFONO;
+    private String CIUDAD;
+    private String DEPARTAMENTO;
+
+    @Column(name = "CODIGOPOSTAL")
     private int codigoPostal;
-    private Date fechaRegistro;
+
+    private Date FECHAREGISTRO;
 
 
-    //Persona no se lleva el atributo con la tabla Empleado
-    @OneToOne(mappedBy = "IDEmpleado")
+    @OneToOne(mappedBy = "persona", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Empleado empleado;
 
     //Persona no se lleva el atributo con la tabla Cliente
-    @OneToOne(mappedBy = "IDCliente")
+    @OneToOne(mappedBy = "persona")
     private Cliente cliente;
 
 
-    //Persona se lleva el atributo docId de identificación en la tabla
+    //Persona se lleva el atributo DOCID de identificación en la tabla
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "docId", referencedColumnName = "numero") //en la columna de persona docId referenciar "numero" de identificacion
-    private Identificacion docId;
+    @JoinColumn(name = "DOCID", referencedColumnName = "numero") //en la columna de persona DOCID referenciar "numero" de identificacion
+    private Identificacion DOCID;
     //Falta referenciar tipoId como PK
 
 
 
-    public Persona(String nombre, String datosContacto, String direccionFisica, String direccionElectronica, int telefono, String ciudad, String departamento, int codigoPostal, Date fechaRegistro, Identificacion docId) { //Identificacion tipoId, 
-        this.nombre = nombre;
-        this.datosContacto = datosContacto;
-        this.direccionFisica = direccionFisica;
-        this.direccionElectronica = direccionElectronica;
-        this.telefono = telefono;
-        this.ciudad = ciudad;
-        this.departamento = departamento;
+    public Persona(String NOMBRE, String DATOSCONTACTO, String DIRECCIONFISICA, String DIRECCIONELECTRONICA, int TELEFONO, String CIUDAD, String DEPARTAMENTO, int codigoPostal, Date FECHAREGISTRO, Identificacion DOCID) { //Identificacion tipoId, 
+        this.NOMBRE = NOMBRE;
+        this.DATOSCONTACTO = DATOSCONTACTO;
+        this.DIRECCIONFISICA = DIRECCIONFISICA;
+        this.DIRECCIONELECTRONICA = DIRECCIONELECTRONICA;
+        this.TELEFONO = TELEFONO;
+        this.CIUDAD = CIUDAD;
+        this.DEPARTAMENTO = DEPARTAMENTO;
         this.codigoPostal = codigoPostal;
-        this.fechaRegistro = fechaRegistro;
-        this.docId = docId;
+        this.FECHAREGISTRO = FECHAREGISTRO;
+        this.DOCID = DOCID;
     }
 
 
@@ -77,72 +80,72 @@ public class Persona {
 
 
     public String getNombre() {
-        return nombre;
+        return NOMBRE;
     }
 
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre(String NOMBRE) {
+        this.NOMBRE = NOMBRE;
     }
 
 
     public String getDatosContacto() {
-        return datosContacto;
+        return DATOSCONTACTO;
     }
 
 
-    public void setDatosContacto(String datosContacto) {
-        this.datosContacto = datosContacto;
+    public void setDatosContacto(String DATOSCONTACTO) {
+        this.DATOSCONTACTO = DATOSCONTACTO;
     }
 
 
     public String getDireccionFisica() {
-        return direccionFisica;
+        return DIRECCIONFISICA;
     }
 
 
-    public void setDireccionFisica(String direccionFisica) {
-        this.direccionFisica = direccionFisica;
+    public void setDireccionFisica(String DIRECCIONFISICA) {
+        this.DIRECCIONFISICA = DIRECCIONFISICA;
     }
 
 
     public String getDireccionElectronica() {
-        return direccionElectronica;
+        return DIRECCIONELECTRONICA;
     }
 
 
-    public void setDireccionElectronica(String direccionElectronica) {
-        this.direccionElectronica = direccionElectronica;
+    public void setDireccionElectronica(String DIRECCIONELECTRONICA) {
+        this.DIRECCIONELECTRONICA = DIRECCIONELECTRONICA;
     }
 
 
     public int getTelefono() {
-        return telefono;
+        return TELEFONO;
     }
 
 
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
+    public void setTelefono(int TELEFONO) {
+        this.TELEFONO = TELEFONO;
     }
 
 
     public String getCiudad() {
-        return ciudad;
+        return CIUDAD;
     }
 
 
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
+    public void setCiudad(String CIUDAD) {
+        this.CIUDAD = CIUDAD;
     }
 
 
     public String getDepartamento() {
-        return departamento;
+        return DEPARTAMENTO;
     }
 
 
-    public void setDepartamento(String departamento) {
-        this.departamento = departamento;
+    public void setDepartamento(String DEPARTAMENTO) {
+        this.DEPARTAMENTO = DEPARTAMENTO;
     }
 
 
@@ -157,23 +160,23 @@ public class Persona {
 
 
     public Date getFechaRegistro() {
-        return fechaRegistro;
+        return FECHAREGISTRO;
     }
 
 
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
+    public void setFechaRegistro(Date FECHAREGISTRO) {
+        this.FECHAREGISTRO = FECHAREGISTRO;
     }
 
 
 
     public Identificacion getDocId() {
-        return docId;
+        return DOCID;
     }
 
 
-    public void setDocId(Identificacion docId) {
-        this.docId = docId;
+    public void setDocId(Identificacion DOCID) {
+        this.DOCID = DOCID;
     }
 
     

@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -15,14 +16,17 @@ import jakarta.persistence.Table;
 public class Empleado {
 
 
+    @Id
+    private int IDEmpleado; // Asume que Persona también usa int para el ID
+
+    @MapsId  // Esto indica que estamos mapeando el ID de esta entidad al ID de la entidad asociada
     //Empleado se lleva el atributo ID de Persona
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "IDEmpleado", referencedColumnName = "ID") //en Em "IDEmpleado" referenciar "ID" de persona
-    @Id
-    private Persona IDEmpleado;
+    private Persona persona;
 
     //Empleado no se lleva el atributo con la tabla UsuarioEMpleado
-    @OneToOne(mappedBy = "IDEmpleado")
+    @OneToOne(mappedBy = "empleado")
     private UsuarioEmpleado UsuarioEmpleado;
 
 
@@ -36,45 +40,48 @@ public class Empleado {
      @JoinColumn(name = "IDCargo", referencedColumnName = "IDCargo")
      private Cargo IDCargo;
     
-    public Empleado(Persona iDEmpleado, uniandes.edu.co.proyecto.modelo.UsuarioEmpleado usuarioEmpleado,
-            Oficina iDOficina, Cargo iDCargo) {
+    
+    public Empleado(int iDEmpleado, Oficina iDOficina,
+            Cargo iDCargo) {
         IDEmpleado = iDEmpleado;
-        UsuarioEmpleado = usuarioEmpleado;
         IDOficina = iDOficina;
         IDCargo = iDCargo;
     }
-
-    public Empleado(){
-        
-    }
     
-    public Persona getIDEmpleado() {
+    public Empleado(){
+        ;
+    }
+
+    public int getIDEmpleado() {
         return IDEmpleado;
     }
 
-    public void setIDEmpleado(Persona iDEmpleado) {
-        IDEmpleado = iDEmpleado;
-    }
 
+    
     public UsuarioEmpleado getUsuarioEmpleado() {
         return UsuarioEmpleado;
     }
+
 
     public void setUsuarioEmpleado(UsuarioEmpleado usuarioEmpleado) {
         UsuarioEmpleado = usuarioEmpleado;
     }
 
+
     public Oficina getIDOficina() {
         return IDOficina;
     }
+
 
     public void setIDOficina(Oficina iDOficina) {
         IDOficina = iDOficina;
     }
 
+
     public Cargo getIDCargo() {
         return IDCargo;
     }
+
 
     public void setIDCargo(Cargo iDCargo) {
         IDCargo = iDCargo;
