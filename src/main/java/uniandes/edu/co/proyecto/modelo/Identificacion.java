@@ -12,24 +12,24 @@ import jakarta.persistence.Table;
 public class Identificacion {
     
     @Id
-    private String numero; // numero es la primary key de identificacion
+    private int numero; // numero es la primary key de identificacion
     private int tipo;
 
     @OneToOne(mappedBy = "docId")
     private Persona persona;
 
-    public Identificacion(String numero, int tipo) {
+    public Identificacion(int numero, int tipo) {
         this.numero = numero;
         this.tipo = tipo;
     }
 
     public Identificacion(){;}
 
-    public String getNumero() {
+    public int getNumero() {
         return numero;
     }
 
-    public void setNumero(String numero) {
+    public void setNumero(int numero) {
         this.numero = numero;
     }
 
