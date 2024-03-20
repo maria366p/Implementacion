@@ -24,7 +24,7 @@ public interface OperacionCuentaRepository extends JpaRepository<OperacionCuenta
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO OperacionesCuenta (idOperacion, FK_cuenta, tipo, valor, Fecha) VALUES (banc_andes.nextval, :FK_cuenta, :tipo, :valor, :fecha)", nativeQuery=true)
+    @Query(value = "INSERT INTO OperacionesCuenta (idOperacion, FK_cuenta, tipo, valor, Fecha) VALUES (bancandes_sequence.nextval, :FK_cuenta, :tipo, :valor, :fecha)", nativeQuery=true)
     void insertarOperacionCuenta(@Param("idOperacion") int idOperacion, @Param("FK_cuenta") int FK_cuenta, @Param("tipo") TipoOc tipo, @Param("valor") int valor, @Param("Fecha") Date fecha);
     
     @Modifying

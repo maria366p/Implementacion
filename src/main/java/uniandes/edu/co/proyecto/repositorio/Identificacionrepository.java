@@ -21,7 +21,7 @@ public interface Identificacionrepository extends JpaRepository<Identificacion, 
 
         @Modifying
         @Transactional
-        @Query(value = "INSERT INTO Identificaciones (identificacionId, tipoIdentificacion, DocId ) VALUES (banc_andes.nextval, :tipoIdentificacion, :DocId)", nativeQuery = true)
+        @Query(value = "INSERT INTO Identificaciones (identificacionId, tipoIdentificacion, DocId ) VALUES (bancandes_sequence.nextval, :tipoIdentificacion, :DocId)", nativeQuery = true)
         void insertarIdentificacion(@Param("identificacionId") int id, @Param("TipoId") String tipo, @Param("DocId") int numId);
 
         @Modifying

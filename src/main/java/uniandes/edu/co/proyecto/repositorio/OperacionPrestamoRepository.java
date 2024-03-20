@@ -26,7 +26,7 @@ public interface OperacionPrestamoRepository extends JpaRepository<OperacionPres
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO OperacionesPrestamo (id, FK_PuntoAtencion, FK_prestamo, tipoOperacion, fecha, valor) VALUES (banc_andes.nextval, : :FK_PuntoAtencion, :FK_prestamo, :tipoOperacion, :fecha, :valor)", nativeQuery=true)
+    @Query(value = "INSERT INTO OperacionesPrestamo (id, FK_PuntoAtencion, FK_prestamo, tipoOperacion, fecha, valor) VALUES (bancandes_sequence.nextval, : :FK_PuntoAtencion, :FK_prestamo, :tipoOperacion, :fecha, :valor)", nativeQuery=true)
     void insertarOperacionPrestamo(@Param("id") int id, @Param("FK_PuntoAtencion") PuntoAtencion FK_PuntoAtencion, @Param("FK_prestamo") Prestamo FK_prestamo, @Param("tipoOperacion") TipoOP tipoOperacion, @Param("fecha") Date fecha, @Param("valor") int valor);
 
     @Modifying

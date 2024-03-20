@@ -20,7 +20,7 @@ public interface OficinaRepository extends JpaRepository<Oficina, Integer>{
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO Oficinas (idOficina, nombre, direccion) VALUES (banc_andes.nextval, :nombre, :direccion)", nativeQuery=true)
+    @Query(value = "INSERT INTO Oficinas (idOficina, nombre, direccion) VALUES (bancandes_sequence.nextval, :nombre, :direccion)", nativeQuery=true)
     void insertarOficina(@Param("idOficina") int idOficina, @Param("nombre") String nombre, @Param("direccion") String direccion);
     
     @Modifying

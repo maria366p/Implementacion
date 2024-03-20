@@ -22,7 +22,7 @@ public interface EmpleadoRepository extends JpaRepository<Empleado, Persona>{
     
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO Empleados (id, FK_empleado_persona, idCargo) VALUES (banc_andes.nextval, :FK_empleado_persona, :idCargo)", nativeQuery = true)
+    @Query(value = "INSERT INTO Empleados (id, FK_empleado_persona, idCargo) VALUES (bancandes_sequence.nextval, :FK_empleado_persona, :idCargo)", nativeQuery = true)
     void insertarEmpleado(@Param("id") int id, @Param("FK_cliente_persona") int FK_empleado_persona, @Param("idCargo") int idCargo );
 
     @Modifying

@@ -22,7 +22,7 @@ public interface CargoRepository extends JpaRepository<Cargo, Integer> {
     
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO Cargos (ID, nombre, descripcion) VALUES (banc_andes.nextval, :nombre, :descripcion)", nativeQuery = true)
+    @Query(value = "INSERT INTO Cargos (ID, nombre, descripcion) VALUES (bancandes_sequence.nextval, :nombre, :descripcion)", nativeQuery = true)
     void insertarCargo(@Param("nombre") RolE nombre);
 
     @Modifying

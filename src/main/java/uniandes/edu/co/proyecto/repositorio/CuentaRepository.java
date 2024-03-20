@@ -25,7 +25,7 @@ public interface CuentaRepository extends JpaRepository<Cuenta, Integer>{
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO Cuentas (IDCuenta, IDCliente, saldo, tipo) VALUES (banc_andes.nextval, :IDCliente, :saldo, :tipo)", nativeQuery=true) 
+    @Query(value = "INSERT INTO Cuentas (IDCuenta, IDCliente, saldo, tipo) VALUES (bancandes_sequence.nextval, :IDCliente, :saldo, :tipo)", nativeQuery=true) 
     void insertarCuenta(@Param("IDCuenta") int IDCuenta, @Param("IDCliente") int IDCliente, @Param("saldo") float saldo, @Param("tipo") TipoCuenta tipo);
 
     @Modifying

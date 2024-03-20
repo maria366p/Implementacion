@@ -21,7 +21,7 @@ public interface ClienteRepository extends JpaRepository<Cliente, Persona>{
     
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO Clientes (ID, FK_cliente_persona, rolC) VALUES (banc_andes.nextval, :FK_cliente_persona, :rolC)", nativeQuery = true)
+    @Query(value = "INSERT INTO Clientes (ID, FK_cliente_persona, rolC) VALUES (bancandes_sequence.nextval, :FK_cliente_persona, :rolC)", nativeQuery = true)
     void insertarCliente(@Param("ID") int ID, @Param("FK_cliente_persona") int FK_cliente_persona, @Param("rolC") RolC rolC);
 
     @Modifying
