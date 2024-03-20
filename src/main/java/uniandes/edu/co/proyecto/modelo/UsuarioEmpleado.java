@@ -4,6 +4,7 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -12,13 +13,16 @@ import jakarta.persistence.Table;
 @Table(name = "UsuariosEmpleados")
 public class UsuarioEmpleado {
     
-    
+    @Id
+    private int ID; // Asume que Persona también usa int para el ID
+
     private String Password;
 
+    @MapsId  // Esto indica que estamos mapeando el ID de esta entidad al ID de la entidad asociada
+    //UsuarioEmpleado se lleva el atributo ID de Persona
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "IDEmpleado", referencedColumnName = "IDEmpleado") //en UsuarioEm "IDEmpleado" referenciar "IDEmpleado " de Empleado
-    @Id
-    private Empleado IDEmpleado;
+    @JoinColumn(name = "ID", referencedColumnName = "IDEmpleado") //en UsuarioEm "IDEmpleado" referenciar "IDEmpleado " de Empleado
+    private Empleado empleado;
 
     public UsuarioEmpleado(String password) {
         Password = password;
@@ -37,15 +41,10 @@ public class UsuarioEmpleado {
         Password = password;
     }
 
-    public Empleado getIDEmpleado() {
-        return IDEmpleado;
+    public int getID() {
+        return ID;
     }
 
-
-
-    public void setIDEmpleado(Empleado iDEmpleado) {
-        IDEmpleado = iDEmpleado;
-    }
 
     
     
