@@ -1,5 +1,3 @@
-
-
 create sequence bancandes;
 
 CREATE TABLE Cargos (
@@ -11,32 +9,30 @@ CREATE TABLE Cargos (
 );
 
 CREATE TABLE Personas (
-    id INTEGER NOT NULL,
+    ID INTEGER NOT NULL,
     nombre VARCHAR2(150) NOT NULL,
-    DatosContacto VARCHAR2(150) NOT NULL,
-    DireccionFisica VARCHAR2(150) NOT NULL,
-    DireccionElectronica VARCHAR2(150) NOT NULL,
-    Telefono NUMBER (1,15) NOT NULL,
-    Ciudad VARCHAR2(80) NOT NULL,
-    Departamento VARCHAR2(80) NOT NULL, 
-    CodigoPostal NUMBER (5,15) NOT NULL,
-    FechaRegistro DATE NOT NULL,
-    CONSTRAINT idpersona_pk PRIMARY KEY (ID)
-
+    datosContacto VARCHAR2(150) NOT NULL,
+    direccionFisica VARCHAR2(150) NOT NULL,
+    direccionElectronica VARCHAR2(150) NOT NULL,
+    telefono NUMBER (15) NOT NULL,
+    ciudad VARCHAR2(80) NOT NULL,
+    departamento VARCHAR2(80) NOT NULL, 
+    codigoPostal NUMBER (15) NOT NULL,
+    fechaRegistro DATE NOT NULL,
+    docId INTEGER NOT NULL,
+    CONSTRAINT idpersona_pk PRIMARY KEY (ID),
+    CONSTRAINT FK_persona_identificacion FOREIGN KEY (docId) REFERENCES Identificaciones (numero)
 );
 
+
 CREATE TABLE Clientes (
-    id INTEGER,
+    ID INTEGER,
     rolC VARCHAR2(80) NOT NULL,
-    FK_cliente_persona int not null,
     CONSTRAINT FK_cliente_persona FOREIGN KEY (ID) REFERENCES Personas (ID),
     CONSTRAINT PK_Cliente PRIMARY KEY (ID),
     CONSTRAINT tipo_rolC check(RolC in ('Natural', 'Juridico'))
-    
 
 );
-
-ALTER TABLE Clientes ADD CONSTRAINT llave_unica_persona UNIQUE (FK_cliente_persona);
 
 
 CREATE TABLE Cuentas (
@@ -63,40 +59,33 @@ CREATE TABLE Empleados (
     id INTEGER  NOT NULL PRIMARY KEY,
     IDCargo INTEGER NOT NULL,
     IDOficina INTEGER NOT NULL,
-    EMPLEADO_PERSONA_FK int not null,
     CONSTRAINT EMPLEADO_CARGO_FK FOREIGN KEY (IDCargo) REFERENCES Cargos (IDCargo),
     CONSTRAINT EMPLEADO_OFICINA_FK FOREIGN KEY (IDOficina) REFERENCES Oficinas (IDOficina),
     CONSTRAINT EMPLEADO_PERSONA_FK FOREIGN KEY (ID) REFERENCES Personas (ID)
 );
 
 
-ALTER TABLE Empleados ADD CONSTRAINT llave_unica_em_persona UNIQUE (EMPLEADO_PERSONA_FK);
-
-
 
 CREATE TABLE UsuariosEmpleados (
     id Number PRIMARY KEY,
-    palabra_Clave VARCHAR2(10) NOT NULL,
+    password VARCHAR2(10) NOT NULL,
     usuario VARCHAR2(80) NOT NULL,
     CONSTRAINT FK_empleado_usuarioEmpleado FOREIGN KEY (ID) REFERENCES Empleados (ID)
 );
 
-CREATE TABLE UsuariosCliente(
+CREATE TABLE UsuariosClientes(
     id Number PRIMARY KEY,
-    palabra_Clave VARCHAR2(10) NOT NULL,
+    password VARCHAR2(10) NOT NULL,
     usuario VARCHAR2(80) NOT NULL,
     CONSTRAINT CLIENTE_PERSONA_FK FOREIGN KEY (ID) REFERENCES Clientes (ID)
 );
 
 
-
 CREATE TABLE Identificaciones (
-    id Number,
-    TipoId INTEGER,
-    DocId INTEGER,
-    PRIMARY KEY (id)
+    tipo VARCHAR2(10) ,
+    numero INTEGER,
+    PRIMARY KEY (numero )
 );
-
 
 CREATE TABLE PuntosAtencion (
     IDPuntoAtencion Integer PRIMARY KEY,
@@ -105,11 +94,11 @@ CREATE TABLE PuntosAtencion (
     Estado INTEGER,
     IDOficina INTEGER,
     CONSTRAINT PUNTOATENCION_OFICINA_FK FOREIGN KEY (IDOficina) REFERENCES oficinas (IDOficina),
-    CONSTRAINT tipoA CHECK(Tipo in ('Activa', 'Cerrada', 'Desactivada'))
+    CONSTRAINT tipoA CHECK(Tipo in ('Personalizada', 'CajeroAutomatico', 'Digital'))
 );
 
 
-CREATE TABLE OperacionesCuenta (
+CREATE TABLE OperacionesCuentas (
     IDOperacionCu Integer PRIMARY KEY,
     Monto float,
     Fecha Date,
@@ -137,7 +126,7 @@ CREATE TABLE Prestamos (
 );
 
 
-CREATE TABLE OperacionesPrestamo(
+CREATE TABLE OperacionesPrestamos(
     IDOperacionPrestamo INTEGER PRIMARY KEY,
     Tipo VARCHAR2 (50),
     CONSTRAINT tipoP CHECK (Tipo in ('Solicitar', 'Aprobar', 'Rechazar', 'Pagar Cuota', ' Pagar Cuota Extraordinaria', 'Pagar Cuota Ordinaria', 'Cerrar')),
@@ -149,7 +138,7 @@ CREATE TABLE OperacionesPrestamo(
     CONSTRAINT OPERACIONPRESTAMO_PUNTOATENCION_FK FOREIGN KEY (IDPuntoAtencion) REFERENCES PuntosAtencion(IDPuntoAtencion)
 );
 
-CREATE TABLE OperacionesTransferencia (
+CREATE TABLE OperacionesTransferencias (
     IDOperacionTrans INTEGER PRIMARY KEY,
     Monto FLOAT,
     Fecha Date,
@@ -161,3 +150,18 @@ CREATE TABLE OperacionesTransferencia (
     CONSTRAINT OPERACIONTRANSFERENCIA_PUNTOATENCION_FK FOREIGN KEY (IDPuntoAtencion) REFERENCES PuntosAtencion (IDPuntoAtencion)
     
 );
+
+/*DROP TABLE usuariosempleados;
+DROP TABLE usuariosclientes;
+DROP TABLE identificaciones;
+DROP TABLE puntosatencion;
+DROP TABLE operacionescuentas;
+DROP TABLE prestamos;
+DROP TABLE operacionesprestamos;
+DROP TABLE operacionestransferencias;
+DROP TABLE clientes;
+DROP TABLE empleados;
+DROP TABLE cargos;
+DROP TABLE oficinas;
+DROP TABLE personas;
+DROP TABLE cuentas; */
