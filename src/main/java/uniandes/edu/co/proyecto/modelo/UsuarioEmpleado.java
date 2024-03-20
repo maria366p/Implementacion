@@ -10,35 +10,35 @@ import jakarta.persistence.Table;
 
 
 @Entity
-@Table(name = "UsuariosEmpleados")
+@Table(name = "USUARIOSEMPLEADOS")
 public class UsuarioEmpleado {
     
     @Id
     private int ID; // Asume que Persona también usa int para el ID
 
-    private String Password;
+    private String PASSWORD;
 
     @MapsId  // Esto indica que estamos mapeando el ID de esta entidad al ID de la entidad asociada
     //UsuarioEmpleado se lleva el atributo ID de Persona
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "ID", referencedColumnName = "IDEmpleado") //en UsuarioEm "IDEmpleado" referenciar "IDEmpleado " de Empleado
+    @JoinColumn(name = "ID", referencedColumnName = "IDEMPLEADO") //en UsuarioEm "IDEMPLEADO" referenciar "IDEMPLEADO " de Empleado
     private Empleado empleado;
 
     public UsuarioEmpleado(String password) {
-        Password = password;
+        PASSWORD = password;
     }
 
     public UsuarioEmpleado(){
-
+        ;
     }
 
 
-    public String getPassword() {
-        return Password;
+    public String getPASSWORD() {
+        return PASSWORD;
     }
 
-    public void setPassword(String password) {
-        Password = password;
+    public void setPASSWORD(String password) {
+        PASSWORD = password;
     }
 
     public int getID() {

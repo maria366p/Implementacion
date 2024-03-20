@@ -3,6 +3,8 @@ package uniandes.edu.co.proyecto.modelo;
 import java.sql.Date;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -11,29 +13,32 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Cuentas")
+@Table(name = "CUENTAS")
 public class Cuenta {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int IDCuenta;
+    private int IDCUENTA;
 
-    private TipoCuenta tipoCuenta;
-    private float saldo;
-    private Date fechaUltimaTransaccion;
-    private EstadoC estadoCuenta;
+    @Enumerated(EnumType.STRING)
+    private TipoCuenta TIPOCUENTA;
+    private float SALDO;
+    private Date FECHAULTIMATRANSACCION;
+    
+    @Enumerated(EnumType.STRING)
+    private EstadoC ESTADOCUENTA;
 
-    //Cuenta se lleva el atributo IDCliente
+    //Cuenta se lleva el atributo IDCLIENTE
     @ManyToOne
-    @JoinColumn(name = "IDCliente", referencedColumnName = "IDCliente")
-    private Cliente IDCliente;
+    @JoinColumn(name = "IDCLIENTE", referencedColumnName = "IDCLIENTE")
+    private Cliente IDCLIENTE;
 
-    public Cuenta(TipoCuenta tipoCuenta, float saldo, Date fechaUltimaTransaccion, EstadoC estadoCuenta,
+    public Cuenta(TipoCuenta TIPOCUENTA, float SALDO, Date FECHAULTIMATRANSACCION, EstadoC ESTADOCUENTA,
             Cliente iDCliente) {
-        this.tipoCuenta = tipoCuenta;
-        this.saldo = saldo;
-        this.fechaUltimaTransaccion = fechaUltimaTransaccion;
-        this.estadoCuenta = estadoCuenta;
-        IDCliente = iDCliente;
+        this.TIPOCUENTA = TIPOCUENTA;
+        this.SALDO = SALDO;
+        this.FECHAULTIMATRANSACCION = FECHAULTIMATRANSACCION;
+        this.ESTADOCUENTA = ESTADOCUENTA;
+        IDCLIENTE = iDCliente;
     }
 
     public Cuenta(){
@@ -41,47 +46,47 @@ public class Cuenta {
     }
 
     public TipoCuenta getTipoCuenta() {
-        return tipoCuenta;
+        return TIPOCUENTA;
     }
 
-    public void setTipoCuenta(TipoCuenta tipoCuenta) {
-        this.tipoCuenta = tipoCuenta;
+    public void setTipoCuenta(TipoCuenta TIPOCUENTA) {
+        this.TIPOCUENTA = TIPOCUENTA;
     }
 
     public float getSaldo() {
-        return saldo;
+        return SALDO;
     }
 
-    public void setSaldo(float saldo) {
-        this.saldo = saldo;
+    public void setSaldo(float SALDO) {
+        this.SALDO = SALDO;
     }
 
     public Date getFechaUltimaTransaccion() {
-        return fechaUltimaTransaccion;
+        return FECHAULTIMATRANSACCION;
     }
 
-    public void setFechaUltimaTransaccion(Date fechaUltimaTransaccion) {
-        this.fechaUltimaTransaccion = fechaUltimaTransaccion;
+    public void setFechaUltimaTransaccion(Date FECHAULTIMATRANSACCION) {
+        this.FECHAULTIMATRANSACCION = FECHAULTIMATRANSACCION;
     }
 
     public EstadoC getEstadoCuenta() {
-        return estadoCuenta;
+        return ESTADOCUENTA;
     }
 
-    public void setEstadoCuenta(EstadoC estadoCuenta) {
-        this.estadoCuenta = estadoCuenta;
+    public void setEstadoCuenta(EstadoC ESTADOCUENTA) {
+        this.ESTADOCUENTA = ESTADOCUENTA;
     }
 
-    public Cliente getIDCliente() {
-        return IDCliente;
+    public Cliente getIDCLIENTE() {
+        return IDCLIENTE;
     }
 
-    public void setIDCliente(Cliente iDCliente) {
-        IDCliente = iDCliente;
+    public void setIDCLIENTE(Cliente iDCliente) {
+        IDCLIENTE = iDCliente;
     }
 
-    public int getIDCuenta() {
-        return IDCuenta;
+    public int getIDCUENTA() {
+        return IDCUENTA;
     }
 
     

@@ -1,6 +1,8 @@
 package uniandes.edu.co.proyecto.modelo;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -9,66 +11,67 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "PuntosAtencion")
+@Table(name = "PUNTOSATENCION")
 public class PuntoAtencion {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idPuntoAtencion;
-    private TipoA tipo;
-    private String ubicacionGeografica;
-    private String estado;
+    private int IDPUNTOATENCION;
+    @Enumerated(EnumType.STRING)
+    private TipoA TIPO;
+    private String UBICACIONGEOGRAFICA;
+    private String ESTADO;
 
     //PA no se lleva atributo con OPPrest
 
     //PA se lleva atributo IDoficina
     @ManyToOne
-    @JoinColumn(name = "IDOficina", referencedColumnName = "IDOficina")
-    private Oficina IDOficina;
+    @JoinColumn(name = "IDOFICINA", referencedColumnName = "IDOFICINA")
+    private Oficina IDOFICINA;
 
-    public PuntoAtencion(TipoA tipo, String ubicacionGeografica, String estado, Oficina iDOficina) {
-        this.tipo = tipo;
-        this.ubicacionGeografica = ubicacionGeografica;
-        this.estado = estado;
-        IDOficina = iDOficina;
+    public PuntoAtencion(TipoA TIPO, String UBICACIONGEOGRAFICA, String ESTADO, Oficina iDOficina) {
+        this.TIPO = TIPO;
+        this.UBICACIONGEOGRAFICA = UBICACIONGEOGRAFICA;
+        this.ESTADO = ESTADO;
+        IDOFICINA = iDOficina;
     }
 
     public PuntoAtencion(){
         ;
     }
     public TipoA getTipo() {
-        return tipo;
+        return TIPO;
     }
 
-    public void setTipo(TipoA tipo) {
-        this.tipo = tipo;
+    public void setTipo(TipoA TIPO) {
+        this.TIPO = TIPO;
     }
 
     public String getUbicacionGeografica() {
-        return ubicacionGeografica;
+        return UBICACIONGEOGRAFICA;
     }
 
-    public void setUbicacionGeografica(String ubicacionGeografica) {
-        this.ubicacionGeografica = ubicacionGeografica;
+    public void setUbicacionGeografica(String UBICACIONGEOGRAFICA) {
+        this.UBICACIONGEOGRAFICA = UBICACIONGEOGRAFICA;
     }
 
     public String getEstado() {
-        return estado;
+        return ESTADO;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setEstado(String ESTADO) {
+        this.ESTADO = ESTADO;
     }
 
-    public Oficina getIDOficina() {
-        return IDOficina;
+    public Oficina getIDOFICINA() {
+        return IDOFICINA;
     }
 
-    public void setIDOficina(Oficina iDOficina) {
-        IDOficina = iDOficina;
+    public void setIDOFICINA(Oficina iDOficina) {
+        IDOFICINA = iDOficina;
     }
 
     public int getIdPuntoAtencion() {
-        return idPuntoAtencion;
+        return IDPUNTOATENCION;
     }
 
     

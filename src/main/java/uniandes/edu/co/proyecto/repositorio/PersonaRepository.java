@@ -14,25 +14,26 @@ import uniandes.edu.co.proyecto.modelo.Persona;
 
 public interface PersonaRepository extends JpaRepository<Persona, Integer> {
 
-    @Query(value = "SELECT * FROM Personas", nativeQuery = true)
+    @Query(value = "SELECT * FROM PERSONAS", nativeQuery = true)
         Collection<Persona> darPersonas();
 
-    @Query(value = "SELECT * FROM Personas WHERE ID = :ID", nativeQuery = true)
+    @Query(value = "SELECT * FROM PERSONAS WHERE ID = :ID", nativeQuery = true)
     Persona darPersona(@Param("ID") int ID);
+
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO Personas (ID, NOMBRE, DATOSCONTACTO, DIRECCIONFISICA, DIRECCIONELECTRONICA, TELEFONO, CIUDAD, DEPARTAMENTO, CODIGOPOSTAL, FECHAREGISTRO, DOCID ) VALUES (bancandes_sequence.nextval, :NOMBRE, :DATOSCONTACTO, :DIRECCIONFISICA, :DIRECCIONELECTRONICA, :TELEFONO, :CIUDAD, :DEPARTAMENTO, :CODIGOPOSTAL, :FECHAREGISTRO, :DOCID)", nativeQuery=true)
+    @Query(value = "INSERT INTO PERSONAS (ID, NOMBRE, DATOSCONTACTO, DIRECCIONFISICA, DIRECCIONELECTRONICA, TELEFONO, CIUDAD, DEPARTAMENTO, CODIGOPOSTAL, FECHAREGISTRO, DOCID ) VALUES (bancandes_sequence.nextval, :NOMBRE, :DATOSCONTACTO, :DIRECCIONFISICA, :DIRECCIONELECTRONICA, :TELEFONO, :CIUDAD, :DEPARTAMENTO, :CODIGOPOSTAL, :FECHAREGISTRO, :DOCID)", nativeQuery=true)
         void insertarPersona(@Param("NOMBRE") String NOMBRE, @Param("DATOSCONTACTO") String DATOSCONTACTO, @Param("DIRECCIONFISICA") String DIRECCIONFISICA,@Param("DIRECCIONELECTRONICA") String DIRECCIONELECTRONICA, @Param("TELEFONO") int TELEFONO,@Param("CIUDAD") String CIUDAD,@Param("DEPARTAMENTO") String DEPARTAMENTO,@Param("CODIGOPOSTAL") int codigoPostal,@Param("FECHAREGISTRO") Date FECHAREGISTRO, @Param("DOCID") Identificacion DOCID);
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE Personas SET NOMBRE = :NOMBRE, DATOSCONTACTO = :DATOSCONTACTO, DIRECCIONFISICA = :DIRECCIONFISICA, DIRECCIONELECTRONICA = :DIRECCIONELECTRONICA, TELEFONO = :TELEFONO, CIUDAD = :CIUDAD, DEPARTAMENTO = :DEPARTAMENTO, CODIGOPOSTAL = :CODIGOPOSTAL, FECHAREGISTRO = :FECHAREGISTRO, DOCID = :DOCID WHERE ID = :ID", nativeQuery=true)
+    @Query(value = "UPDATE PERSONAS SET NOMBRE = :NOMBRE, DATOSCONTACTO = :DATOSCONTACTO, DIRECCIONFISICA = :DIRECCIONFISICA, DIRECCIONELECTRONICA = :DIRECCIONELECTRONICA, TELEFONO = :TELEFONO, CIUDAD = :CIUDAD, DEPARTAMENTO = :DEPARTAMENTO, CODIGOPOSTAL = :CODIGOPOSTAL, FECHAREGISTRO = :FECHAREGISTRO, DOCID = :DOCID WHERE ID = :ID", nativeQuery=true)
     void actualizarPersona(@Param("ID") int ID,@Param("NOMBRE") String NOMBRE, @Param("DATOSCONTACTO") String DATOSCONTACTO, @Param("DIRECCIONFISICA") String DIRECCIONFISICA,@Param("DIRECCIONELECTRONICA") String DIRECCIONELECTRONICA, @Param("TELEFONO") int TELEFONO,@Param("CIUDAD") String CIUDAD,@Param("DEPARTAMENTO") String DEPARTAMENTO,@Param("CODIGOPOSTAL") int codigoPostal,@Param("FECHAREGISTRO") Date FECHAREGISTRO, @Param("DOCID") Identificacion DOCID);
 
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM Personas WHERE ID = :ID", nativeQuery=true)
+    @Query(value = "DELETE FROM PERSONAS WHERE ID = :ID", nativeQuery=true)
     void eliminarPersona(@Param("ID") int ID);
 
 }

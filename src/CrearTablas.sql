@@ -1,12 +1,13 @@
-create sequence bancandes;
+create sequence bancandes_sequence;
 
 CREATE TABLE Cargos (
     IDCargo INTEGER NOT NULL,
     Nombre  VARCHAR2(80) NOT NULL,
     CONSTRAINT cargo_pk PRIMARY KEY ( IDCargo ),
-    CONSTRAINT tipo_cargo CHECK (Nombre in ('Cajero','Gerente Oficina', 'Gerente General'))
+    CONSTRAINT tipo_cargo CHECK (Nombre in ('Cajero','GerenteOficina', 'GerenteGeneral'))
     
 );
+
 
 CREATE TABLE Personas (
     ID INTEGER NOT NULL,
@@ -44,7 +45,7 @@ CREATE TABLE Cuentas (
     EstadoCuenta VARCHAR2(30) NOT NULL,
     CONSTRAINT TipoCuenta CHECK (TipoCuenta in ('Ahorros', 'Corriente', 'AFC')),
     CONSTRAINT EstadoCuenta CHECK (EstadoCuenta in ('Activada', 'Cerrada', 'Desactivada')),
-    CONSTRAINT IDCliente FOREIGN KEY (IDCliente) REFERENCES Clientes (ID)
+    CONSTRAINT IDCliente FOREIGN KEY (IDCliente) REFERENCES Clientes (IDCliente)
 );
 
 
@@ -67,17 +68,17 @@ CREATE TABLE Empleados (
 
 
 CREATE TABLE UsuariosEmpleados (
-    id Number PRIMARY KEY,
+    ID Number PRIMARY KEY,
     password VARCHAR2(10) NOT NULL,
     usuario VARCHAR2(80) NOT NULL,
-    CONSTRAINT FK_empleado_usuarioEmpleado FOREIGN KEY (ID) REFERENCES Empleados (ID)
+    CONSTRAINT FK_empleado_usuarioEmpleado FOREIGN KEY (ID) REFERENCES Empleados (IDEmpleado)
 );
 
 CREATE TABLE UsuariosClientes(
-    id Number PRIMARY KEY,
+    ID Number PRIMARY KEY,
     password VARCHAR2(10) NOT NULL,
     usuario VARCHAR2(80) NOT NULL,
-    CONSTRAINT CLIENTE_PERSONA_FK FOREIGN KEY (ID) REFERENCES Clientes (ID)
+    CONSTRAINT CLIENTE_PERSONA_FK FOREIGN KEY (ID) REFERENCES Clientes (IDCliente)
 );
 
 
@@ -121,7 +122,7 @@ CREATE TABLE Prestamos (
     EstadoPrestamo VARCHAR2 (50),
     CONSTRAINT estadoP CHECK ( EstadoPrestamo in ('Solicitado', 'Aprobado', 'Rechazado', 'Pagado')),
     IDCliente Integer,
-    CONSTRAINT PRESTAMO_CLIENTE_FK FOREIGN KEY (IDCliente) REFERENCES Clientes (ID)
+    CONSTRAINT PRESTAMO_CLIENTE_FK FOREIGN KEY (IDCliente) REFERENCES Clientes (IDCliente)
     
 );
 

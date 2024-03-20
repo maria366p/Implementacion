@@ -14,7 +14,7 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Personas")
+@Table(name = "PERSONAS")
 public class Persona {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

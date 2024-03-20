@@ -20,11 +20,12 @@ INSERT INTO Personas (ID, nombre, datosContacto, direccionFisica, direccionElect
 INSERT INTO Personas (ID, nombre, datosContacto, direccionFisica, direccionElectronica, telefono, ciudad, departamento, codigoPostal, fechaRegistro, docId) VALUES (5, 'Luis Mendez', 'luis.mendez@example.com', 'Transversal 92', 'luis.mendez@example.com', 258963147, 'Bucaramanga', 'Santander', 68001, TO_DATE('2022-05-01', 'YYYY-MM-DD'), 121212121);
 
 -- Insert para la tabla Clientes
-INSERT INTO Clientes (id, rolC) VALUES (1, 'Natural');
-INSERT INTO Clientes (id, rolC) VALUES (2, 'Juridico');
-INSERT INTO Clientes (id, rolC) VALUES (3, 'Natural');
-INSERT INTO Clientes (id, rolC) VALUES (4, 'Juridico');
-INSERT INTO Clientes (id, rolC) VALUES (5, 'Natural');
+INSERT INTO Clientes (IDCliente, rolC) VALUES (1, 'Natural');
+INSERT INTO Clientes (IDCliente, rolC) VALUES (2, 'Juridico');
+INSERT INTO Clientes (IDCliente, rolC) VALUES (3, 'Natural');
+INSERT INTO Clientes (IDCliente, rolC) VALUES (4, 'Juridico');
+INSERT INTO Clientes (IDCliente, rolC) VALUES (5, 'Natural');
+
 
 -- Insert para la tabla Oficinas
 INSERT INTO Oficinas (IDOficina, Nombre, Direccion) VALUES (1, 'Oficina Principal', 'Calle Principal 123');

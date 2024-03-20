@@ -8,37 +8,37 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Identificaciones")
+@Table(name = "IDENTIFICACIONES")
 public class Identificacion {
     
     @Id
-    private int numero; // numero es la primary key de identificacion
-    private String tipo;
+    private int NUMERO; // NUMERO es la primary key de identificacion
+    private String TIPO;
 
     @OneToOne(mappedBy = "DOCID")
     private Persona persona;
 
-    public Identificacion(int numero, String tipo) {
-        this.numero = numero;
-        this.tipo = tipo;
+    public Identificacion(int NUMERO, String TIPO) {
+        this.NUMERO = NUMERO;
+        this.TIPO = TIPO;
     }
 
     public Identificacion(){;}
 
     public int getNumero() {
-        return numero;
+        return NUMERO;
     }
 
-    public void setNumero(int numero) {
-        this.numero = numero;
+    public void setNumero(int NUMERO) {
+        this.NUMERO = NUMERO;
     }
 
     public String getTipo() {
-        return tipo;
+        return TIPO;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setTipo(String TIPO) {
+        this.TIPO = TIPO;
     }
 
     

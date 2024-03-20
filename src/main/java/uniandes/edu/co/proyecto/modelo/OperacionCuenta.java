@@ -3,6 +3,8 @@ package uniandes.edu.co.proyecto.modelo;
 import java.sql.Date;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -11,33 +13,34 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "OperacionesCuentas")
+@Table(name = "OPERACIONESCUENTAS")
 public class OperacionCuenta {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int IDOperacionCu;
+    private int IDOPERACIONCU;
     
-    private int monto;
-    private Date fecha;
-    private TipoOc tipoOc;
+    private int MONTO;
+    private Date FECHA;
+    @Enumerated(EnumType.STRING)
+    private TipoOc TIPOOC;
 
-    //Operacioncuenta se lleva el atributo IDCuenta
+    //Operacioncuenta se lleva el atributo IDCUENTA
     @ManyToOne
-    @JoinColumn(name = "IDCuenta", referencedColumnName = "IDCuenta")
-    private Cuenta IDCuenta;
+    @JoinColumn(name = "IDCUENTA", referencedColumnName = "IDCUENTA")
+    private Cuenta IDCUENTA;
 
-    //Operacioncuenta se lleva el atributo IDPuntoAtencion
+    //Operacioncuenta se lleva el atributo IDPUNTOATENCION
     @ManyToOne
-    @JoinColumn(name = "IDPuntoAtencion", referencedColumnName = "IDPuntoAtencion")
-    private PuntoAtencion IDPuntoAtencion;
+    @JoinColumn(name = "IDPUNTOATENCION", referencedColumnName = "IDPUNTOATENCION")
+    private PuntoAtencion IDPUNTOATENCION;
 
-    public OperacionCuenta( int monto, Date fecha, TipoOc tipoOc, Cuenta iDCuenta,
+    public OperacionCuenta( int MONTO, Date FECHA, TipoOc TIPOOC, Cuenta iDCuenta,
             PuntoAtencion iDPuntoAtencion) {
-        this.monto = monto;
-        this.fecha = fecha;
-        this.tipoOc = tipoOc;
-        IDCuenta = iDCuenta;
-        IDPuntoAtencion = iDPuntoAtencion;
+        this.MONTO = MONTO;
+        this.FECHA = FECHA;
+        this.TIPOOC = TIPOOC;
+        IDCUENTA = iDCuenta;
+        IDPUNTOATENCION = iDPuntoAtencion;
     }
 
     public OperacionCuenta(){
@@ -45,47 +48,47 @@ public class OperacionCuenta {
     }
 
     public int getMonto() {
-        return monto;
+        return MONTO;
     }
 
-    public void setMonto(int monto) {
-        this.monto = monto;
+    public void setMonto(int MONTO) {
+        this.MONTO = MONTO;
     }
 
     public Date getFecha() {
-        return fecha;
+        return FECHA;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setFecha(Date FECHA) {
+        this.FECHA = FECHA;
     }
 
     public TipoOc getTipoOc() {
-        return tipoOc;
+        return TIPOOC;
     }
 
-    public void setTipoOc(TipoOc tipoOc) {
-        this.tipoOc = tipoOc;
+    public void setTipoOc(TipoOc TIPOOC) {
+        this.TIPOOC = TIPOOC;
     }
 
-    public Cuenta getIDCuenta() {
-        return IDCuenta;
+    public Cuenta getIDCUENTA() {
+        return IDCUENTA;
     }
 
-    public void setIDCuenta(Cuenta iDCuenta) {
-        IDCuenta = iDCuenta;
+    public void setIDCUENTA(Cuenta iDCuenta) {
+        IDCUENTA = iDCuenta;
     }
 
-    public PuntoAtencion getIDPuntoAtencion() {
-        return IDPuntoAtencion;
+    public PuntoAtencion getIDPUNTOATENCION() {
+        return IDPUNTOATENCION;
     }
 
-    public void setIDPuntoAtencion(PuntoAtencion iDPuntoAtencion) {
-        IDPuntoAtencion = iDPuntoAtencion;
+    public void setIDPUNTOATENCION(PuntoAtencion iDPuntoAtencion) {
+        IDPUNTOATENCION = iDPuntoAtencion;
     }
 
-    public int getIDOperacionCu() {
-        return IDOperacionCu;
+    public int getIDOPERACIONCU() {
+        return IDOPERACIONCU;
     }
 
     

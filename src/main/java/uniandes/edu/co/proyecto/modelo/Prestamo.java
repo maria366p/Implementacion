@@ -3,6 +3,8 @@ package uniandes.edu.co.proyecto.modelo;
 import java.sql.Date;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -11,33 +13,34 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Prestamos")
+@Table(name = "PRESTAMOS")
 public class Prestamo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int IDPrestamo;
+    private int IDPRESTAMO;
     
-    private float monto;
-    private int interes;
-    private int numeroCuotas;
-    private Date diaPago;
-    private float valorCuota;
-    private EstadoP estadoP;
+    private float MONTO;
+    private int INTERES;
+    private int NUMEROCUOTAS;
+    private Date DIAPAGO;
+    private float VALORCUOTA;
+    @Enumerated(EnumType.STRING)
+    private EstadoP ESTADOP;
 
-    //Prestamo se lleva el atributo IDCliente
+    //Prestamo se lleva el atributo IDCLIENTE
     @ManyToOne
-    @JoinColumn(name = "IDCliente", referencedColumnName = "IDCliente")
-    private Cliente IDCliente;
+    @JoinColumn(name = "IDCLIENTE", referencedColumnName = "IDCLIENTE")
+    private Cliente IDCLIENTE;
 
-    public Prestamo(float monto, int interes, int numeroCuotas, Date diaPago, float valorCuota,
-            EstadoP estadoP, Cliente iDCliente) {
-        this.monto = monto;
-        this.interes = interes;
-        this.numeroCuotas = numeroCuotas;
-        this.diaPago = diaPago;
-        this.valorCuota = valorCuota;
-        this.estadoP = estadoP;
-        IDCliente = iDCliente;
+    public Prestamo(float MONTO, int INTERES, int NUMEROCUOTAS, Date DIAPAGO, float VALORCUOTA,
+            EstadoP ESTADOP, Cliente iDCliente) {
+        this.MONTO = MONTO;
+        this.INTERES = INTERES;
+        this.NUMEROCUOTAS = NUMEROCUOTAS;
+        this.DIAPAGO = DIAPAGO;
+        this.VALORCUOTA = VALORCUOTA;
+        this.ESTADOP = ESTADOP;
+        IDCLIENTE = iDCliente;
     }
 
     public Prestamo(){
@@ -45,64 +48,64 @@ public class Prestamo {
     }
     
     public float getMonto() {
-        return monto;
+        return MONTO;
     }
 
-    public void setMonto(float monto) {
-        this.monto = monto;
+    public void setMonto(float MONTO) {
+        this.MONTO = MONTO;
     }
 
     public int getInteres() {
-        return interes;
+        return INTERES;
     }
 
-    public void setInteres(int interes) {
-        this.interes = interes;
+    public void setInteres(int INTERES) {
+        this.INTERES = INTERES;
     }
 
     public int getNumeroCuotas() {
-        return numeroCuotas;
+        return NUMEROCUOTAS;
     }
 
-    public void setNumeroCuotas(int numeroCuotas) {
-        this.numeroCuotas = numeroCuotas;
+    public void setNumeroCuotas(int NUMEROCUOTAS) {
+        this.NUMEROCUOTAS = NUMEROCUOTAS;
     }
 
     public Date getDiaPago() {
-        return diaPago;
+        return DIAPAGO;
     }
 
-    public void setDiaPago(Date diaPago) {
-        this.diaPago = diaPago;
+    public void setDiaPago(Date DIAPAGO) {
+        this.DIAPAGO = DIAPAGO;
     }
 
     public float getValorCuota() {
-        return valorCuota;
+        return VALORCUOTA;
     }
 
-    public void setValorCuota(float valorCuota) {
-        this.valorCuota = valorCuota;
+    public void setValorCuota(float VALORCUOTA) {
+        this.VALORCUOTA = VALORCUOTA;
     }
 
     public EstadoP getEstadoP() {
-        return estadoP;
+        return ESTADOP;
     }
 
-    public void setEstadoP(EstadoP estadoP) {
-        this.estadoP = estadoP;
+    public void setEstadoP(EstadoP ESTADOP) {
+        this.ESTADOP = ESTADOP;
     }
 
-    public Cliente getIDCliente() {
-        return IDCliente;
+    public Cliente getIDCLIENTE() {
+        return IDCLIENTE;
     }
 
-    public void setIDCliente(Cliente iDCliente) {
-        IDCliente = iDCliente;
+    public void setIDCLIENTE(Cliente iDCliente) {
+        IDCLIENTE = iDCliente;
     }
 
 
-    public int getIDPrestamo() {
-        return IDPrestamo;
+    public int getIDPRESTAMO() {
+        return IDPRESTAMO;
     }
 
 

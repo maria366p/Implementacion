@@ -11,37 +11,37 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "OperacionesTransferencias")
+@Table(name = "OPERACIONESTRANSFERENCIAS")
 public class OperacionTransferencia {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int IDOperacionTrans;
+    private int IDOPERACIONTRANS;
     
-    private int monto;
-    private Date fecha;
+    private int MONTO;
+    private Date FECHA;
 
     //OperacionTrans se lleva el atributo IDCuenta de Origen
     @ManyToOne
-    @JoinColumn(name = "IDCuentaOrigen", referencedColumnName = "IDCuenta")
-    private Cuenta IDCuentaOrigen;
+    @JoinColumn(name = "IDCUENTAORIGEN", referencedColumnName = "IDCuenta")
+    private Cuenta IDCUENTAORIGEN;
 
     //OperacionTrans se lleva el atributo IDCuenta de Destino
     @ManyToOne
-    @JoinColumn(name = "IDCuentaDestino", referencedColumnName = "IDCuenta")
-    private Cuenta IDCuentaDestino;
+    @JoinColumn(name = "IDCUENTADESTINO", referencedColumnName = "IDCuenta")
+    private Cuenta IDCUENTADESTINO;
 
-    //OperacionTrans se lleva el atributo IDPuntoAtencion
+    //OperacionTrans se lleva el atributo IDPUNTOATENCION
     @ManyToOne
-    @JoinColumn(name = "IDPuntoAtencion", referencedColumnName = "IDPuntoAtencion")
-    private PuntoAtencion IDPuntoAtencion;
+    @JoinColumn(name = "IDPUNTOATENCION", referencedColumnName = "IDPUNTOATENCION")
+    private PuntoAtencion IDPUNTOATENCION;
 
-    public OperacionTransferencia(int monto, Date fecha, Cuenta iDCuentaOrigen, Cuenta iDCuentaDestino,
+    public OperacionTransferencia(int MONTO, Date FECHA, Cuenta iDCuentaOrigen, Cuenta iDCuentaDestino,
             PuntoAtencion iDPuntoAtencion) {
-        this.monto = monto;
-        this.fecha = fecha;
-        IDCuentaOrigen = iDCuentaOrigen;
-        IDCuentaDestino = iDCuentaDestino;
-        IDPuntoAtencion = iDPuntoAtencion;
+        this.MONTO = MONTO;
+        this.FECHA = FECHA;
+        IDCUENTAORIGEN = iDCuentaOrigen;
+        IDCUENTADESTINO = iDCuentaDestino;
+        IDPUNTOATENCION = iDPuntoAtencion;
     }
 
     public OperacionTransferencia(){
@@ -49,47 +49,47 @@ public class OperacionTransferencia {
     }
 
     public int getMonto() {
-        return monto;
+        return MONTO;
     }
 
-    public void setMonto(int monto) {
-        this.monto = monto;
+    public void setMonto(int MONTO) {
+        this.MONTO = MONTO;
     }
 
     public Date getFecha() {
-        return fecha;
+        return FECHA;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setFecha(Date FECHA) {
+        this.FECHA = FECHA;
     }
 
-    public Cuenta getIDCuentaOrigen() {
-        return IDCuentaOrigen;
+    public Cuenta getIDCUENTAORIGEN() {
+        return IDCUENTAORIGEN;
     }
 
-    public void setIDCuentaOrigen(Cuenta iDCuentaOrigen) {
-        IDCuentaOrigen = iDCuentaOrigen;
+    public void setIDCUENTAORIGEN(Cuenta iDCuentaOrigen) {
+        IDCUENTAORIGEN = iDCuentaOrigen;
     }
 
-    public Cuenta getIDCuentaDestino() {
-        return IDCuentaDestino;
+    public Cuenta getIDCUENTADESTINO() {
+        return IDCUENTADESTINO;
     }
 
-    public void setIDCuentaDestino(Cuenta iDCuentaDestino) {
-        IDCuentaDestino = iDCuentaDestino;
+    public void setIDCUENTADESTINO(Cuenta iDCuentaDestino) {
+        IDCUENTADESTINO = iDCuentaDestino;
     }
 
-    public PuntoAtencion getIDPuntoAtencion() {
-        return IDPuntoAtencion;
+    public PuntoAtencion getIDPUNTOATENCION() {
+        return IDPUNTOATENCION;
     }
 
-    public void setIDPuntoAtencion(PuntoAtencion iDPuntoAtencion) {
-        IDPuntoAtencion = iDPuntoAtencion;
+    public void setIDPUNTOATENCION(PuntoAtencion iDPuntoAtencion) {
+        IDPUNTOATENCION = iDPuntoAtencion;
     }
 
-    public int getIDOperacionTrans() {
-        return IDOperacionTrans;
+    public int getIDOPERACIONTRANS() {
+        return IDOPERACIONTRANS;
     }
 
     

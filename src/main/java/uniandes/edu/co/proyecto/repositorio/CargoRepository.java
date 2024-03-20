@@ -9,29 +9,31 @@ import org.springframework.data.repository.query.Param;
 
 import jakarta.transaction.Transactional;
 import uniandes.edu.co.proyecto.modelo.Cargo;
-import uniandes.edu.co.proyecto.modelo.RolE;
 
 
-public interface CargoRepository extends JpaRepository<Cargo, Integer> {
+public interface CargoRepository extends JpaRepository<Cargo,Integer>{
 
-    @Query(value = "SELECT * From Cargos", nativeQuery = true)
-    Collection<Cargo>  darCargos();
+    @Query(value = "SELECT * FROM CARGOS", nativeQuery = true)
+        Collection<Cargo> darCargos();
+
+    @Query(value = "SELECT * FROM CARGOS WHERE IDCARGO = :IDCARGO", nativeQuery = true)
+    Cargo darCargo(@Param("IDCARGO") int ID);
+
+
+    @Modifying
+    @Transactional
+    @Query(value = "INSERT INTO CARGOS (IDCARGO, NOMBRE) VALUES (bancandes_sequence.NEXTVAL, :NOMBRE)", nativeQuery=true)
+        void insertarCargo(@Param("NOMBRE") String NOMBRE);
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE CARGOS SET NOMBRE = :NOMBRE WHERE IDCARGO = :IDCARGO", nativeQuery=true)
+        void actualizarCargo(@Param("IDCARGO") int ID,@Param("NOMBRE") String NOMBRE);
+
+    @Modifying
+    @Transactional
+    @Query(value = "DELETE FROM CARGOS WHERE IDCARGO = :IDCARGO", nativeQuery=true)
+        void eliminarCargo(@Param("IDCARGO") int ID);
+
     
-    @Query(value = "SELECT * From Cargos WHERE ID = :ID", nativeQuery = true) 
-    Cargo darCargo(@Param("ID") int ID);
-    
-    @Modifying
-    @Transactional
-    @Query(value = "INSERT INTO Cargos (ID, nombre, descripcion) VALUES (bancandes_sequence.nextval, :nombre, :descripcion)", nativeQuery = true)
-    void insertarCargo(@Param("nombre") RolE nombre);
-
-    @Modifying
-    @Transactional
-    @Query(value = "Update Cargos SET nombre = :nombre, descripcion = :descripcion WHERE ID = :ID", nativeQuery = true)
-    void actualizarCargo (@Param("ID") int ID, @Param("nombre") RolE nombre);
-
-    @Modifying
-    @Transactional
-    @Query(value = "DELETE FROM Cargos WHERE ID = :ID", nativeQuery = true)
-    void eliminarCargo(@Param("ID") int ID);
 }

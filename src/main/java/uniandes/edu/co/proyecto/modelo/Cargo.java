@@ -1,45 +1,47 @@
 package uniandes.edu.co.proyecto.modelo;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Cargos")
+@Table(name = "CARGOS")
 public class Cargo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int IDCargo;
+    private int IDCARGO;
 
     //Cargo no se lleva el atributo con la tabla Empleado
+    
+    @Enumerated(EnumType.STRING)
+    private RolE NOMBRE;
 
-    private RolE nombre;
-
-    public Cargo(int IDCargo, RolE nombre) {
-        this.IDCargo = IDCargo;
-        this.nombre = nombre;
+    public Cargo( RolE NOMBRE) {
+        this.NOMBRE = NOMBRE;
     }
 
     public Cargo(){
         ;
     }
 
-    public int getIDCargo() {
-        return IDCargo;
+    public int getIDCARGO() {
+        return IDCARGO;
     }
 
-    public void setIDCargo(int IDCargo) {
-        this.IDCargo = IDCargo;
+    public void setIDCARGO(int IDCARGO) {
+        this.IDCARGO = IDCARGO;
     }
 
     public RolE getNombre() {
-        return nombre;
+        return NOMBRE;
     }
 
-    public void setNombre(RolE nombre) {
-        this.nombre = nombre;
+    public void setNombre(RolE NOMBRE) {
+        this.NOMBRE = NOMBRE;
     }
 
     

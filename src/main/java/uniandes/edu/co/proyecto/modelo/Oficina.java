@@ -7,21 +7,21 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Oficinas")
+@Table(name = "OFICINAS")
 public class Oficina {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int IDOficina;
+    private int IDOFICINA;
 
-    private String nombre;
-    private String direccion;
+    private String NOMBRE;
+    private String DIRECCION;
 
    //Oficina no se lleva el atributo con la tabla Empleado
 
 
-    public Oficina(String nombre, String direccion) {
-        this.nombre = nombre;
-        this.direccion = direccion;
+    public Oficina(String NOMBRE, String DIRECCION) {
+        this.NOMBRE = NOMBRE;
+        this.DIRECCION = DIRECCION;
         
     }
 
@@ -30,26 +30,26 @@ public class Oficina {
     }
 
     public int getIdOficina() {
-        return IDOficina;
+        return IDOFICINA;
     }
 
     public void setIdOficina(int idOficina) {
-        this.IDOficina = idOficina;
+        this.IDOFICINA = idOficina;
     }
 
     public String getNombre() {
-        return nombre;
+        return NOMBRE;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre(String NOMBRE) {
+        this.NOMBRE = NOMBRE;
     }
 
     public String getDireccion() {
-        return direccion;
+        return DIRECCION;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setDireccion(String DIRECCION) {
+        this.DIRECCION = DIRECCION;
     }
 }

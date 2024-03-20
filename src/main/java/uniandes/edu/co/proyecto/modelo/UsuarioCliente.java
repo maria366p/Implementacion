@@ -9,32 +9,32 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "UsuariosClientes")
+@Table(name = "USUARIOSCLIENTES")
 public class UsuarioCliente {
-    private String Password;
+    private String PASSWORD;
 
     @Id
     private int ID; // Asume que Persona también usa Long para el ID
 
     @MapsId  // Esto indica que estamos mapeando el ID de esta entidad al ID de la entidad asociada
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "ID", referencedColumnName = "IDCliente") //en UsuarioCl "IDCliente" referenciar "IDCliente " de Cliente
+    @JoinColumn(name = "ID", referencedColumnName = "IDCLIENTE") //en UsuarioCl "IDCLIENTE" referenciar "IDCLIENTE " de Cliente
     private Cliente cliente;
 
     public UsuarioCliente(String password) {
-        Password = password;
+        PASSWORD = password;
     }
 
     public UsuarioCliente(){
         ;
     }
 
-    public String getPassword() {
-        return Password;
+    public String getPASSWORD() {
+        return PASSWORD;
     }
 
-    public void setPassword(String password) {
-        Password = password;
+    public void setPASSWORD(String password) {
+        PASSWORD = password;
     }
 
     public int getID() {

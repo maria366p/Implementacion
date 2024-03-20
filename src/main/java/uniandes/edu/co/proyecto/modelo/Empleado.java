@@ -12,17 +12,17 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Empleados")
+@Table(name = "EMPLEADOS")
 public class Empleado {
 
 
     @Id
-    private int IDEmpleado; // Asume que Persona también usa int para el ID
+    private int IDEMPLEADO; // Asume que Persona también usa int para el ID
 
     @MapsId  // Esto indica que estamos mapeando el ID de esta entidad al ID de la entidad asociada
     //Empleado se lleva el atributo ID de Persona
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "IDEmpleado", referencedColumnName = "ID") //en Em "IDEmpleado" referenciar "ID" de persona
+    @JoinColumn(name = "IDEMPLEADO", referencedColumnName = "ID") //en Em "IDEMPLEADO" referenciar "ID" de persona
     private Persona persona;
 
     //Empleado no se lleva el atributo con la tabla UsuarioEMpleado
@@ -30,61 +30,50 @@ public class Empleado {
     private UsuarioEmpleado UsuarioEmpleado;
 
 
-    //Empleado se lleva el atributo de IDOficina de Oficina
+    //Empleado se lleva el atributo de IDOFICINA de Oficina
     @ManyToOne
-    @JoinColumn(name = "IDOficina", referencedColumnName = "IDOficina")
-    private Oficina IDOficina;
+    @JoinColumn(name = "IDOFICINA", referencedColumnName = "IDOFICINA")
+    private Oficina IDOFICINA;
 
-     //Empleado se lleva el atributo de IDCargo de Cargo
+     //Empleado se lleva el atributo de IDCARGO de Cargo
      @ManyToOne
-     @JoinColumn(name = "IDCargo", referencedColumnName = "IDCargo")
-     private Cargo IDCargo;
+     @JoinColumn(name = "IDCARGO", referencedColumnName = "IDCARGO")
+     private Cargo IDCARGO;
     
     
     public Empleado(int iDEmpleado, Oficina iDOficina,
             Cargo iDCargo) {
-        IDEmpleado = iDEmpleado;
-        IDOficina = iDOficina;
-        IDCargo = iDCargo;
+        IDEMPLEADO = iDEmpleado;
+        IDOFICINA = iDOficina;
+        IDCARGO = iDCargo;
     }
     
     public Empleado(){
         ;
     }
 
-    public int getIDEmpleado() {
-        return IDEmpleado;
+    public int getIDEMPLEADO() {
+        return IDEMPLEADO;
     }
 
 
-    
-    public UsuarioEmpleado getUsuarioEmpleado() {
-        return UsuarioEmpleado;
+    public Oficina getIDOFICINA() {
+        return IDOFICINA;
     }
 
 
-    public void setUsuarioEmpleado(UsuarioEmpleado usuarioEmpleado) {
-        UsuarioEmpleado = usuarioEmpleado;
+    public void setIDOFICINA(Oficina iDOficina) {
+        IDOFICINA = iDOficina;
     }
 
 
-    public Oficina getIDOficina() {
-        return IDOficina;
+    public Cargo getIDCARGO() {
+        return IDCARGO;
     }
 
 
-    public void setIDOficina(Oficina iDOficina) {
-        IDOficina = iDOficina;
-    }
-
-
-    public Cargo getIDCargo() {
-        return IDCargo;
-    }
-
-
-    public void setIDCargo(Cargo iDCargo) {
-        IDCargo = iDCargo;
+    public void setIDCARGO(Cargo iDCargo) {
+        IDCARGO = iDCargo;
     }
 
     
