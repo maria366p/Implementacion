@@ -1,6 +1,6 @@
 
 
-create sequence banc_andes;
+create sequence bancandes;
 
 CREATE TABLE Cargos (
     IDCargo INTEGER NOT NULL,
