@@ -1,9 +1,12 @@
 -- Insert para la tabla Cargos
-INSERT INTO Cargos (IDCargo, Nombre) VALUES (1, 'Gerente General');
-INSERT INTO Cargos (IDCargo, Nombre) VALUES (2, 'Gerente Oficina');
+INSERT INTO Cargos (IDCargo, Nombre) VALUES (1, 'GerenteGeneral');
+INSERT INTO Cargos (IDCargo, Nombre) VALUES (2, 'GerenteOficina');
 INSERT INTO Cargos (IDCargo, Nombre) VALUES (3, 'Cajero');
 INSERT INTO Cargos (IDCargo, Nombre) VALUES (4, 'Asistente');
 INSERT INTO Cargos (IDCargo, Nombre) VALUES (5, 'Analista Financiero');
+INSERT INTO Cargos (IDCargo, Nombre) VALUES (4, 'Cajero');
+INSERT INTO Cargos (IDCargo, Nombre) VALUES (5, 'GerenteOficina');
+
 
 -- Insert para la tabla Identificaciones
 INSERT INTO Identificaciones (tipo, numero) VALUES ('cc', 123456789);
@@ -35,18 +38,18 @@ INSERT INTO Oficinas (IDOficina, Nombre, Direccion) VALUES (4, 'Sucursal Este', 
 INSERT INTO Oficinas (IDOficina, Nombre, Direccion) VALUES (5, 'Sucursal Oeste', 'Transversal Oeste 202');
 
 -- Insert para la tabla Empleados
-INSERT INTO Empleados (id, IDCargo, IDOficina) VALUES (1, 1, 1);
-INSERT INTO Empleados (id, IDCargo, IDOficina) VALUES (2, 2, 1);
-INSERT INTO Empleados (id, IDCargo, IDOficina) VALUES (3, 3, 1);
-INSERT INTO Empleados (id, IDCargo, IDOficina) VALUES (4, 2, 2);
-INSERT INTO Empleados (id, IDCargo, IDOficina) VALUES (5, 3, 2);
+INSERT INTO Empleados (IDEMPLEADO, IDCargo, IDOficina) VALUES (1, 1, 1);
+INSERT INTO Empleados (IDEMPLEADO, IDCargo, IDOficina) VALUES (2, 2, 1);
+INSERT INTO Empleados (IDEMPLEADO, IDCargo, IDOficina) VALUES (3, 3, 1);
+INSERT INTO Empleados (IDEMPLEADO, IDCargo, IDOficina) VALUES (4, 2, 2);
+INSERT INTO Empleados (IDEMPLEADO, IDCargo, IDOficina) VALUES (5, 3, 2);
 
 -- Insert para la tabla UsuariosEmpleados
-INSERT INTO UsuariosEmpleados (id, password, usuario) VALUES (1, 'clave123', 'gerente1');
-INSERT INTO UsuariosEmpleados (id, password, usuario) VALUES (2, 'clave456', 'gerente2');
-INSERT INTO UsuariosEmpleados (id, password, usuario) VALUES (3, 'clave789', 'cajero1');
-INSERT INTO UsuariosEmpleados (id, password, usuario) VALUES (4, 'clave012', 'gerente3');
-INSERT INTO UsuariosEmpleados (id, password, usuario) VALUES (5, 'clave345', 'cajero2');
+INSERT INTO UsuariosEmpleados (ID, password, usuario) VALUES (1, 'clave123', 'gerente1');
+INSERT INTO UsuariosEmpleados (ID, password, usuario) VALUES (2, 'clave456', 'gerente2');
+INSERT INTO UsuariosEmpleados (ID, password, usuario) VALUES (3, 'clave789', 'cajero1');
+INSERT INTO UsuariosEmpleados (ID, password, usuario) VALUES (4, 'clave012', 'gerente3');
+INSERT INTO UsuariosEmpleados (ID, password, usuario) VALUES (5, 'clave345', 'cajero2');
 
 -- Insert para la tabla UsuariosClientes
 INSERT INTO UsuariosClientes (id, password, usuario) VALUES (1, 'pass123', 'cliente1');
@@ -58,18 +61,18 @@ INSERT INTO UsuariosClientes (id, password, usuario) VALUES (5, 'pass345', 'clie
 
 
 -- Insert para la tabla PuntosAtencion
-INSERT INTO PuntosAtencion (IDPuntoAtencion, Tipo, UbicacionGeografica, Estado, IDOficina) VALUES (1, 'Personalizada', 'Centro Comercial 1', 1, 1);
-INSERT INTO PuntosAtencion (IDPuntoAtencion, Tipo, UbicacionGeografica, Estado, IDOficina) VALUES (2, 'CajeroAutomatico', 'Calle 50 con 10', 1, 1);
-INSERT INTO PuntosAtencion (IDPuntoAtencion, Tipo, UbicacionGeografica, Estado, IDOficina) VALUES (3, 'Digital', 'Internet', 1, NULL);
-INSERT INTO PuntosAtencion (IDPuntoAtencion, Tipo, UbicacionGeografica, Estado, IDOficina) VALUES (4, 'Personalizada', 'Centro Comercial 2', 1, 2);
-INSERT INTO PuntosAtencion (IDPuntoAtencion, Tipo, UbicacionGeografica, Estado, IDOficina) VALUES (5, 'CajeroAutomatico', 'Calle 90 con 15', 1, 2);
+INSERT INTO PuntosAtencion (IDPuntoAtencion, Tipo, UbicacionGeografica, Estado, IDOficina) VALUES (1, 'Personalizada', 'Centro Comercial 1', 'en revision', 1);
+INSERT INTO PuntosAtencion (IDPuntoAtencion, Tipo, UbicacionGeografica, Estado, IDOficina) VALUES (2, 'CajeroAutomatico', 'Calle 50 con 10', 'mantenimiento', 1);
+INSERT INTO PuntosAtencion (IDPuntoAtencion, Tipo, UbicacionGeografica, Estado, IDOficina) VALUES (3, 'Digital', 'Internet', 'funcionando', NULL);
+INSERT INTO PuntosAtencion (IDPuntoAtencion, Tipo, UbicacionGeografica, Estado, IDOficina) VALUES (4, 'Personalizada', 'Centro Comercial 2', 'funcionando', 2);
+INSERT INTO PuntosAtencion (IDPuntoAtencion, Tipo, UbicacionGeografica, Estado, IDOficina) VALUES (5, 'CajeroAutomatico', 'Calle 90 con 15', 'funcionando', 2);
 
 -- Insert para la tabla OperacionesCuentas
-INSERT INTO OperacionesCuentas (IDOperacionCu, Monto, Fecha, TipoOC, idCuenta, idPuntoAtencion) VALUES (1, 500.00, TO_DATE('2023-03-15', 'YYYY-MM-DD'), 'Consignar', 1, 1);
-INSERT INTO OperacionesCuentas (IDOperacionCu, Monto, Fecha, TipoOC, idCuenta, idPuntoAtencion) VALUES (2, 200.00, TO_DATE('2023-03-16', 'YYYY-MM-DD'), 'Retirar', 1, 2);
-INSERT INTO OperacionesCuentas (IDOperacionCu, Monto, Fecha, TipoOC, idCuenta, idPuntoAtencion) VALUES (3, 1000.00, TO_DATE('2023-03-17', 'YYYY-MM-DD'), 'Consignar', 2, 1);
-INSERT INTO OperacionesCuentas (IDOperacionCu, Monto, Fecha, TipoOC, idCuenta, idPuntoAtencion) VALUES (4, 300.00, TO_DATE('2023-03-18', 'YYYY-MM-DD'), 'Retirar', 3, 2);
-INSERT INTO OperacionesCuentas (IDOperacionCu, Monto, Fecha, TipoOC, idCuenta, idPuntoAtencion) VALUES (5, 1500.00, TO_DATE('2023-03-19', 'YYYY-MM-DD'), 'Consignar', 4, 1);
+INSERT INTO OperacionesCuentas (IDOperacionCu, Monto, Fecha, TipoOC, idCuenta, idPuntoAtencion) VALUES (1, 500.00, TO_DATE('2023-03-15', 'YYYY-MM-DD'), 'Consignar', 101, 1);
+INSERT INTO OperacionesCuentas (IDOperacionCu, Monto, Fecha, TipoOC, idCuenta, idPuntoAtencion) VALUES (2, 200.00, TO_DATE('2023-03-16', 'YYYY-MM-DD'), 'Retirar', 102, 2);
+INSERT INTO OperacionesCuentas (IDOperacionCu, Monto, Fecha, TipoOC, idCuenta, idPuntoAtencion) VALUES (3, 1000.00, TO_DATE('2023-03-17', 'YYYY-MM-DD'), 'Consignar', 103, 1);
+INSERT INTO OperacionesCuentas (IDOperacionCu, Monto, Fecha, TipoOC, idCuenta, idPuntoAtencion) VALUES (4, 300.00, TO_DATE('2023-03-18', 'YYYY-MM-DD'), 'Retirar', 104, 2);
+INSERT INTO OperacionesCuentas (IDOperacionCu, Monto, Fecha, TipoOC, idCuenta, idPuntoAtencion) VALUES (5, 1500.00, TO_DATE('2023-03-19', 'YYYY-MM-DD'), 'Consignar', 105, 1);
 
 -- Insert para la tabla Prestamos
 INSERT INTO Prestamos (IDPrestamo, Monto, Interes, NumeroCuotas, DiaPagoCuota, ValorCuota, EstadoPrestamo, IDCliente) VALUES (1, 10000, 0.05, 12, 15, 850, 'Aprobado', 1);
@@ -79,15 +82,22 @@ INSERT INTO Prestamos (IDPrestamo, Monto, Interes, NumeroCuotas, DiaPagoCuota, V
 INSERT INTO Prestamos (IDPrestamo, Monto, Interes, NumeroCuotas, DiaPagoCuota, ValorCuota, EstadoPrestamo, IDCliente) VALUES (5, 8000, 0.05, 10, 15, 820, 'Aprobado', 5);
 
 -- Insert para la tabla OperacionesPrestamos
-INSERT INTO OperacionesPrestamos (IDOperacionPrestamo, Tipo, Monto, Fecha, IDPrestamo, IDPuntoAtencion) VALUES (1, 'Pagar Cuota', 850, TO_DATE('2023-04-15', 'YYYY-MM-DD'), 1, 1);
-INSERT INTO OperacionesPrestamos (IDOperacionPrestamo, Tipo, Monto, Fecha, IDPrestamo, IDPuntoAtencion) VALUES (2, 'Pagar Cuota', 900, TO_DATE('2023-04-15', 'YYYY-MM-DD'), 2, 2);
-INSERT INTO OperacionesPrestamos (IDOperacionPrestamo, Tipo, Monto, Fecha, IDPrestamo, IDPuntoAtencion) VALUES (3, 'Pagar Cuota', 1300, TO_DATE('2023-04-15', 'YYYY-MM-DD'), 3, 3);
-INSERT INTO OperacionesPrestamos (IDOperacionPrestamo, Tipo, Monto, Fecha, IDPrestamo, IDPuntoAtencion) VALUES (4, 'Pagar Cuota', 850, TO_DATE('2023-04-15', 'YYYY-MM-DD'), 4, 4);
+INSERT INTO OperacionesPrestamos (IDOperacionPrestamo, Tipo, Monto, Fecha, IDPrestamo, IDPuntoAtencion) VALUES (1, 'PagarCuota', 850, TO_DATE('2023-04-15', 'YYYY-MM-DD'), 1, 1);
+INSERT INTO OperacionesPrestamos (IDOperacionPrestamo, Tipo, Monto, Fecha, IDPrestamo, IDPuntoAtencion) VALUES (2, 'PagarCuota', 900, TO_DATE('2023-04-15', 'YYYY-MM-DD'), 2, 2);
+INSERT INTO OperacionesPrestamos (IDOperacionPrestamo, Tipo, Monto, Fecha, IDPrestamo, IDPuntoAtencion) VALUES (3, 'PagarCuota', 1300, TO_DATE('2023-04-15', 'YYYY-MM-DD'), 3, 3);
+INSERT INTO OperacionesPrestamos (IDOperacionPrestamo, Tipo, Monto, Fecha, IDPrestamo, IDPuntoAtencion) VALUES (4, 'PagarCuota', 850, TO_DATE('2023-04-15', 'YYYY-MM-DD'), 4, 4);
 
 
 -- Insert para la tabla Cuentas
-INSERT INTO Cuentas (IDCuenta, TipoCuenta, Saldo, FechaUltimaTransaccion, idCliente, EstadoCuenta) VALUES (101, 'Ahorros', 5000.00, TO_DATE('2024-03-10', 'YYYY-MM-DD'), 1, 'Activada');
-INSERT INTO Cuentas (IDCuenta, TipoCuenta, Saldo, FechaUltimaTransaccion, idCliente, EstadoCuenta) VALUES (102, 'Corriente', 10000.00, TO_DATE('2024-03-11', 'YYYY-MM-DD'), 2, 'Activada');
-INSERT INTO Cuentas (IDCuenta, TipoCuenta, Saldo, FechaUltimaTransaccion, idCliente, EstadoCuenta) VALUES (103, 'AFC', 20000.00, TO_DATE('2024-03-12', 'YYYY-MM-DD'), 3, 'Activada');
+INSERT INTO Cuentas (IDCuenta, TipoCuenta, Saldo, FechaUltimaTransaccion, idCliente, EstadoCuenta) VALUES (101, 'Ahorros', 5000.00, TO_DATE('2024-03-10', 'YYYY-MM-DD'), 1, 'Activa');
+INSERT INTO Cuentas (IDCuenta, TipoCuenta, Saldo, FechaUltimaTransaccion, idCliente, EstadoCuenta) VALUES (102, 'Corriente', 10000.00, TO_DATE('2024-03-11', 'YYYY-MM-DD'), 2, 'Activa');
+INSERT INTO Cuentas (IDCuenta, TipoCuenta, Saldo, FechaUltimaTransaccion, idCliente, EstadoCuenta) VALUES (103, 'AFC', 20000.00, TO_DATE('2024-03-12', 'YYYY-MM-DD'), 3, 'Activa');
 INSERT INTO Cuentas (IDCuenta, TipoCuenta, Saldo, FechaUltimaTransaccion, idCliente, EstadoCuenta) VALUES (104, 'Ahorros', 15000.00, TO_DATE('2024-03-13', 'YYYY-MM-DD'), 4, 'Desactivada');
 INSERT INTO Cuentas (IDCuenta, TipoCuenta, Saldo, FechaUltimaTransaccion, idCliente, EstadoCuenta) VALUES (105, 'Corriente', 30000.00, TO_DATE('2024-03-14', 'YYYY-MM-DD'), 5, 'Cerrada');
+
+-- Insert para la tabla OperacionesTransferencias
+INSERT INTO OperacionesTransferencias (IDOperacionTrans, Monto, Fecha, IDCuentaOrigen, IDCuentaDestino, IDPuntoAtencion) VALUES (1, 100.50, TO_DATE('2024-03-22', 'YYYY-MM-DD'), 101, 102, 3);
+INSERT INTO OperacionesTransferencias (IDOperacionTrans, Monto, Fecha, IDCuentaOrigen, IDCuentaDestino, IDPuntoAtencion) VALUES (2, 250.00, TO_DATE('2024-03-20', 'YYYY-MM-DD'), 102, 103, 4);
+INSERT INTO OperacionesTransferencias (IDOperacionTrans, Monto, Fecha, IDCuentaOrigen, IDCuentaDestino, IDPuntoAtencion) VALUES (3, 75.25, TO_DATE('2024-03-21', 'YYYY-MM-DD'), 103, 104, 5);
+INSERT INTO OperacionesTransferencias (IDOperacionTrans, Monto, Fecha, IDCuentaOrigen, IDCuentaDestino, IDPuntoAtencion) VALUES (4, 500.00, TO_DATE('2024-03-19', 'YYYY-MM-DD'), 104, 105, 1);
+INSERT INTO OperacionesTransferencias (IDOperacionTrans, Monto, Fecha, IDCuentaOrigen, IDCuentaDestino, IDPuntoAtencion) VALUES (5, 200.00, TO_DATE('2024-03-18', 'YYYY-MM-DD'), 105, 101, 2);

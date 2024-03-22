@@ -1,5 +1,5 @@
 package uniandes.edu.co.proyecto.modelo;
 
 public enum TipoOP {
-    Solicitar, Aprobar, Rechazar, PagarCuotaExtraordinaria, PagarCuotaOrdinaria, Cerrar
+    Solicitar, Aprobar, Rechazar, PagarCuota, PagarCuotaExtraordinaria, PagarCuotaOrdinaria, Cerrar
 }

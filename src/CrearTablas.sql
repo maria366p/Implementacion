@@ -1,4 +1,12 @@
-create sequence bancandes_sequence;
+create sequence personas_sequence start with 6;
+create sequence cargos_sequence start with 6;
+create sequence cuentas_sequence start with 106;
+create sequence oficinas_sequence start with 6;
+create sequence operacionescuentas_sequence start with 6;
+create sequence operacionesprestamos_sequence start with 6;
+create sequence operacionestransferencias_sequence start with 6;
+create sequence prestamos_sequence start with 6;
+create sequence puntoatencion_sequence start with 6;
 
 CREATE TABLE Cargos (
     IDCargo INTEGER NOT NULL,
@@ -38,13 +46,13 @@ CREATE TABLE Clientes (
 
 CREATE TABLE Cuentas (
     IDCuenta INTEGER PRIMARY KEY, 
-    TipoCuenta VARCHAR2(3) NOT NULL,
+    TipoCuenta VARCHAR2(10) NOT NULL,
     Saldo Float NOT NULL,
     FechaUltimaTransaccion DATE NOT NULL,
     idCliente INTEGER NOT NULL,
     EstadoCuenta VARCHAR2(30) NOT NULL,
     CONSTRAINT TipoCuenta CHECK (TipoCuenta in ('Ahorros', 'Corriente', 'AFC')),
-    CONSTRAINT EstadoCuenta CHECK (EstadoCuenta in ('Activada', 'Cerrada', 'Desactivada')),
+    CONSTRAINT EstadoCuenta CHECK (EstadoCuenta in ('Activa', 'Cerrada', 'Desactivada')),
     CONSTRAINT IDCliente FOREIGN KEY (IDCliente) REFERENCES Clientes (IDCliente)
 );
 
@@ -92,12 +100,11 @@ CREATE TABLE PuntosAtencion (
     IDPuntoAtencion Integer PRIMARY KEY,
     Tipo VARCHAR2(50),
     UbicacionGeografica VARCHAR2(500),
-    Estado INTEGER,
+    Estado varchar(100),
     IDOficina INTEGER,
     CONSTRAINT PUNTOATENCION_OFICINA_FK FOREIGN KEY (IDOficina) REFERENCES oficinas (IDOficina),
     CONSTRAINT tipoA CHECK(Tipo in ('Personalizada', 'CajeroAutomatico', 'Digital'))
 );
-
 
 CREATE TABLE OperacionesCuentas (
     IDOperacionCu Integer PRIMARY KEY,
@@ -106,7 +113,7 @@ CREATE TABLE OperacionesCuentas (
     TipoOC VARCHAR2(20),
     idCuenta integer,
     idPuntoAtencion integer,
-    CONSTRAINT TipoOC CHECK (TipoOC in ('Consignar', 'Retirar', 'Abrir Cuenta')),
+    CONSTRAINT TipoOC CHECK (TipoOC in ('Consignar', 'Retirar', 'Abrir', 'Cerrar')),
     CONSTRAINT OperacionCuenta_CUENTA_FK FOREIGN KEY (idCuenta) REFERENCES Cuentas (idCuenta),
     CONSTRAINT OperacionCuenta_PUNTOATENCION_FK FOREIGN KEY (idPuntoAtencion) REFERENCES PuntosAtencion (idPuntoAtencion)
    
@@ -130,7 +137,7 @@ CREATE TABLE Prestamos (
 CREATE TABLE OperacionesPrestamos(
     IDOperacionPrestamo INTEGER PRIMARY KEY,
     Tipo VARCHAR2 (50),
-    CONSTRAINT tipoP CHECK (Tipo in ('Solicitar', 'Aprobar', 'Rechazar', 'Pagar Cuota', ' Pagar Cuota Extraordinaria', 'Pagar Cuota Ordinaria', 'Cerrar')),
+    CONSTRAINT tipoP CHECK (Tipo in ('Solicitar', 'Aprobar', 'Rechazar', 'PagarCuota', ' PagarCuotaExtraordinaria', 'PagarCuotaOrdinaria', 'Cerrar')),
     Monto float,
     Fecha Date,
     IDPrestamo INTEGER, 

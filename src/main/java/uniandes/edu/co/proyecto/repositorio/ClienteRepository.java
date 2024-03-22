@@ -17,13 +17,14 @@ public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
     Collection<Cliente> darClientes();
 
     @Query(value = "SELECT IDCLIENTE, ROLC FROM CLIENTES WHERE IDCLIENTE = :IDCLIENTE", nativeQuery = true)
-    Cliente darCliente(@Param("IDCLIENTE") int ID);
+    Cliente darCliente(@Param("IDCLIENTE") int IDCLIENTE);
 
 
+    //Primero insertar ID de persona con sus atributos y luego el de cliente
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO CLIENTES (IDCLIENTE, ROLC) VALUES (bancandes_sequence.NEXTVAL, :ROLC)", nativeQuery=true)
-        void insertarCliente(@Param("ROLC") String ROLC);
+    @Query(value = "INSERT INTO CLIENTES (IDCLIENTE, ROLC) VALUES (:IDCLIENTE, :ROLC)", nativeQuery=true)
+        void insertarCliente(@Param("IDCLIENTE") int IDCLIENTE, @Param("ROLC") String ROLC);
 
     @Modifying
     @Transactional
