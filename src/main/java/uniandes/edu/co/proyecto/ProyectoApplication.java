@@ -5,25 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import uniandes.edu.co.proyecto.modelo.Cargo;
-import uniandes.edu.co.proyecto.modelo.Cliente;
-import uniandes.edu.co.proyecto.modelo.Cuenta;
-import uniandes.edu.co.proyecto.modelo.Empleado;
-import uniandes.edu.co.proyecto.modelo.Identificacion;
-import uniandes.edu.co.proyecto.modelo.Oficina;
-import uniandes.edu.co.proyecto.modelo.OperacionCuenta;
-import uniandes.edu.co.proyecto.modelo.Persona;
-import uniandes.edu.co.proyecto.modelo.PuntoAtencion;
-import uniandes.edu.co.proyecto.modelo.RolE;
-import uniandes.edu.co.proyecto.repositorio.CargoRepository;
-import uniandes.edu.co.proyecto.repositorio.ClienteRepository;
-import uniandes.edu.co.proyecto.repositorio.CuentaRepository;
-import uniandes.edu.co.proyecto.repositorio.EmpleadoRepository;
-import uniandes.edu.co.proyecto.repositorio.IdentificacionRepository;
-import uniandes.edu.co.proyecto.repositorio.OficinaRepository;
-import uniandes.edu.co.proyecto.repositorio.OperacionCuentaRepository;
-import uniandes.edu.co.proyecto.repositorio.PersonaRepository;
-import uniandes.edu.co.proyecto.repositorio.PuntoAtencionRepository;
+import uniandes.edu.co.proyecto.repositorio.OperacionPrestamoRepository;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -37,11 +19,7 @@ public class ProyectoApplication implements CommandLineRunner {
 	private static final Logger logger = LoggerFactory.getLogger(ProyectoApplication.class);
 
 	@Autowired
-	private ClienteRepository clienteRepository;
-	@Autowired
-	private PersonaRepository personaRepository;
-	@Autowired
-	private OperacionCuentaRepository operacionCuentaRepository;
+	private OperacionPrestamoRepository operacionPrestamoRepository;
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoApplication.class, args);
 	}
@@ -49,47 +27,42 @@ public class ProyectoApplication implements CommandLineRunner {
 	@Override
 	public void run(String...arg)
 	{
-		/*
+		/* 
 		logger.info("Iniciando consulta de vars");
-		Collection<OperacionCuenta> vars = operacionCuentaRepository.darOperacionCuentas();
+		Collection<OperacionPrestamo> vars = operacionPrestamoRepository.darOperacionPrestamos();
 		logger.info("Consulta finalizada, var: {}", vars.size());
-		for(OperacionCuenta c:vars){
-			logger.info("var: {}", c.getIDCUENTA().getTipoCuenta());
+		for(OperacionPrestamo c:vars){
+			logger.info("var: {}", c.getFecha());
 		}
-		 */
+		*/
 
-		
+		/* 
 		logger.info("Iniciando consulta de var");
-		OperacionCuenta var = operacionCuentaRepository.darOperacionCuenta(2);
-		logger.info("Consulta finalizada, Var: {}", var.getIDCUENTA());
-	
+		OperacionPrestamo var = operacionPrestamoRepository.darOperacionPrestamo(2);
+		logger.info("Consulta finalizada, Var: {}", var.getFecha());
+		*/
 
 		/* 
 		logger.info("Iniciando insercion de var");
 		// Insertar el nuevo cargo utilizando el nombre del rol
 		LocalDate fechaRegistroLocal = LocalDate.now(); // Usa la fecha actual o la que necesites
         Date fechaRegistro = Date.valueOf(fechaRegistroLocal);
-		operacionCuentaRepository.insertarOperacionCuenta("Abrir", 300f, fechaRegistro  , 4);
-		logger.info("var creado: {}",operacionCuentaRepository.darOperacionCuenta(8));
+		operacionPrestamoRepository.insertarOperacionPrestamo("PagarCuotaExtraordinaria", 200.2f, fechaRegistro, 1, 2);
+		logger.info("var creado: {}",operacionPrestamoRepository.darOperacionPrestamo(8));
 		*/
 		
-		
-
-
-
+		/* 
 		logger.info("Iniciando update de var");
-		LocalDate fechaRegistroLocal = LocalDate.now(); // Usa la fecha actual o la que necesites
-        Date fechaRegistro = Date.valueOf(fechaRegistroLocal);
-		operacionCuentaRepository.actualizarOperacionCuenta(8, "Cerrar", 300f, fechaRegistro , 102, 4);
-		OperacionCuenta var2 = operacionCuentaRepository.darOperacionCuenta(8);
-		logger.info("Actualizacion finalizada, cargo: {}", var2.getTipoOc());
+		operacionPrestamoRepository.actualizarOperacionPrestamo(8, "PagarCuotaExtraordinaria", 200.2f, fechaRegistro, 1, 3);
+		OperacionPrestamo var2 = operacionPrestamoRepository.darOperacionPrestamo(8);
+		logger.info("Actualizacion finalizada, cargo: {}", var2.getMonto());
+		*/
 		
-		
-		
+		/* 
 		logger.info("Iniciando delete de var");
-		operacionCuentaRepository.eliminarOperacionCuenta(8);
+		operacionPrestamoRepository.eliminarOperacionPrestamo(8);
 		logger.info("Eliminación completa");
-		
+		*/
 
 
 		//Importante para persona 

@@ -9,7 +9,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import jakarta.transaction.Transactional;
-import uniandes.edu.co.proyecto.modelo.Cuenta;
 import uniandes.edu.co.proyecto.modelo.OperacionCuenta;
 
 public interface OperacionCuentaRepository  extends JpaRepository<OperacionCuenta, Integer>{

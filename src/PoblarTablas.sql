@@ -45,18 +45,18 @@ INSERT INTO Empleados (IDEMPLEADO, IDCargo, IDOficina) VALUES (4, 2, 2);
 INSERT INTO Empleados (IDEMPLEADO, IDCargo, IDOficina) VALUES (5, 3, 2);
 
 -- Insert para la tabla UsuariosEmpleados
-INSERT INTO UsuariosEmpleados (ID, password, usuario) VALUES (1, 'clave123', 'gerente1');
-INSERT INTO UsuariosEmpleados (ID, password, usuario) VALUES (2, 'clave456', 'gerente2');
-INSERT INTO UsuariosEmpleados (ID, password, usuario) VALUES (3, 'clave789', 'cajero1');
-INSERT INTO UsuariosEmpleados (ID, password, usuario) VALUES (4, 'clave012', 'gerente3');
-INSERT INTO UsuariosEmpleados (ID, password, usuario) VALUES (5, 'clave345', 'cajero2');
+INSERT INTO UsuariosEmpleados (ID, password) VALUES (1, 'clave123');
+INSERT INTO UsuariosEmpleados (ID, password) VALUES (2, 'clave456');
+INSERT INTO UsuariosEmpleados (ID, password) VALUES (3, 'clave789');
+INSERT INTO UsuariosEmpleados (ID, password) VALUES (4, 'clave012');
+INSERT INTO UsuariosEmpleados (ID, password) VALUES (5, 'clave345');
 
 -- Insert para la tabla UsuariosClientes
-INSERT INTO UsuariosClientes (id, password, usuario) VALUES (1, 'pass123', 'cliente1');
-INSERT INTO UsuariosClientes (id, password, usuario) VALUES (2, 'pass456', 'cliente2');
-INSERT INTO UsuariosClientes (id, password, usuario) VALUES (3, 'pass789', 'cliente3');
-INSERT INTO UsuariosClientes (id, password, usuario) VALUES (4, 'pass012', 'cliente4');
-INSERT INTO UsuariosClientes (id, password, usuario) VALUES (5, 'pass345', 'cliente5');
+INSERT INTO UsuariosClientes (id, password) VALUES (1, 'pass123');
+INSERT INTO UsuariosClientes (id, password) VALUES (2, 'pass456');
+INSERT INTO UsuariosClientes (id, password) VALUES (3, 'pass789');
+INSERT INTO UsuariosClientes (id, password) VALUES (4, 'pass012');
+INSERT INTO UsuariosClientes (id, password) VALUES (5, 'pass345');
 
 
 

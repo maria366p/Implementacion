@@ -78,17 +78,14 @@ CREATE TABLE Empleados (
 CREATE TABLE UsuariosEmpleados (
     ID Number PRIMARY KEY,
     password VARCHAR2(10) NOT NULL,
-    usuario VARCHAR2(80) NOT NULL,
     CONSTRAINT FK_empleado_usuarioEmpleado FOREIGN KEY (ID) REFERENCES Empleados (IDEmpleado)
 );
 
 CREATE TABLE UsuariosClientes(
     ID Number PRIMARY KEY,
     password VARCHAR2(10) NOT NULL,
-    usuario VARCHAR2(80) NOT NULL,
     CONSTRAINT CLIENTE_PERSONA_FK FOREIGN KEY (ID) REFERENCES Clientes (IDCliente)
 );
-
 
 CREATE TABLE Identificaciones (
     tipo VARCHAR2(10) ,
