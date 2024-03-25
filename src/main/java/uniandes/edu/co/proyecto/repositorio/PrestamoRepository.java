@@ -22,7 +22,7 @@ public interface PrestamoRepository extends JpaRepository<Prestamo, Integer>{
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO PRESTAMOS (IDPRESTAMO, MONTO, INTERES, NUMEROCUOTAS, DIAPAGOCUOTA, VALORCUOTA, ESTADOP, IDCLIENTE) VALUES (operacionestransferencias_sequence.NEXTVAL, :TIPO, :MONTO, :INTERES, :NUMEROCUOTAS, :DIAPAGOCUOTA, :VALORCUOTA, :ESTADOP, :IDCLIENTE)", nativeQuery=true)
+    @Query(value = "INSERT INTO PRESTAMOS (IDPRESTAMO, MONTO, INTERES, NUMEROCUOTAS, DIAPAGOCUOTA, VALORCUOTA, ESTADOP, IDCLIENTE) VALUES (operacionestransferencias_sequence.NEXTVAL, :MONTO, :INTERES, :NUMEROCUOTAS, :DIAPAGOCUOTA, :VALORCUOTA, :ESTADOP, :IDCLIENTE)", nativeQuery=true)
         void insertarPrestamo( @Param("MONTO") float MONTO, @Param("INTERES") Float  INTERES, @Param("NUMEROCUOTAS") int NUMEROCUOTAS,  @Param("DIAPAGOCUOTA") Date DIAPAGOCUOTA, @Param("VALORCUOTA") int VALORCUOTA, @Param("ESTADOP") String ESTADOP, @Param("IDCLIENTE") int IDCLIENTE);
 
     @Modifying

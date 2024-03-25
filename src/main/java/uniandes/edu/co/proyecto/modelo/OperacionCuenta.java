@@ -19,7 +19,7 @@ public class OperacionCuenta {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int IDOPERACIONCU;
     
-    private int MONTO;
+    private Float MONTO;
     private Date FECHA;
     @Enumerated(EnumType.STRING)
     private TipoOc TIPOOC;
@@ -34,7 +34,7 @@ public class OperacionCuenta {
     @JoinColumn(name = "IDPUNTOATENCION", referencedColumnName = "IDPUNTOATENCION")
     private PuntoAtencion IDPUNTOATENCION;
 
-    public OperacionCuenta( int MONTO, Date FECHA, TipoOc TIPOOC, Cuenta iDCuenta,
+    public OperacionCuenta( Float MONTO, Date FECHA, TipoOc TIPOOC, Cuenta iDCuenta,
             PuntoAtencion iDPuntoAtencion) {
         this.MONTO = MONTO;
         this.FECHA = FECHA;
@@ -47,11 +47,11 @@ public class OperacionCuenta {
         ;
     }
 
-    public int getMonto() {
+    public Float getMonto() {
         return MONTO;
     }
 
-    public void setMonto(int MONTO) {
+    public void setMonto(Float MONTO) {
         this.MONTO = MONTO;
     }
 

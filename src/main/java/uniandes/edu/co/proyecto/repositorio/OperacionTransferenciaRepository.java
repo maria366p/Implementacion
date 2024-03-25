@@ -21,7 +21,7 @@ public interface OperacionTransferenciaRepository  extends JpaRepository<Operaci
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO OPERACIONESTRANSFERENCIAS (IDOPERACIONTRANS, MONTO, FECHA, IDCUENTAORIGEN, IDCUENTADESTINO, IDPUNTOATENCION) VALUES (operacionestransferencias_sequence.NEXTVAL, :TIPO, :MONTO, :FECHA, :IDCUENTAORIGEN, :IDCUENTADESTINO, :IDPUNTOATENCION)", nativeQuery=true)
+    @Query(value = "INSERT INTO OPERACIONESTRANSFERENCIAS (IDOPERACIONTRANS, MONTO, FECHA, IDCUENTAORIGEN, IDCUENTADESTINO, IDPUNTOATENCION) VALUES (operacionestransferencias_sequence.NEXTVAL, :MONTO, :FECHA, :IDCUENTAORIGEN, :IDCUENTADESTINO, :IDPUNTOATENCION)", nativeQuery=true)
         void insertarOperacionTransferencia( @Param("MONTO") float MONTO, @Param("FECHA") Date  FECHA, @Param("IDCUENTAORIGEN") int IDCUENTAORIGEN,  @Param("IDCUENTADESTINO") int IDCUENTADESTINO, @Param("IDPUNTOATENCION") int IDPUNTOATENCION);
 
     @Modifying

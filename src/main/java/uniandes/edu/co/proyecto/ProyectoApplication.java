@@ -6,9 +6,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import uniandes.edu.co.proyecto.modelo.OperacionPrestamo;
-import uniandes.edu.co.proyecto.modelo.OperacionTransferencia;
+import uniandes.edu.co.proyecto.modelo.Prestamo;
 import uniandes.edu.co.proyecto.repositorio.OperacionPrestamoRepository;
-import uniandes.edu.co.proyecto.repositorio.OperacionTransferenciaRepository;
+import uniandes.edu.co.proyecto.repositorio.PrestamoRepository;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -22,7 +22,7 @@ public class ProyectoApplication implements CommandLineRunner {
 	private static final Logger logger = LoggerFactory.getLogger(ProyectoApplication.class);
 
 	@Autowired
-	private OperacionTransferenciaRepository operacionTransferenciaRepository;
+	private PrestamoRepository prestamoRepository;
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoApplication.class, args);
 	}
@@ -32,38 +32,41 @@ public class ProyectoApplication implements CommandLineRunner {
 	{
 		/* 
 		logger.info("Iniciando consulta de vars");
-		Collection<OperacionTransferencia> vars = operacionTransferenciaRepository.darOperacionTransferencias();
+		Collection<Prestamo> vars = prestamoRepository.darPrestamos();
 		logger.info("Consulta finalizada, var: {}", vars.size());
-		for(OperacionTransferencia c:vars){
-			logger.info("var: {}", c.getFecha());
+		for(Prestamo c:vars){
+			logger.info("var: {}", c.getValorCuota());
 		}
-		*/
+		
 
-		/* 
+		 
 		logger.info("Iniciando consulta de var");
-		OperacionPrestamo var = operacionPrestamoRepository.darOperacionPrestamo(2);
-		logger.info("Consulta finalizada, Var: {}", var.getFecha());
-		*/
+		Prestamo var = prestamoRepository.darPrestamo(2);
+		logger.info("Consulta finalizada, Var: {}", var.getDiaPagoCuota());
+		
 
-		/* 
+		
 		logger.info("Iniciando insercion de var");
 		// Insertar el nuevo cargo utilizando el nombre del rol
 		LocalDate fechaRegistroLocal = LocalDate.now(); // Usa la fecha actual o la que necesites
         Date fechaRegistro = Date.valueOf(fechaRegistroLocal);
-		operacionPrestamoRepository.insertarOperacionPrestamo("PagarCuotaExtraordinaria", 200.2f, fechaRegistro, 1, 2);
-		logger.info("var creado: {}",operacionPrestamoRepository.darOperacionPrestamo(8));
+		prestamoRepository.insertarPrestamo(2000.5f, 0.05f, 15, fechaRegistro, 1200, "Pagado", 1);
 		*/
+		//logger.info("var creado: {}",prestamoRepository.darPrestamo(7));
+		
 		
 		/* 
 		logger.info("Iniciando update de var");
-		operacionPrestamoRepository.actualizarOperacionPrestamo(8, "PagarCuotaExtraordinaria", 200.2f, fechaRegistro, 1, 3);
-		OperacionPrestamo var2 = operacionPrestamoRepository.darOperacionPrestamo(8);
-		logger.info("Actualizacion finalizada, cargo: {}", var2.getMonto());
-		*/
+		LocalDate fechaRegistroLocal = LocalDate.now(); // Usa la fecha actual o la que necesites
+        Date fechaRegistro = Date.valueOf(fechaRegistroLocal);
+		prestamoRepository.actualizarPrestamo(7,2000.5f, 0.05f, 15, fechaRegistro, 4000, "Pagado", 1);
+		Prestamo var2 = prestamoRepository.darPrestamo(7);
+		logger.info("Actualizacion finalizada, cargo: {}", var2.getValorCuota());
 		
-		/* 
+		
+		
 		logger.info("Iniciando delete de var");
-		operacionPrestamoRepository.eliminarOperacionPrestamo(8);
+		prestamoRepository.eliminarPrestamo(7);
 		logger.info("Eliminación completa");
 		*/
 
