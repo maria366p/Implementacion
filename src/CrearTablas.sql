@@ -121,14 +121,15 @@ CREATE TABLE Prestamos (
     Monto INTEGER,
     Interes Float,
     NumeroCuotas INTEGER,
-    DiaPagoCuota INTEGER,
+    DiaPagoCuota DATE,
     ValorCuota INTEGER,
-    EstadoPrestamo VARCHAR2 (50),
-    CONSTRAINT estadoP CHECK ( EstadoPrestamo in ('Solicitado', 'Aprobado', 'Rechazado', 'Pagado')),
+    EstadoP VARCHAR2 (50),
+    CONSTRAINT estadoP CHECK ( EstadoP in ('Solicitado', 'Aprobado', 'Rechazado', 'Pagado')),
     IDCliente Integer,
     CONSTRAINT PRESTAMO_CLIENTE_FK FOREIGN KEY (IDCliente) REFERENCES Clientes (IDCliente)
     
 );
+
 
 
 CREATE TABLE OperacionesPrestamos(

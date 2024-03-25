@@ -5,7 +5,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import uniandes.edu.co.proyecto.modelo.OperacionPrestamo;
+import uniandes.edu.co.proyecto.modelo.OperacionTransferencia;
 import uniandes.edu.co.proyecto.repositorio.OperacionPrestamoRepository;
+import uniandes.edu.co.proyecto.repositorio.OperacionTransferenciaRepository;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -19,7 +22,7 @@ public class ProyectoApplication implements CommandLineRunner {
 	private static final Logger logger = LoggerFactory.getLogger(ProyectoApplication.class);
 
 	@Autowired
-	private OperacionPrestamoRepository operacionPrestamoRepository;
+	private OperacionTransferenciaRepository operacionTransferenciaRepository;
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoApplication.class, args);
 	}
@@ -29,9 +32,9 @@ public class ProyectoApplication implements CommandLineRunner {
 	{
 		/* 
 		logger.info("Iniciando consulta de vars");
-		Collection<OperacionPrestamo> vars = operacionPrestamoRepository.darOperacionPrestamos();
+		Collection<OperacionTransferencia> vars = operacionTransferenciaRepository.darOperacionTransferencias();
 		logger.info("Consulta finalizada, var: {}", vars.size());
-		for(OperacionPrestamo c:vars){
+		for(OperacionTransferencia c:vars){
 			logger.info("var: {}", c.getFecha());
 		}
 		*/

@@ -75,11 +75,11 @@ INSERT INTO OperacionesCuentas (IDOperacionCu, Monto, Fecha, TipoOC, idCuenta, i
 INSERT INTO OperacionesCuentas (IDOperacionCu, Monto, Fecha, TipoOC, idCuenta, idPuntoAtencion) VALUES (5, 1500.00, TO_DATE('2023-03-19', 'YYYY-MM-DD'), 'Consignar', 105, 1);
 
 -- Insert para la tabla Prestamos
-INSERT INTO Prestamos (IDPrestamo, Monto, Interes, NumeroCuotas, DiaPagoCuota, ValorCuota, EstadoPrestamo, IDCliente) VALUES (1, 10000, 0.05, 12, 15, 850, 'Aprobado', 1);
-INSERT INTO Prestamos (IDPrestamo, Monto, Interes, NumeroCuotas, DiaPagoCuota, ValorCuota, EstadoPrestamo, IDCliente) VALUES (2, 20000, 0.05, 24, 15, 900, 'Aprobado', 2);
-INSERT INTO Prestamos (IDPrestamo, Monto, Interes, NumeroCuotas, DiaPagoCuota, ValorCuota, EstadoPrestamo, IDCliente) VALUES (3, 15000, 0.05, 12, 15, 1300, 'Aprobado', 3);
-INSERT INTO Prestamos (IDPrestamo, Monto, Interes, NumeroCuotas, DiaPagoCuota, ValorCuota, EstadoPrestamo, IDCliente) VALUES (4, 5000, 0.05, 6, 15, 850, 'Aprobado', 4);
-INSERT INTO Prestamos (IDPrestamo, Monto, Interes, NumeroCuotas, DiaPagoCuota, ValorCuota, EstadoPrestamo, IDCliente) VALUES (5, 8000, 0.05, 10, 15, 820, 'Aprobado', 5);
+INSERT INTO Prestamos (IDPrestamo, Monto, Interes, NumeroCuotas, DiaPagoCuota, ValorCuota, EstadoP, IDCliente) VALUES (1, 10000, 0.05, 12, TO_DATE('2023-01-15', 'YYYY-MM-DD'), 850, 'Aprobado', 1);
+INSERT INTO Prestamos (IDPrestamo, Monto, Interes, NumeroCuotas, DiaPagoCuota, ValorCuota, EstadoP, IDCliente) VALUES (2, 20000, 0.05, 24, TO_DATE('2023-02-15', 'YYYY-MM-DD'), 900, 'Aprobado', 2);
+INSERT INTO Prestamos (IDPrestamo, Monto, Interes, NumeroCuotas, DiaPagoCuota, ValorCuota, EstadoP, IDCliente) VALUES (3, 15000, 0.05, 12, TO_DATE('2023-03-15', 'YYYY-MM-DD'), 1300, 'Aprobado', 3);
+INSERT INTO Prestamos (IDPrestamo, Monto, Interes, NumeroCuotas, DiaPagoCuota, ValorCuota, EstadoP, IDCliente) VALUES (4, 5000, 0.05, 6, TO_DATE('2023-04-15', 'YYYY-MM-DD'), 850, 'Aprobado', 4);
+INSERT INTO Prestamos (IDPrestamo, Monto, Interes, NumeroCuotas, DiaPagoCuota, ValorCuota, EstadoP, IDCliente) VALUES (5, 8000, 0.05, 10, TO_DATE('2023-05-15', 'YYYY-MM-DD'), 820, 'Aprobado', 5);
 
 -- Insert para la tabla OperacionesPrestamos
 INSERT INTO OperacionesPrestamos (IDOperacionPrestamo, Tipo, Monto, Fecha, IDPrestamo, IDPuntoAtencion) VALUES (1, 'PagarCuota', 850, TO_DATE('2023-04-15', 'YYYY-MM-DD'), 1, 1);
