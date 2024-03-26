@@ -18,7 +18,7 @@ public class CuentasController {
     private CuentaRepository cuentaRepository;
 
     @GetMapping("/cuentas")
-    public String cuentas (Model model, String ciudad, String tipo){
+    public String cuentas (Model model){
         model.addAttribute("cuentas", cuentaRepository.darCuentas());
         return "cuentas";
     }

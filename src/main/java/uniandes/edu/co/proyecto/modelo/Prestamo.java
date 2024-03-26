@@ -20,10 +20,10 @@ public class Prestamo {
     private int IDPRESTAMO;
     
     private float MONTO;
-    private int INTERES;
+    private Float INTERES;
     private int NUMEROCUOTAS;
     private Date DIAPAGOCUOTA;
-    private float VALORCUOTA;
+    private int VALORCUOTA;
     @Enumerated(EnumType.STRING)
     private EstadoP ESTADOP;
 
@@ -32,7 +32,7 @@ public class Prestamo {
     @JoinColumn(name = "IDCLIENTE", referencedColumnName = "IDCLIENTE")
     private Cliente IDCLIENTE;
 
-    public Prestamo(float MONTO, int INTERES, int NUMEROCUOTAS, Date DIAPAGOCUOTA, float VALORCUOTA,
+    public Prestamo(float MONTO, Float INTERES, int NUMEROCUOTAS, Date DIAPAGOCUOTA, int VALORCUOTA,
             EstadoP ESTADOP, Cliente iDCliente) {
         this.MONTO = MONTO;
         this.INTERES = INTERES;
@@ -55,11 +55,11 @@ public class Prestamo {
         this.MONTO = MONTO;
     }
 
-    public int getInteres() {
+    public Float getInteres() {
         return INTERES;
     }
 
-    public void setInteres(int INTERES) {
+    public void setInteres(Float INTERES) {
         this.INTERES = INTERES;
     }
 
@@ -79,11 +79,11 @@ public class Prestamo {
         this.DIAPAGOCUOTA = DIAPAGOCUOTA;
     }
 
-    public float getValorCuota() {
+    public int getValorCuota() {
         return VALORCUOTA;
     }
 
-    public void setValorCuota(float VALORCUOTA) {
+    public void setValorCuota(int VALORCUOTA) {
         this.VALORCUOTA = VALORCUOTA;
     }
 

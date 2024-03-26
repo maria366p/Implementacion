@@ -18,7 +18,7 @@ public class OficinaController {
     private OficinaRepository oficinaRepository;
 
     @GetMapping("/oficinas")
-    public String oficinas (Model model, String ciudad, String tipo){
+    public String oficinas (Model model){
         model.addAttribute("oficinas", oficinaRepository.darOficinas());
          return model.toString() ; //return "oficinas";
     }

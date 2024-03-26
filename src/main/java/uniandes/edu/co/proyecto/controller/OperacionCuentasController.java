@@ -11,11 +11,11 @@ import uniandes.edu.co.proyecto.modelo.OperacionCuenta;
 import uniandes.edu.co.proyecto.repositorio.OperacionCuentaRepository;
 
 public class OperacionCuentasController {
-     @Autowired
+    @Autowired
     private OperacionCuentaRepository operacionCuentaRepository;
 
     @GetMapping("/operacionCuentas")
-    public String operacionCuentas (Model model, String ciudad, String tipo){
+    public String operacionCuentas (Model model){
         model.addAttribute("operacionCuentas", operacionCuentaRepository.darOperacionCuentas());
          return model.toString() ; //return "operacionCuentas";
     }

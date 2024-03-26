@@ -17,7 +17,7 @@ public class IdentificacionesController {
     private IdentificacionRepository identificacionRepository;
 
     @GetMapping("/identificaciones")
-    public String identificaciones (Model model, String ciudad, String tipo){
+    public String identificaciones (Model model){
         model.addAttribute("identificaciones", identificacionRepository.darIdentificaciones());
         return "identificaciones";
     }

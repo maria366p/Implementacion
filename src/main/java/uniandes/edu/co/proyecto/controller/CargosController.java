@@ -18,7 +18,7 @@ public class CargosController {
     private CargoRepository cargoRepository;
 
     @GetMapping("/cargos")
-    public String cargos (Model model, String ciudad, String tipo){
+    public String cargos (Model model){
         model.addAttribute("cargos", cargoRepository.darCargos());
         return "cargos";
     }
