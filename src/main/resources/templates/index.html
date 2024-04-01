@@ -1,42 +1,19 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Requerimientos funcionales</title>
-    <style>
-        .blue-button {
-            background-color: #007bff;
-            color: white;
-            padding: 10px 20px;
-            margin: 10px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .blue-button:hover {
-            background-color: #0056b3;
-        }
-        .container {
-            text-align: center;
-            margin-top: 20px;
-        }
-    </style>
+    <title>BancAndes</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
 </head>
 <body>
-    <div class="container">
-        <h1>Requerimientos funcionales</h1>
-        <button class="blue-button">Requerimiento 1</button>
-        <button class="blue-button">Requerimiento 2</button>
-        <button class="blue-button">Requerimiento 3</button>
-        <button class="blue-button">Requerimiento 4</button>
-        <button class="blue-button">Requerimiento 5</button>
-        <button class="blue-button">Requerimiento 6</button>
-        <button class="blue-button">Requerimiento 7</button>
-        <button class="blue-button">Requerimiento 8</button>
-        <button class="blue-button">Requerimiento 9</button>
-        <button class="blue-button">Requerimiento 10</button>
-        <button class="blue-button">Requerimiento 11</button>
-        <button class="blue-button">Requerimiento 12</button>
+    <div class="centrado-vertical-horizontal">
+        <img th:src="@{/images/usuario.jpg}" width="250" alt="Icono de Usuario">
+        <h1>BancAndes</h1>
+        <div class="subtitulo">¿Qué tipo de usuario eres?</div>
+        <div>
+            <a th:href="@{/clientes}" class="blue-button">Cliente</a>
+            <a th:href="@{/usuariosEmpleados}" class="blue-button">Empleado</a>
+        </div>
     </div>
 </body>
 </html>

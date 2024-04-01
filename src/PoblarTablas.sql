@@ -14,6 +14,9 @@ INSERT INTO Identificaciones (tipo, numero) VALUES ('cc', 987654321);
 INSERT INTO Identificaciones (tipo, numero) VALUES ('cc', 246810121);
 INSERT INTO Identificaciones (tipo, numero) VALUES ('ti', 135791113);
 INSERT INTO Identificaciones (tipo, numero) VALUES ('cc', 121212121);
+INSERT INTO Identificaciones (tipo, numero) VALUES ('cc', 343434343);
+INSERT INTO Identificaciones (tipo, numero) VALUES ('cc', 454545454);
+
 
 -- Insert para la tabla Personas
 INSERT INTO Personas (ID, nombre, datosContacto, direccionFisica, direccionElectronica, telefono, ciudad, departamento, codigoPostal, fechaRegistro, docId) VALUES (1, 'Juan Perez', 'juan.perez@example.com', 'Calle 123', 'juan.perez@example.com', 123456789, 'Bogotá', 'Cundinamarca', 11001, TO_DATE('2022-01-01', 'YYYY-MM-DD'), 123456789);
@@ -21,6 +24,8 @@ INSERT INTO Personas (ID, nombre, datosContacto, direccionFisica, direccionElect
 INSERT INTO Personas (ID, nombre, datosContacto, direccionFisica, direccionElectronica, telefono, ciudad, departamento, codigoPostal, fechaRegistro, docId) VALUES (3, 'Carlos Gomez', 'carlos.gomez@example.com', 'Diagonal 76', 'carlos.gomez@example.com', 654321987, 'Cali', 'Valle del Cauca', 76001, TO_DATE('2022-03-01', 'YYYY-MM-DD'), 246810121);
 INSERT INTO Personas (ID, nombre, datosContacto, direccionFisica, direccionElectronica, telefono, ciudad, departamento, codigoPostal, fechaRegistro, docId) VALUES (4, 'Ana Torres', 'ana.torres@example.com', 'Carrera 80', 'ana.torres@example.com', 321654987, 'Barranquilla', 'Atlántico', 08001, TO_DATE('2022-04-01', 'YYYY-MM-DD'), 135791113);
 INSERT INTO Personas (ID, nombre, datosContacto, direccionFisica, direccionElectronica, telefono, ciudad, departamento, codigoPostal, fechaRegistro, docId) VALUES (5, 'Luis Mendez', 'luis.mendez@example.com', 'Transversal 92', 'luis.mendez@example.com', 258963147, 'Bucaramanga', 'Santander', 68001, TO_DATE('2022-05-01', 'YYYY-MM-DD'), 121212121);
+INSERT INTO Personas (ID, nombre, datosContacto, direccionFisica, direccionElectronica, telefono, ciudad, departamento, codigoPostal, fechaRegistro, docId) VALUES (6, 'Carlos Ruiz', 'carlos.ruiz@example.com', 'Avenida 30', 'carlos.ruiz@example.com', 477854321, 'Cali', 'Valle del Cauca', 76001, TO_DATE('2021-10-22', 'YYYY-MM-DD'), 343434343);
+INSERT INTO Personas (ID, nombre, datosContacto, direccionFisica, direccionElectronica, telefono, ciudad, departamento, codigoPostal, fechaRegistro, docId) VALUES (7, 'Diana Gómez', 'diana.gomez@example.com', 'Carrera 5', 'diana.gomez@example.com', 589631474, 'Cartagena', 'Bolivar', 13001, TO_DATE('2022-01-30', 'YYYY-MM-DD'), 454545454);
 
 -- Insert para la tabla Clientes
 INSERT INTO Clientes (IDCliente, rolC) VALUES (1, 'Natural');
@@ -41,20 +46,18 @@ INSERT INTO Oficinas (IDOficina, Nombre, Direccion) VALUES (5, 'Sucursal Oeste',
 INSERT INTO Empleados (IDEMPLEADO, IDCargo, IDOficina) VALUES (1, 1, 1);
 INSERT INTO Empleados (IDEMPLEADO, IDCargo, IDOficina) VALUES (2, 2, 1);
 INSERT INTO Empleados (IDEMPLEADO, IDCargo, IDOficina) VALUES (3, 3, 1);
-INSERT INTO Empleados (IDEMPLEADO, IDCargo, IDOficina) VALUES (4, 2, 2);
-INSERT INTO Empleados (IDEMPLEADO, IDCargo, IDOficina) VALUES (5, 3, 2);
+INSERT INTO Empleados (IDEMPLEADO, IDCargo, IDOficina) VALUES (6, 4, 2);
+INSERT INTO Empleados (IDEMPLEADO, IDCargo, IDOficina) VALUES (7, 5, 2);
 
 -- Insert para la tabla UsuariosEmpleados
 INSERT INTO UsuariosEmpleados (ID, password) VALUES (1, 'clave123');
 INSERT INTO UsuariosEmpleados (ID, password) VALUES (2, 'clave456');
 INSERT INTO UsuariosEmpleados (ID, password) VALUES (3, 'clave789');
-INSERT INTO UsuariosEmpleados (ID, password) VALUES (4, 'clave012');
-INSERT INTO UsuariosEmpleados (ID, password) VALUES (5, 'clave345');
+INSERT INTO UsuariosEmpleados (ID, password) VALUES (6, 'clave887');
+INSERT INTO UsuariosEmpleados (ID, password) VALUES (7, 'clave907');
+
 
 -- Insert para la tabla UsuariosClientes
-INSERT INTO UsuariosClientes (id, password) VALUES (1, 'pass123');
-INSERT INTO UsuariosClientes (id, password) VALUES (2, 'pass456');
-INSERT INTO UsuariosClientes (id, password) VALUES (3, 'pass789');
 INSERT INTO UsuariosClientes (id, password) VALUES (4, 'pass012');
 INSERT INTO UsuariosClientes (id, password) VALUES (5, 'pass345');
 

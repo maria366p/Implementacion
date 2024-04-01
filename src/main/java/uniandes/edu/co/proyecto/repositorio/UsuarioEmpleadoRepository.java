@@ -35,5 +35,19 @@ public interface UsuarioEmpleadoRepository extends JpaRepository<UsuarioEmpleado
     @Query(value = "DELETE FROM USUARIOSEMPLEADOS WHERE ID = :ID", nativeQuery=true)
         void eliminarUsuarioEmpleado(@Param("ID") int ID);
 
-    
+    //QUERY QUE de el nombre y busque POR ID Y CONTRASEÑA DEL EMPLEADO
+    @Query(value = "SELECT P.NOMBRE\r\n"+ 
+                    "FROM USUARIOSEMPLEADOS E \r\n"+
+                    "INNER JOIN PERSONAS P ON E.ID = P.ID\r\n"+
+                    "WHERE E.ID = :ID  AND E.PASSWORD = :PASSWORD\r\n", nativeQuery = true)
+    String darNombrePconIDyPas(@Param("ID") Integer ID, @Param("PASSWORD") String PASSWORD);
+
+    //TODO: Query que de el cargo y busque por ID Y CONTRASEÑA DEL EMPLEADO
+    @Query(value = "SELECT C.NOMBRE\r\n"+ 
+                    "FROM USUARIOSEMPLEADOS UE \r\n"+
+                    "INNER JOIN EMPLEADOS E ON UE.ID = E.IDEMPLEADO\r\n"+
+                    "INNER JOIN CARGOS C ON E.IDEMPLEADO = C.IDCARGO\r\n" + 
+                    "WHERE UE.ID = :ID \r\n", nativeQuery = true)
+    String darCargoconID(@Param("ID") Integer ID);
+
 }

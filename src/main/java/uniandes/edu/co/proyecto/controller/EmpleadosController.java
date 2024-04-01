@@ -22,7 +22,7 @@ public class EmpleadosController {
         return "empleados";
     }
 
-     @GetMapping("/empleados/new")
+    @GetMapping("/empleados/new")
     public String empleadoForm(Model model) {
         model.addAttribute("empleado", new Empleado());
         return "empleadoNuevo";

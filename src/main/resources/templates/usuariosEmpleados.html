@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Fragmento</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+    <div class="container">
+        <!-- Bienvenida y cargo -->
+        <div th:if="${nombrePersona}" class="alert alert-success text-center">
+            <h2>Bienvenido, <span th:text="${nombrePersona}">Nombre de Usuario</span>!</h2>
+            <p>Cargo: <span th:text="${cargo}">Cargo del Usuario</span></p>
+
+            <!-- Acciones según el cargo -->
+            <div class="text-center">
+                <a th:href="@{/identificaciones/new}" th:if="${cargo == 'Cajero' or cargo == 'GerenteOficina' or cargo == 'GerenteGeneral'}" class="btn btn-primary btn-action">Crear Usuario</a>
+                <button th:if="${cargo == 'Cajero' or cargo == 'GerenteOficina' or cargo == 'GerenteGeneral'}" class="btn btn-primary btn-action">Crear Oficina</button>
+                <button th:if="${cargo == 'Cajero' or cargo == 'GerenteOficina' or cargo == 'GerenteGeneral'}" class="btn btn-primary btn-action">Crear o Borrar punto de atención</button>
+
+                <!-- Botones adicionales para Gerente de Oficina -->
+                <div th:if="${cargo == 'GerenteOficina'}">
+                    <button class="btn btn-primary btn-action">Crear Cuenta</button>
+                    <button class="btn btn-primary btn-action">Cambiar estado Cuenta</button>
+                    <button class="btn btn-primary btn-action">Crear Préstamo</button>
+                    <button class="btn btn-primary btn-action">Actualizar Préstamo a cerrado</button>
+                </div>
+
+                <!-- Botones adicionales para Cajero -->
+                <div th:if="${cargo == 'Cajero'}">
+                    <button class="btn btn-primary btn-action">Registrar operación sobre cuenta</button>
+                    <button class="btn btn-primary btn-action">Registro de Operación sobre préstamo</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mensaje de error -->
+        <div th:if="${error}" class="alert alert-danger text-center">
+            <h2 th:text="${error}">Mensaje de error</h2>
+        </div>
+
+        <!-- Formulario de login -->
+        <div class="form-container" th:unless="${nombrePersona}">
+            <form th:action="@{/usuariosEmpleados}" method="get">
+                <div class="form-group">
+                    <label for="ID" class="form-label">ID:</label>
+                    <input type="number" class="form-control" id="ID" name="ID" required />
+                </div>
+                <div class="form-group">
+                    <label for="PASSWORD" class="form-label">CONTRASEÑA:</label>
+                    <input type="text" class="form-control" id="PASSWORD" name="PASSWORD" required />
+                </div>
+                <button type="submit" class="btn btn-primary btn-login">Hacer LogIn</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

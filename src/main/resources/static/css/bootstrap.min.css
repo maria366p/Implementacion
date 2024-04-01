@@ -1,0 +1,65 @@
+body, html {
+    height: 100%; /* Asegura que el cuerpo de la página ocupe toda la altura */
+    margin: 0; /* Elimina los márgenes predeterminados */
+}
+.centrado-vertical-horizontal {
+    display: flex; /* Usa Flexbox */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100%; /* Toma toda la altura disponible */
+    flex-direction: column; /* Organiza los elementos en columna */
+}
+.subtitulo {
+    font-size: 1.5rem; /* Tamaño del subtítulo */
+    margin-top: 20px; /* Espacio arriba del subtítulo */
+}
+/* Sobrescribe los estilos de Bootstrap para .btn-primary */
+.btn-primary {
+    background-color: #007bff !important; /* Color azul, asegura la sobrescritura con !important */
+    color: white !important;
+    padding: 10px 20px !important;
+    border-radius: 5px !important; /* Bordes redondeados */
+    margin-top: 20px !important; /* Espaciado superior */
+    border: none !important; /* Elimina el borde */
+    display: inline-block !important; /* Permite aplicar padding y margen */
+}
+
+.blue-button, .btn-primary {
+    background-color: #007bff; /* Color azul */
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none; /* Sin subrayado */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-top: 20px; /* Espaciado superior */
+    display: inline-block; /* Permite aplicar padding y margen */
+    border: none; /* Elimina el borde */
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Asegura espacio alrededor del botón */
+}
+
+.form-group { /* Estilos adicionales para el grupo del formulario */
+    margin-bottom: 1.5rem; /* Espacio debajo de cada grupo del formulario */
+}
+
+.btn-login { /* Clase específica para el botón de login */
+    margin-top: 2rem; /* Espacio arriba del botón */
+    align-self: center; /* Centra el botón horizontalmente */
+    width: 100%; /* Hace que el botón ocupe todo el ancho */
+}

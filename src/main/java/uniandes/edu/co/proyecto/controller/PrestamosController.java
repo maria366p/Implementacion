@@ -1,6 +1,7 @@
 package uniandes.edu.co.proyecto.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import uniandes.edu.co.proyecto.modelo.Prestamo;
 import uniandes.edu.co.proyecto.repositorio.PrestamoRepository;
 
+@Controller
 public class PrestamosController {
     @Autowired
     private PrestamoRepository prestamoRepository;
@@ -17,7 +19,7 @@ public class PrestamosController {
     @GetMapping("/prestamos")
     public String prestamos (Model model, String ciudad, String tipo){
         model.addAttribute("prestamos", prestamoRepository.darPrestamos());
-         return model.toString() ; //return "prestamos";
+        return "prestamos";
     }
 
     @GetMapping("/prestamos/new")

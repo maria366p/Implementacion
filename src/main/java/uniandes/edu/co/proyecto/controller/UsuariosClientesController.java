@@ -1,6 +1,7 @@
 package uniandes.edu.co.proyecto.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import uniandes.edu.co.proyecto.modelo.UsuarioCliente;
 import uniandes.edu.co.proyecto.repositorio.UsuarioClienteRepository;
 
+@Controller
 public class UsuariosClientesController {
     @Autowired
     private UsuarioClienteRepository usuarioClienteRepository;
@@ -17,7 +19,7 @@ public class UsuariosClientesController {
     @GetMapping("/usuariosClientes")
     public String usuariosClientes (Model model){
         model.addAttribute("usuariosClientes", usuarioClienteRepository.darUsuarioClientes());
-         return model.toString() ; //return "usuariosClientes";
+        return "usuariosClientes";
     }
 
     @GetMapping("/usuariosClientes/new")

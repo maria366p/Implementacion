@@ -1,6 +1,7 @@
 package uniandes.edu.co.proyecto.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import uniandes.edu.co.proyecto.modelo.PuntoAtencion;
 import uniandes.edu.co.proyecto.repositorio.PuntoAtencionRepository;
 
+@Controller
 public class PuntosAtencionController {
     @Autowired
     private PuntoAtencionRepository puntoAtencionRepository;
@@ -17,7 +19,7 @@ public class PuntosAtencionController {
     @GetMapping("/puntosAtencion")
     public String puntosAtencion (Model model, String ciudad, String tipo){
         model.addAttribute("puntosAtencion", puntoAtencionRepository.darPuntoAtencions());
-         return model.toString() ; //return "puntosAtencion";
+        return "puntosAtencion";
     }
 
     @GetMapping("/puntosAtencion/new")

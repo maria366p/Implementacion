@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crear Usuario</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+    </br>
+    <div th:if="${formularioActual} == 'identificacion'">
+        <form th:action="@{/identificaciones/new/save}" method="post">
+            <div th:replace="~{fragments/identificacionForm :: identificacionForm(titulo='Crear identificacion')}">
+            </div>
+        </form>
+    </div>
+    
+    <div th:if="${formularioActual} == 'persona'">
+        <form th:action="@{/personas/new/save}" method="post">
+            <div th:replace="~{fragments/personaForm :: personaForm(titulo='Crear persona')}">
+            </div>
+        </form>
+    </div>
+    <!--
+    <div th:if="${formularioActual} == 'empleado'">
+        <form th:action="@{/empleados/new/save}" method="post">
+            <div th:replace="~{fragments/empleadoForm :: empleadoForm(titulo='Crear empleado')}">
+            </div>
+        </form>
+    </div>
+    
+    <div th:if="${formularioActual} == 'usuarioEmpleado'">
+        <form th:action="@{/usuarioEmpleado/new/save}" method="post">
+            <div th:replace="~{fragments/usuarioEmpleadoForm :: usuarioEmpleadoForm(titulo='Crear usuario empleado')}">
+            </div>
+        </form>
+    </div>
+    -->
+</body>
+</html>
