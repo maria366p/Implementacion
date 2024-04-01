@@ -79,16 +79,16 @@ public class Persona {
     }
 
 
-    public String getNombre() {
+    public String getNOMBRE() {
         return NOMBRE;
     }
 
 
-    public void setNombre(String NOMBRE) {
+    public void setNOMBRE(String NOMBRE) {
         this.NOMBRE = NOMBRE;
     }
 
-
+    //TODO: cambiar todos los atributos a mayuscula
     public String getDatosContacto() {
         return DATOSCONTACTO;
     }
@@ -170,12 +170,12 @@ public class Persona {
 
 
 
-    public Identificacion getDocId() {
+    public Identificacion getDOCID() {
         return DOCID;
     }
 
 
-    public void setDocId(Identificacion DOCID) {
+    public void setDOCID(Identificacion DOCID) {
         this.DOCID = DOCID;
     }
 

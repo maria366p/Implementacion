@@ -1,7 +1,5 @@
 package uniandes.edu.co.proyecto.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,12 +9,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import uniandes.edu.co.proyecto.modelo.Persona;
+import uniandes.edu.co.proyecto.repositorio.IdentificacionRepository;
 import uniandes.edu.co.proyecto.repositorio.PersonaRepository;
 
 @Controller
 public class PersonaController {
     @Autowired
     private PersonaRepository personaRepository;
+
+    @Autowired
+    private IdentificacionRepository identificacionRepository;
 
     @GetMapping("/personas")
     public String personas (Model model){
@@ -25,15 +27,15 @@ public class PersonaController {
     }
 
     @GetMapping("/personas/new")
-    public String personaForm(Model model, HttpSession session) {
+    public String personaForm(Model model) {
         model.addAttribute("persona", new Persona());
-        session.setAttribute("formularioActual", "identificacion");  // Establecer el formulario actual
+        model.addAttribute("identificaciones", identificacionRepository.darIdentificaciones());
         return "personaNuevo";
     }
 
     @PostMapping("/personas/new/save")
     public String personaGuardar(@ModelAttribute Persona persona) {
-        personaRepository.insertarPersona(persona.getNombre(), persona.getDatosContacto(), persona.getDireccionFisica(), persona.getDireccionElectronica(), persona.getTelefono(), persona.getCiudad(), persona.getDepartamento(), persona.getCodigoPostal(), persona.getFechaRegistro(), persona.getDocId().getNumero());
+        personaRepository.insertarPersona(persona.getNOMBRE(), persona.getDatosContacto(), persona.getDireccionFisica(), persona.getDireccionElectronica(), persona.getTelefono(), persona.getCiudad(), persona.getDepartamento(), persona.getCodigoPostal(), persona.getFechaRegistro(), persona.getDOCID().getNUMERO());
         return "redirect:/personas";
     }
 
@@ -50,7 +52,7 @@ public class PersonaController {
 
     @PostMapping("/personas/{id}/edit/save")
     public String personaEditarGuardar(@PathVariable("id") int id, @ModelAttribute Persona persona) {
-        personaRepository.actualizarPersona(((int) id), persona.getNombre(), persona.getDatosContacto(), persona.getDireccionFisica(), persona.getDireccionElectronica(), persona.getTelefono(), persona.getCiudad(), persona.getDepartamento(), persona.getCodigoPostal(), persona.getFechaRegistro(), persona.getDocId().getNumero());
+        personaRepository.actualizarPersona(((int) id), persona.getNOMBRE(), persona.getDatosContacto(), persona.getDireccionFisica(), persona.getDireccionElectronica(), persona.getTelefono(), persona.getCiudad(), persona.getDepartamento(), persona.getCodigoPostal(), persona.getFechaRegistro(), persona.getDOCID().getNUMERO());
         return "redirect:/personas";
     }
 

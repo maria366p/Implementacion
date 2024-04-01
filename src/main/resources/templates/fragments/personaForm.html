@@ -8,40 +8,60 @@
 </head>
 
 <body>
-
-    </br>
-    <div th:fragment="personaForm(titulo)" class="container border border-2 w-25">
+    <div class="container border border-2 w-25 my-3" th:fragment="personaForm(titulo)">
         <h1 class="text-center" th:text="${titulo}"></h1>
     
     <form>
-        <label class="col-form-label">Nombre:</label>
-        <input class="form-control" type="text" id="NOMBRE" name="NOMBRE" required th:value="${persona.NOMBRE}" />
-        <label class="col-form-label">Datos Contacto:</label>
-        <input class="form-control" type="text" id="DATOSCONTACTO" name="DATOSCONTACTO" required th:value="${persona.DATOSCONTACTO}" />
-        <label class="col-form-label">Dirección Física:</label>
-        <input class="form-control" type="text" id="DIRECCIONFISICA" name="DIRECCIONFISICA" required th:value="${persona.DIRECCIONFISICA}" />
-        <label class="col-form-label">Dirección Electrónica:</label>
-        <input class="form-control" type="text" id="DIRECCIONELECTRONICA" name="DIRECCIONELECTRONICA" required th:value="${persona.DIRECCIONELECTRONICA}" />
-        <label for="TELEFONO" class="col-form-label">Telefono:</label>
-        <input class="form-control" type="number" id="TELEFONO" name="TELEFONO" required th:value=${persona.TELEFONO}><br>
-        <label class="col-form-label">Ciudad:</label>
-        <input class="form-control" type="text" id="CIUDAD" name="CIUDAD" required th:value="${persona.CIUDAD}" />
-        <label class="col-form-label">Departamento:</label>
-        <input class="form-control" type="text" id="DEPARTAMENTO" name="DEPARTAMENTO" required th:value="${persona.DEPARTAMENTO}" />
-        <label for="CODIGOPOSTAL" class="col-form-label">Codigo Postal:</label>
-        <input class="form-control" type="number" id="CODIGOPOSTAL" name="CODIGOPOSTAL" required th:value=${persona.CODIGOPOSTAL}><br>
-        <label class="col-form-label">Fecha Registro:</label>
-        <input class="form-control" type="date" id="FECHAREGISTRO" name="FECHAREGISTRO" required th:value="${persona.FECHAREGISTRO}" />
-        <label for="DOCID" class="col-form-label">Identificacion:</label>
-        <input class="form-control" type="number" id="DOCID" name="DOCID" required th:value=${persona.DOCID}><br>
-        <div class="text-center">
+        <div class="mb-3">
+            <label for="Nombre" class="form-label">Nombre:</label>
+            <input class="form-control" type="text" id="Nombre" name="Nombre" required th:value="${persona.Nombre}">
+        </div>
+        <div class="mb-3">
+            <label for="DATOSCONTACTO" class="form-label">Datos Contacto:</label>
+            <input class="form-control" type="text" id="DATOSCONTACTO" name="DATOSCONTACTO" required th:value="${persona.DatosContacto}">
+        </div>
+        <div class="mb-3">
+            <label for="DIRECCIONFISICA" class="form-label">Dirección Física:</label>
+            <input class="form-control" type="text" id="DIRECCIONFISICA" name="DIRECCIONFISICA" required th:value="${persona.DireccionFisica}">
+        </div>
+        <div class="mb-3">
+            <label for="DIRECCIONELECTRONICA" class="form-label">Dirección Electrónica:</label>
+            <input class="form-control" type="text" id="DIRECCIONELECTRONICA" name="DIRECCIONELECTRONICA" required th:value="${persona.DireccionElectronica}">
+        </div>
+        <div class="mb-3">
+            <label for="TELEFONO" class="form-label">Teléfono:</label>
+            <input class="form-control" type="number" id="TELEFONO" name="TELEFONO" required th:value="${persona.Telefono}">
+        </div>
+        <div class="mb-3">
+            <label for="CIUDAD" class="form-label">Ciudad:</label>
+            <input class="form-control" type="text" id="CIUDAD" name="CIUDAD" required th:value="${persona.Ciudad}">
+        </div>
+        <div class="mb-3">
+            <label for="DEPARTAMENTO" class="form-label">Departamento:</label>
+            <input class="form-control" type="text" id="DEPARTAMENTO" name="DEPARTAMENTO" required th:value="${persona.Departamento}">
+        </div>
+        <div class="mb-3">
+            <label for="CODIGOPOSTAL" class="form-label">Código Postal:</label>
+            <input class="form-control" type="number" id="CODIGOPOSTAL" name="CODIGOPOSTAL" required th:value="${persona.CodigoPostal}">
+        </div>
+        <div class="mb-3">
+            <label for="FECHAREGISTRO" class="form-label">Fecha Registro:</label>
+            <input class="form-control" type="date" id="FECHAREGISTRO" name="FECHAREGISTRO" required th:value="${persona.FechaRegistro}">
+        </div>
+
+        <label class="col-form-label" for="DOCID">Identificacion:</label>
+        <select class="form-control" id="DOCID" name="DOCID" required>
+            <th:block th:each="identificacion : ${identificaciones}" >
+                <option th:value="${identificacion.NUMERO}" th:text="${identificacion.NUMERO}" th:selected="${persona!=null || persona.DOCID.NUMERO == identificacion.NUMERO}"></option>
+            </th:block>
+        </select><br>
+
+        <div class="d-flex justify-content-between">
             <input type="submit" value="Guardar" class="btn btn-primary">
             <a th:href="@{/usuariosEmpleados}" class="btn btn-primary">Cancelar</a>
         </div>
     </form>
-
-    </br>
-</div>
+    </div>
 
 </body>
 

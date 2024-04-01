@@ -48,7 +48,7 @@ public class ProyectoApplication implements CommandLineRunner {
 		
 		logger.info("Iniciando insercion de var");
 		// Insertar el nuevo cargo utilizando el nombre del rol
-		LocalDate fechaRegistroLocal = LocalDate.now(); // Usa la fecha actual o la que necesites
+		LocalDate fechaRegistroLocal = LocalDate.now(); // Usa la fecha actual
         Date fechaRegistro = Date.valueOf(fechaRegistroLocal);
 		prestamoRepository.insertarPrestamo(2000.5f, 0.05f, 15, fechaRegistro, 1200, "Pagado", 1);
 		*/
@@ -57,7 +57,7 @@ public class ProyectoApplication implements CommandLineRunner {
 		
 		/* 
 		logger.info("Iniciando update de var");
-		LocalDate fechaRegistroLocal = LocalDate.now(); // Usa la fecha actual o la que necesites
+		LocalDate fechaRegistroLocal = LocalDate.now(); // Usa la fecha actual 
         Date fechaRegistro = Date.valueOf(fechaRegistroLocal);
 		prestamoRepository.actualizarPrestamo(7,2000.5f, 0.05f, 15, fechaRegistro, 4000, "Pagado", 1);
 		Prestamo var2 = prestamoRepository.darPrestamo(7);
@@ -74,10 +74,9 @@ public class ProyectoApplication implements CommandLineRunner {
 		//Importante para persona 
 		/*
 		 		// Crear la fecha de registro como un objeto java.sql.Date
-        LocalDate fechaRegistroLocal = LocalDate.now(); // Usa la fecha actual o la que necesites
+        LocalDate fechaRegistroLocal = LocalDate.now();
         Date fechaRegistro = Date.valueOf(fechaRegistroLocal);
 
-        // Asegúrate de que este objeto identificacion ya exista en tu base de datos
         Identificacion docId = identificacionRepository.darIdentificacion(887654567); 
 		logger.info("Consulta finalizada, Var: {}", docId.getNumero());
 

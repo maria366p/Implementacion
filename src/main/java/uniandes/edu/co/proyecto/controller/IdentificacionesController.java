@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import javax.servlet.http.HttpSession;
+
 
 import uniandes.edu.co.proyecto.modelo.Identificacion;
 import uniandes.edu.co.proyecto.repositorio.IdentificacionRepository;
@@ -24,17 +24,15 @@ public class IdentificacionesController {
     }
 
     @GetMapping("/identificaciones/new")
-    public String identificacionForm(Model model, HttpSession session) { 
+    public String identificacionForm(Model model) { 
         model.addAttribute("identificacion", new Identificacion());
-        session.setAttribute("formularioActual", "identificacion");  // Establecer el formulario actual
-        return "usuarioNuevo";
+        return "identificacionNuevo";
     }
 
     @PostMapping("/identificaciones/new/save")
-    public String identificacionGuardar(@ModelAttribute Identificacion identificacion, HttpSession session) {
-        identificacionRepository.insertarIdentificacion(identificacion.getNumero(), identificacion.getTipo());
-        session.setAttribute("formularioActual", "persona"); // Actualizar al siguiente formulario
-        return "redirect:/identificaciones";
+    public String identificacionGuardar(@ModelAttribute Identificacion identificacion) {
+        identificacionRepository.insertarIdentificacion(identificacion.getNUMERO(), identificacion.getTIPO());
+        return "redirect:/personas/new";
     }
 
     @GetMapping("/identificaciones/{id}/edit")
@@ -50,7 +48,7 @@ public class IdentificacionesController {
 
     @PostMapping("/identificaciones/{id}/edit/save")
     public String identificacionEditarGuardar(@PathVariable("id") int id, @ModelAttribute Identificacion identificacion) {
-        identificacionRepository.actualizarIdentificacion(((int) id), identificacion.getTipo());
+        identificacionRepository.actualizarIdentificacion(((int) id), identificacion.getTIPO());
         return "redirect:/identificaciones";
     }
 

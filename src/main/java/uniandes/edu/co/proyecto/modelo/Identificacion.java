@@ -25,19 +25,19 @@ public class Identificacion {
 
     public Identificacion(){;}
 
-    public int getNumero() {
+    public int getNUMERO() {
         return NUMERO;
     }
 
-    public void setNumero(int NUMERO) {
+    public void setNUMERO(int NUMERO) {
         this.NUMERO = NUMERO;
     }
 
-    public String getTipo() {
+    public String getTIPO() {
         return TIPO;
     }
 
-    public void setTipo(String TIPO) {
+    public void setTIPO(String TIPO) {
         this.TIPO = TIPO;
     }
 
