@@ -29,7 +29,7 @@ public class Persona {
     private String DEPARTAMENTO;
 
     @Column(name = "CODIGOPOSTAL")
-    private int codigoPostal;
+    private int CODIGOPOSTAL;
 
     private Date FECHAREGISTRO;
 
@@ -58,7 +58,7 @@ public class Persona {
         this.TELEFONO = TELEFONO;
         this.CIUDAD = CIUDAD;
         this.DEPARTAMENTO = DEPARTAMENTO;
-        this.codigoPostal = codigoPostal;
+        this.CODIGOPOSTAL = codigoPostal;
         this.FECHAREGISTRO = FECHAREGISTRO;
         this.DOCID = DOCID;
     }
@@ -88,83 +88,82 @@ public class Persona {
         this.NOMBRE = NOMBRE;
     }
 
-    //TODO: cambiar todos los atributos a mayuscula
-    public String getDatosContacto() {
+    public String getDATOSCONTACTO() {
         return DATOSCONTACTO;
     }
 
 
-    public void setDatosContacto(String DATOSCONTACTO) {
+    public void setDATOSCONTACTO(String DATOSCONTACTO) {
         this.DATOSCONTACTO = DATOSCONTACTO;
     }
 
 
-    public String getDireccionFisica() {
+    public String getDIRECCIONFISICA() {
         return DIRECCIONFISICA;
     }
 
 
-    public void setDireccionFisica(String DIRECCIONFISICA) {
+    public void setDIRECCIONFISICA (String DIRECCIONFISICA) {
         this.DIRECCIONFISICA = DIRECCIONFISICA;
     }
 
 
-    public String getDireccionElectronica() {
+    public String getDIRECCIONELECTRONICA() {
         return DIRECCIONELECTRONICA;
     }
 
 
-    public void setDireccionElectronica(String DIRECCIONELECTRONICA) {
+    public void setDIRECCIONELECTRONICA(String DIRECCIONELECTRONICA) {
         this.DIRECCIONELECTRONICA = DIRECCIONELECTRONICA;
     }
 
 
-    public int getTelefono() {
+    public int getTELEFONO() {
         return TELEFONO;
     }
 
 
-    public void setTelefono(int TELEFONO) {
+    public void setTELEFONO(int TELEFONO) {
         this.TELEFONO = TELEFONO;
     }
 
 
-    public String getCiudad() {
+    public String getCIUDAD() {
         return CIUDAD;
     }
 
 
-    public void setCiudad(String CIUDAD) {
+    public void setCIUDAD(String CIUDAD) {
         this.CIUDAD = CIUDAD;
     }
 
 
-    public String getDepartamento() {
+    public String getDEPARTAMENTO() {
         return DEPARTAMENTO;
     }
 
 
-    public void setDepartamento(String DEPARTAMENTO) {
+    public void setDEPARTAMENTO(String DEPARTAMENTO) {
         this.DEPARTAMENTO = DEPARTAMENTO;
     }
 
 
-    public int getCodigoPostal() {
-        return codigoPostal;
+    public int getCODIGOPOSTAL() {
+        return CODIGOPOSTAL;
     }
 
 
-    public void setCodigoPostal(int codigoPostal) {
-        this.codigoPostal = codigoPostal;
+    public void setCODIGOPOSTAL(int codigoPostal) {
+        this.CODIGOPOSTAL = codigoPostal;
     }
 
 
-    public Date getFechaRegistro() {
+    public Date getFECHAREGISTRO() {
         return FECHAREGISTRO;
     }
 
 
-    public void setFechaRegistro(Date FECHAREGISTRO) {
+    public void setFECHAREGISTRO(Date FECHAREGISTRO) {
         this.FECHAREGISTRO = FECHAREGISTRO;
     }
 

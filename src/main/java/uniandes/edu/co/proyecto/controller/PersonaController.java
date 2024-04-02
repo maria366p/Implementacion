@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import uniandes.edu.co.proyecto.modelo.Identificacion;
 import uniandes.edu.co.proyecto.modelo.Persona;
 import uniandes.edu.co.proyecto.repositorio.IdentificacionRepository;
 import uniandes.edu.co.proyecto.repositorio.PersonaRepository;
@@ -23,20 +25,52 @@ public class PersonaController {
     @GetMapping("/personas")
     public String personas (Model model){
         model.addAttribute("personas", personaRepository.darPersonas());
-         return model.toString() ; //return "personas";
+        return "personas";
     }
 
     @GetMapping("/personas/new")
-    public String personaForm(Model model) {
+    public String personaForm(Model model, @RequestParam String tipo) {
+        // Añadir el tipo al modelo para que pueda ser utilizado en la vista
         model.addAttribute("persona", new Persona());
         model.addAttribute("identificaciones", identificacionRepository.darIdentificaciones());
+        model.addAttribute("tipo", tipo);
         return "personaNuevo";
     }
-
     @PostMapping("/personas/new/save")
-    public String personaGuardar(@ModelAttribute Persona persona) {
-        personaRepository.insertarPersona(persona.getNOMBRE(), persona.getDatosContacto(), persona.getDireccionFisica(), persona.getDireccionElectronica(), persona.getTelefono(), persona.getCiudad(), persona.getDepartamento(), persona.getCodigoPostal(), persona.getFechaRegistro(), persona.getDOCID().getNUMERO());
-        return "redirect:/personas";
+    public String personaGuardar(@ModelAttribute Persona persona, @RequestParam("DOCID") int DOCID, @RequestParam("tipo") String tipo) {
+        System.out.println("DOCID recibido: " + DOCID);
+        // Encuentra la entidad Identificacion usando el ID proporcionado por el formulario.
+        Identificacion identificacion = identificacionRepository.darIdentificacion(DOCID);
+        System.out.println("Identificacion encontrada: " + identificacion); // Verificar si se encontró
+        
+        if (identificacion != null) {
+            // Si la identificación existe, entonces llama a insertarPersona con todos los datos.
+            personaRepository.insertarPersona(
+                persona.getNOMBRE(), 
+                persona.getDATOSCONTACTO(), 
+                persona.getDIRECCIONFISICA(), 
+                persona.getDIRECCIONELECTRONICA(), 
+                persona.getTELEFONO(), 
+                persona.getCIUDAD(), 
+                persona.getDEPARTAMENTO(), 
+                persona.getCODIGOPOSTAL(), 
+                persona.getFECHAREGISTRO(), 
+                identificacion.getNUMERO()  // Usar el ID de la Identificacion encontrada
+            );
+        } else {
+            // Mensaje de error.
+        }
+        
+        // Redirigir basado en el tipo de acción
+        if ("empleado".equals(tipo)) {
+            return "redirect:/empleados/new";
+        } else if ("cliente".equals(tipo)) {
+            return "redirect:/clientes/new";
+        } else {
+            // Por defecto, en caso de un valor inesperado, redirigir a una página segura
+            return "redirect:/";
+    }
+        
     }
 
     @GetMapping("/personas/{id}/edit")
@@ -52,7 +86,7 @@ public class PersonaController {
 
     @PostMapping("/personas/{id}/edit/save")
     public String personaEditarGuardar(@PathVariable("id") int id, @ModelAttribute Persona persona) {
-        personaRepository.actualizarPersona(((int) id), persona.getNOMBRE(), persona.getDatosContacto(), persona.getDireccionFisica(), persona.getDireccionElectronica(), persona.getTelefono(), persona.getCiudad(), persona.getDepartamento(), persona.getCodigoPostal(), persona.getFechaRegistro(), persona.getDOCID().getNUMERO());
+        personaRepository.actualizarPersona(((int) id), persona.getNOMBRE(), persona.getDATOSCONTACTO(), persona.getDIRECCIONFISICA(), persona.getDIRECCIONELECTRONICA(), persona.getTELEFONO(), persona.getCIUDAD(), persona.getDEPARTAMENTO(), persona.getCODIGOPOSTAL(), persona.getFECHAREGISTRO(), persona.getDOCID().getNUMERO());
         return "redirect:/personas";
     }
 

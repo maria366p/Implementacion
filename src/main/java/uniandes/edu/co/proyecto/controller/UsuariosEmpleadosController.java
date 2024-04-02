@@ -9,12 +9,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import uniandes.edu.co.proyecto.modelo.Persona;
 import uniandes.edu.co.proyecto.modelo.UsuarioEmpleado;
+import uniandes.edu.co.proyecto.repositorio.PersonaRepository;
 import uniandes.edu.co.proyecto.repositorio.UsuarioEmpleadoRepository;
 @Controller
 public class UsuariosEmpleadosController {
     @Autowired
     private UsuarioEmpleadoRepository usuarioEmpleadoRepository;
+
+    @Autowired
+    private PersonaRepository personaRepository;
 
     @GetMapping("/usuariosEmpleados")
     public String usuariosEmpleados(Model model, @RequestParam(required = false) Integer ID, @RequestParam(required = false) String PASSWORD) {
@@ -38,16 +43,15 @@ public class UsuariosEmpleadosController {
     
     @GetMapping("/usuariosEmpleados/new")
     public String usuarioEmpleadoForm(Model model) {
-
-
+        model.addAttribute("personas", personaRepository.darPersonas());
         model.addAttribute("usuarioEmpleado", new UsuarioEmpleado());
-
         return "usuarioEmpleadoNuevo";
     }
 
     @PostMapping("/usuariosEmpleados/new/save")
-    public String usuarioEmpleadoGuardar(@ModelAttribute UsuarioEmpleado usuarioEmpleado) {
-        usuarioEmpleadoRepository.insertarUsuarioEmpleado(usuarioEmpleado.getID(), usuarioEmpleado.getPASSWORD());
+    public String usuarioEmpleadoGuardar(@ModelAttribute UsuarioEmpleado usuarioEmpleado, @RequestParam("ID") int ID) {
+        Persona persona = personaRepository.darPersona(ID);
+        usuarioEmpleadoRepository.insertarUsuarioEmpleado(persona.ID(), usuarioEmpleado.getPASSWORD());
         return "redirect:/usuariosEmpleados";
     }
 

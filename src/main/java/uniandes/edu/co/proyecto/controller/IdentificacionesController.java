@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
 
 import uniandes.edu.co.proyecto.modelo.Identificacion;
 import uniandes.edu.co.proyecto.repositorio.IdentificacionRepository;
@@ -24,15 +24,16 @@ public class IdentificacionesController {
     }
 
     @GetMapping("/identificaciones/new")
-    public String identificacionForm(Model model) { 
+    public String identificacionForm(Model model, @RequestParam("tipo") String tipo) { 
         model.addAttribute("identificacion", new Identificacion());
+        model.addAttribute("tipo", tipo); // Pasar el tipo al modelo para que pueda ser utilizado en el formulario
         return "identificacionNuevo";
     }
 
     @PostMapping("/identificaciones/new/save")
-    public String identificacionGuardar(@ModelAttribute Identificacion identificacion) {
+    public String identificacionGuardar(@ModelAttribute Identificacion identificacion, @RequestParam String tipo) {
         identificacionRepository.insertarIdentificacion(identificacion.getNUMERO(), identificacion.getTIPO());
-        return "redirect:/personas/new";
+        return "redirect:/personas/new?tipo=" + tipo;
     }
 
     @GetMapping("/identificaciones/{id}/edit")

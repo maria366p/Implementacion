@@ -5,8 +5,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import uniandes.edu.co.proyecto.modelo.Identificacion;
 import uniandes.edu.co.proyecto.modelo.OperacionPrestamo;
 import uniandes.edu.co.proyecto.modelo.Prestamo;
+import uniandes.edu.co.proyecto.repositorio.IdentificacionRepository;
 import uniandes.edu.co.proyecto.repositorio.OperacionPrestamoRepository;
 import uniandes.edu.co.proyecto.repositorio.PrestamoRepository;
 
@@ -22,7 +24,7 @@ public class ProyectoApplication implements CommandLineRunner {
 	private static final Logger logger = LoggerFactory.getLogger(ProyectoApplication.class);
 
 	@Autowired
-	private PrestamoRepository prestamoRepository;
+	private IdentificacionRepository identificacionRepository;
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoApplication.class, args);
 	}
@@ -37,21 +39,22 @@ public class ProyectoApplication implements CommandLineRunner {
 		for(Prestamo c:vars){
 			logger.info("var: {}", c.getValorCuota());
 		}
-		
+		*/
 
-		 
+		/* 
 		logger.info("Iniciando consulta de var");
-		Prestamo var = prestamoRepository.darPrestamo(2);
-		logger.info("Consulta finalizada, Var: {}", var.getDiaPagoCuota());
-		
+		Identificacion var = identificacionRepository.darIdentificacion(454545454);
+		logger.info("Consulta finalizada, Var: {}", var.getTIPO());
+		*/
 
-		
+		/*
 		logger.info("Iniciando insercion de var");
 		// Insertar el nuevo cargo utilizando el nombre del rol
 		LocalDate fechaRegistroLocal = LocalDate.now(); // Usa la fecha actual
         Date fechaRegistro = Date.valueOf(fechaRegistroLocal);
 		prestamoRepository.insertarPrestamo(2000.5f, 0.05f, 15, fechaRegistro, 1200, "Pagado", 1);
-		*/
+		 */
+		
 		//logger.info("var creado: {}",prestamoRepository.darPrestamo(7));
 		
 		

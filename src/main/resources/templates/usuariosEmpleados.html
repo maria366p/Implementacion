@@ -13,12 +13,13 @@
 
             <!-- Acciones según el cargo -->
             <div class="text-center">
-                <a th:href="@{/identificaciones/new}" th:if="${cargo == 'Cajero' or cargo == 'GerenteOficina' or cargo == 'GerenteGeneral'}" class="btn btn-primary btn-action">Crear Usuario</a>
+                <a th:href="@{/identificaciones/new(tipo='empleado')}" th:if="${cargo == 'Cajero' or cargo == 'GerenteOficina' or cargo == 'GerenteGeneral'}" class="btn btn-primary btn-action">Crear Empleado</a>
                 <button th:if="${cargo == 'Cajero' or cargo == 'GerenteOficina' or cargo == 'GerenteGeneral'}" class="btn btn-primary btn-action">Crear Oficina</button>
                 <button th:if="${cargo == 'Cajero' or cargo == 'GerenteOficina' or cargo == 'GerenteGeneral'}" class="btn btn-primary btn-action">Crear o Borrar punto de atención</button>
 
                 <!-- Botones adicionales para Gerente de Oficina -->
                 <div th:if="${cargo == 'GerenteOficina'}">
+                    <a th:href="@{/identificaciones/new(tipo='cliente')}" class="btn btn-primary btn-action">Crear Cliente</a>
                     <button class="btn btn-primary btn-action">Crear Cuenta</button>
                     <button class="btn btn-primary btn-action">Cambiar estado Cuenta</button>
                     <button class="btn btn-primary btn-action">Crear Préstamo</button>

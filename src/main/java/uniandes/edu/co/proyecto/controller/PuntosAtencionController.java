@@ -30,7 +30,7 @@ public class PuntosAtencionController {
 
     @PostMapping("/puntosAtencion/new/save")
     public String puntoAtencionGuardar(@ModelAttribute PuntoAtencion puntoAtencion) {
-        puntoAtencionRepository.insertarPuntoAtencion(puntoAtencion.getTipo().name(), puntoAtencion.getUbicacionGeografica(), puntoAtencion.getEstado(), puntoAtencion.getIDOFICINA().getIdOficina());
+        puntoAtencionRepository.insertarPuntoAtencion(puntoAtencion.getTipo().name(), puntoAtencion.getUbicacionGeografica(), puntoAtencion.getEstado(), puntoAtencion.getIDOFICINA().getIDOFICINA());
         return "redirect:/puntosAtencion";
     }
 
@@ -47,7 +47,7 @@ public class PuntosAtencionController {
 
     @PostMapping("/puntosAtencion/{id}/edit/save")
     public String puntoAtencionEditarGuardar(@PathVariable("id") int id, @ModelAttribute PuntoAtencion puntoAtencion) {
-        puntoAtencionRepository.actualizarPuntoAtencion(((int) id), puntoAtencion.getTipo().name(), puntoAtencion.getUbicacionGeografica(), puntoAtencion.getEstado(), puntoAtencion.getIDOFICINA().getIdOficina());
+        puntoAtencionRepository.actualizarPuntoAtencion(((int) id), puntoAtencion.getTipo().name(), puntoAtencion.getUbicacionGeografica(), puntoAtencion.getEstado(), puntoAtencion.getIDOFICINA().getIDOFICINA());
         return "redirect:/puntosAtencion";
     }
 

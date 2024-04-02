@@ -31,7 +31,7 @@ public class CargosController {
 
     @PostMapping("/cargos/new/save")
     public String cargoGuardar(@ModelAttribute Cargo cargo) {
-        cargoRepository.insertarCargo(cargo.getNombre().name());
+        cargoRepository.insertarCargo(cargo.getNOMBRE().name());
         return "redirect:/cargos";
     }
 
@@ -48,7 +48,7 @@ public class CargosController {
 
     @PostMapping("/cargos/{id}/edit/save")
     public String cargoEditarGuardar(@PathVariable("id") int id, @ModelAttribute Cargo cargo) {
-        cargoRepository.actualizarCargo(((int) id), cargo.getNombre().name());
+        cargoRepository.actualizarCargo(((int) id), cargo.getNOMBRE().name());
         return "redirect:/cargos";
     }
 

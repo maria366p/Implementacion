@@ -36,11 +36,11 @@ public class Cargo {
         this.IDCARGO = IDCARGO;
     }
 
-    public RolE getNombre() {
+    public RolE getNOMBRE() {
         return NOMBRE;
     }
 
-    public void setNombre(RolE NOMBRE) {
+    public void setNOMBRE(RolE NOMBRE) {
         this.NOMBRE = NOMBRE;
     }
 

@@ -7,14 +7,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import uniandes.edu.co.proyecto.modelo.Persona;
 import uniandes.edu.co.proyecto.modelo.UsuarioCliente;
+import uniandes.edu.co.proyecto.repositorio.PersonaRepository;
 import uniandes.edu.co.proyecto.repositorio.UsuarioClienteRepository;
 
 @Controller
 public class UsuariosClientesController {
     @Autowired
     private UsuarioClienteRepository usuarioClienteRepository;
+
+    @Autowired
+    private PersonaRepository personaRepository;
+
 
     @GetMapping("/usuariosClientes")
     public String usuariosClientes (Model model){
@@ -24,14 +31,16 @@ public class UsuariosClientesController {
 
     @GetMapping("/usuariosClientes/new")
     public String usuarioClienteForm(Model model) {
+        model.addAttribute("personas", personaRepository.darPersonas());
         model.addAttribute("usuarioCliente", new UsuarioCliente());
         return "usuarioClienteNuevo";
     }
 
     @PostMapping("/usuariosClientes/new/save")
-    public String usuarioClienteGuardar(@ModelAttribute UsuarioCliente usuarioCliente) {
-        usuarioClienteRepository.insertarUsuarioCliente(usuarioCliente.getID(), usuarioCliente.getPASSWORD());
-        return "redirect:/usuariosClientes";
+    public String usuarioClienteGuardar(@ModelAttribute UsuarioCliente usuarioCliente, @RequestParam("ID") int ID) {
+        Persona persona = personaRepository.darPersona(ID);
+        usuarioClienteRepository.insertarUsuarioCliente(persona.ID(), usuarioCliente.getPASSWORD());
+        return "redirect:/usuariosEmpleados";
     }
 
     @GetMapping("/usuariosClientes/{id}/edit")

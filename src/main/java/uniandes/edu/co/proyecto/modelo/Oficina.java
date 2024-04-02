@@ -29,27 +29,27 @@ public class Oficina {
         ;
     }
 
-    public int getIdOficina() {
+    public int getIDOFICINA() {
         return IDOFICINA;
     }
 
-    public void setIdOficina(int idOficina) {
+    public void setIDOFICINA(int idOficina) {
         this.IDOFICINA = idOficina;
     }
 
-    public String getNombre() {
+    public String getNOMBRE() {
         return NOMBRE;
     }
 
-    public void setNombre(String NOMBRE) {
+    public void setNOMBRE(String NOMBRE) {
         this.NOMBRE = NOMBRE;
     }
 
-    public String getDireccion() {
+    public String getDIRECCION() {
         return DIRECCION;
     }
 
-    public void setDireccion(String DIRECCION) {
+    public void setDIRECCION(String DIRECCION) {
         this.DIRECCION = DIRECCION;
     }
 }

@@ -6,9 +6,8 @@
 </head>
 <body>
     </br>
-        <form th:action="@{/personas/new/save}" method="post">
-            <input type="hidden" name="tipo" th:value="${tipo}" />
-            <div th:replace="~{fragments/personaForm :: personaForm(titulo='Crear persona')}">
+        <form th:action="@{/usuariosEmpleados/new/save}" method="post">
+            <div th:replace="~{fragments/usuarioEmpleadoForm :: usuarioEmpleadoForm(titulo='Crear usuario del empleado')}">
             </div>
         </form>
     

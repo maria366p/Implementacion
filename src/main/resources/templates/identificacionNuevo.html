@@ -7,6 +7,7 @@
 <body>
     </br>
         <form th:action="@{/identificaciones/new/save}" method="post">
+            <input type="hidden" name="tipo" th:value="${tipo}" />
             <div th:replace="~{fragments/identificacionForm :: identificacionForm(titulo='Crear identificacion')}">
             </div>
         </form>

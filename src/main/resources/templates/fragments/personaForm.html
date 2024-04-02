@@ -13,48 +13,50 @@
     
     <form>
         <div class="mb-3">
-            <label for="Nombre" class="form-label">Nombre:</label>
-            <input class="form-control" type="text" id="Nombre" name="Nombre" required th:value="${persona.Nombre}">
+            <label for="NOMBRE" class="form-label">Nombre:</label>
+            <input class="form-control" type="text" id="NOMBRE" name="NOMBRE" required th:value="${persona.NOMBRE}">
         </div>
         <div class="mb-3">
             <label for="DATOSCONTACTO" class="form-label">Datos Contacto:</label>
-            <input class="form-control" type="text" id="DATOSCONTACTO" name="DATOSCONTACTO" required th:value="${persona.DatosContacto}">
+            <input class="form-control" type="text" id="DATOSCONTACTO" name="DATOSCONTACTO" required th:value="${persona.DATOSCONTACTO}">
         </div>
         <div class="mb-3">
             <label for="DIRECCIONFISICA" class="form-label">Dirección Física:</label>
-            <input class="form-control" type="text" id="DIRECCIONFISICA" name="DIRECCIONFISICA" required th:value="${persona.DireccionFisica}">
+            <input class="form-control" type="text" id="DIRECCIONFISICA" name="DIRECCIONFISICA" required th:value="${persona.DIRECCIONFISICA}">
         </div>
         <div class="mb-3">
             <label for="DIRECCIONELECTRONICA" class="form-label">Dirección Electrónica:</label>
-            <input class="form-control" type="text" id="DIRECCIONELECTRONICA" name="DIRECCIONELECTRONICA" required th:value="${persona.DireccionElectronica}">
+            <input class="form-control" type="text" id="DIRECCIONELECTRONICA" name="DIRECCIONELECTRONICA" required th:value="${persona.DIRECCIONELECTRONICA}">
         </div>
         <div class="mb-3">
             <label for="TELEFONO" class="form-label">Teléfono:</label>
-            <input class="form-control" type="number" id="TELEFONO" name="TELEFONO" required th:value="${persona.Telefono}">
+            <input class="form-control" type="number" id="TELEFONO" name="TELEFONO" required th:value="${persona.TELEFONO}">
         </div>
         <div class="mb-3">
             <label for="CIUDAD" class="form-label">Ciudad:</label>
-            <input class="form-control" type="text" id="CIUDAD" name="CIUDAD" required th:value="${persona.Ciudad}">
+            <input class="form-control" type="text" id="CIUDAD" name="CIUDAD" required th:value="${persona.CIUDAD}">
         </div>
         <div class="mb-3">
             <label for="DEPARTAMENTO" class="form-label">Departamento:</label>
-            <input class="form-control" type="text" id="DEPARTAMENTO" name="DEPARTAMENTO" required th:value="${persona.Departamento}">
+            <input class="form-control" type="text" id="DEPARTAMENTO" name="DEPARTAMENTO" required th:value="${persona.DEPARTAMENTO}">
         </div>
         <div class="mb-3">
             <label for="CODIGOPOSTAL" class="form-label">Código Postal:</label>
-            <input class="form-control" type="number" id="CODIGOPOSTAL" name="CODIGOPOSTAL" required th:value="${persona.CodigoPostal}">
+            <input class="form-control" type="number" id="CODIGOPOSTAL" name="CODIGOPOSTAL" required th:value="${persona.CODIGOPOSTAL}">
         </div>
         <div class="mb-3">
             <label for="FECHAREGISTRO" class="form-label">Fecha Registro:</label>
-            <input class="form-control" type="date" id="FECHAREGISTRO" name="FECHAREGISTRO" required th:value="${persona.FechaRegistro}">
+            <input class="form-control" type="date" id="FECHAREGISTRO" name="FECHAREGISTRO" required th:value="${persona.FECHAREGISTRO}">
         </div>
 
         <label class="col-form-label" for="DOCID">Identificacion:</label>
-        <select class="form-control" id="DOCID" name="DOCID" required>
-            <th:block th:each="identificacion : ${identificaciones}" >
-                <option th:value="${identificacion.NUMERO}" th:text="${identificacion.NUMERO}" th:selected="${persona!=null || persona.DOCID.NUMERO == identificacion.NUMERO}"></option>
+        <select class="form-control" id="DOCID" name="DOCID" required> 
+            <th:block th:each="identificacion : ${identificaciones}">
+                <option th:value="${identificacion.NUMERO}" th:text="${identificacion.NUMERO}" th:selected="${persona != null && persona.DOCID != null && persona.DOCID.NUMERO == identificacion.NUMERO}" >
+                </option>
             </th:block>
         </select><br>
+
 
         <div class="d-flex justify-content-between">
             <input type="submit" value="Guardar" class="btn btn-primary">

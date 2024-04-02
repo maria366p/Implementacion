@@ -45,11 +45,11 @@ public class Cliente {
         return IDCLIENTE;
     }
 
-    public RolC getRolC() {
+    public RolC getROLC() {
         return ROLC;
     }
 
-    public void setRolC(RolC ROLC) {
+    public void setROLC(RolC ROLC) {
         this.ROLC = ROLC;
     }
 

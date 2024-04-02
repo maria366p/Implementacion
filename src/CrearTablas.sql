@@ -31,6 +31,7 @@ CREATE TABLE Personas (
     docId INTEGER NOT NULL,
     CONSTRAINT idpersona_pk PRIMARY KEY (ID),
     CONSTRAINT FK_persona_identificacion FOREIGN KEY (docId) REFERENCES Identificaciones (numero)
+    CONSTRAINT docId_unique UNIQUE (docId)
 );
 
 
@@ -39,7 +40,8 @@ CREATE TABLE Clientes (
     rolC VARCHAR2(80) NOT NULL,
     CONSTRAINT FK_cliente_persona FOREIGN KEY (IDCliente) REFERENCES Personas (ID),
     CONSTRAINT PK_Cliente PRIMARY KEY (IDCliente),
-    CONSTRAINT tipo_rolC check(RolC in ('Natural', 'Juridico'))
+    CONSTRAINT tipo_rolC check(RolC in ('Natural', 'Juridico')),
+    CONSTRAINT IDCLIENTE_unique UNIQUE (IDCliente)
 
 );
 
@@ -70,7 +72,8 @@ CREATE TABLE Empleados (
     IDOficina INTEGER NOT NULL,
     CONSTRAINT EMPLEADO_CARGO_FK FOREIGN KEY (IDCargo) REFERENCES Cargos (IDCargo),
     CONSTRAINT EMPLEADO_OFICINA_FK FOREIGN KEY (IDOficina) REFERENCES Oficinas (IDOficina),
-    CONSTRAINT EMPLEADO_PERSONA_FK FOREIGN KEY (IDEmpleado) REFERENCES Personas (ID)
+    CONSTRAINT EMPLEADO_PERSONA_FK FOREIGN KEY (IDEmpleado) REFERENCES Personas (ID),
+    CONSTRAINT IDEMPLEADO_unique UNIQUE (IDEmpleado)
 );
 
 
@@ -78,13 +81,15 @@ CREATE TABLE Empleados (
 CREATE TABLE UsuariosEmpleados (
     ID Number PRIMARY KEY,
     password VARCHAR2(10) NOT NULL,
-    CONSTRAINT FK_empleado_usuarioEmpleado FOREIGN KEY (ID) REFERENCES Empleados (IDEmpleado)
+    CONSTRAINT FK_empleado_usuarioEmpleado FOREIGN KEY (ID) REFERENCES Empleados (IDEmpleado),
+    CONSTRAINT IDE_unique UNIQUE (ID)
 );
 
 CREATE TABLE UsuariosClientes(
     ID Number PRIMARY KEY,
     password VARCHAR2(10) NOT NULL,
-    CONSTRAINT CLIENTE_PERSONA_FK FOREIGN KEY (ID) REFERENCES Clientes (IDCliente)
+    CONSTRAINT CLIENTE_PERSONA_FK FOREIGN KEY (ID) REFERENCES Clientes (IDCliente),
+    CONSTRAINT IDC_unique UNIQUE (ID)
 );
 
 CREATE TABLE Identificaciones (
