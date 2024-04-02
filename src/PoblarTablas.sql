@@ -16,6 +16,9 @@ INSERT INTO Identificaciones (tipo, numero) VALUES ('ti', 135791113);
 INSERT INTO Identificaciones (tipo, numero) VALUES ('cc', 121212121);
 INSERT INTO Identificaciones (tipo, numero) VALUES ('cc', 343434343);
 INSERT INTO Identificaciones (tipo, numero) VALUES ('cc', 454545454);
+INSERT INTO Identificaciones (tipo, numero) VALUES ('cc', 565656565);
+INSERT INTO Identificaciones (tipo, numero) VALUES ('cc', 676767676);
+
 
 
 -- Insert para la tabla Personas
@@ -26,6 +29,9 @@ INSERT INTO Personas (ID, nombre, datosContacto, direccionFisica, direccionElect
 INSERT INTO Personas (ID, nombre, datosContacto, direccionFisica, direccionElectronica, telefono, ciudad, departamento, codigoPostal, fechaRegistro, docId) VALUES (5, 'Luis Mendez', 'luis.mendez@example.com', 'Transversal 92', 'luis.mendez@example.com', 258963147, 'Bucaramanga', 'Santander', 68001, TO_DATE('2022-05-01', 'YYYY-MM-DD'), 121212121);
 INSERT INTO Personas (ID, nombre, datosContacto, direccionFisica, direccionElectronica, telefono, ciudad, departamento, codigoPostal, fechaRegistro, docId) VALUES (6, 'Carlos Ruiz', 'carlos.ruiz@example.com', 'Avenida 30', 'carlos.ruiz@example.com', 477854321, 'Cali', 'Valle del Cauca', 76001, TO_DATE('2021-10-22', 'YYYY-MM-DD'), 343434343);
 INSERT INTO Personas (ID, nombre, datosContacto, direccionFisica, direccionElectronica, telefono, ciudad, departamento, codigoPostal, fechaRegistro, docId) VALUES (7, 'Diana Gómez', 'diana.gomez@example.com', 'Carrera 5', 'diana.gomez@example.com', 589631474, 'Cartagena', 'Bolivar', 13001, TO_DATE('2022-01-30', 'YYYY-MM-DD'), 454545454);
+INSERT INTO Personas (ID, nombre, datosContacto, direccionFisica, direccionElectronica, telefono, ciudad, departamento, codigoPostal, fechaRegistro, docId) VALUES (8, 'Juan Martínez', 'juan.martinez@example.com', 'Calle 45', 'juan.martinez@example.com', 312789654, 'Medellín', 'Antioquia', 5001, TO_DATE('2022-07-15', 'YYYY-MM-DD'), 565656565);
+INSERT INTO Personas (ID, nombre, datosContacto, direccionFisica, direccionElectronica, telefono, ciudad, departamento, codigoPostal, fechaRegistro, docId) VALUES (9, 'Luisa Fernanda', 'luisa.fernanda@example.com', 'Diagonal 123', 'luisa.fernanda@example.com', 300456789, 'Bogotá', 'Cundinamarca', 11001, TO_DATE('2023-03-25', 'YYYY-MM-DD'), 676767676);
+
 
 -- Insert para la tabla Clientes
 INSERT INTO Clientes (IDCliente, rolC) VALUES (1, 'Natural');
@@ -36,11 +42,10 @@ INSERT INTO Clientes (IDCliente, rolC) VALUES (5, 'Natural');
 
 
 -- Insert para la tabla Oficinas
-INSERT INTO Oficinas (IDOficina, Nombre, Direccion) VALUES (1, 'Oficina Principal', 'Calle Principal 123');
-INSERT INTO Oficinas (IDOficina, Nombre, Direccion) VALUES (2, 'Sucursal Norte', 'Avenida Norte 456');
-INSERT INTO Oficinas (IDOficina, Nombre, Direccion) VALUES (3, 'Sucursal Sur', 'Carrera Sur 789');
-INSERT INTO Oficinas (IDOficina, Nombre, Direccion) VALUES (4, 'Sucursal Este', 'Diagonal Este 101');
-INSERT INTO Oficinas (IDOficina, Nombre, Direccion) VALUES (5, 'Sucursal Oeste', 'Transversal Oeste 202');
+INSERT INTO Oficinas (IDOficina, Nombre, Direccion, NUMEROPA,  IDGERENTE) VALUES (1, 'Oficina Principal', 'Calle Principal 123',3, 2);
+INSERT INTO Oficinas (IDOficina, Nombre, Direccion, NUMEROPA,  IDGERENTE) VALUES (2, 'Sucursal Norte', 'Avenida Norte 456',4, 7);
+INSERT INTO Oficinas (IDOficina, Nombre, Direccion, NUMEROPA,  IDGERENTE) VALUES (3, 'Sucursal Sur', 'Carrera Sur 789',4,8);
+INSERT INTO Oficinas (IDOficina, Nombre, Direccion, NUMEROPA,  IDGERENTE) VALUES (4, 'Sucursal Este', 'Diagonal Este 101',8,9);
 
 -- Insert para la tabla Empleados
 INSERT INTO Empleados (IDEMPLEADO, IDCargo, IDOficina) VALUES (1, 1, 1);
@@ -48,6 +53,9 @@ INSERT INTO Empleados (IDEMPLEADO, IDCargo, IDOficina) VALUES (2, 2, 1);
 INSERT INTO Empleados (IDEMPLEADO, IDCargo, IDOficina) VALUES (3, 3, 1);
 INSERT INTO Empleados (IDEMPLEADO, IDCargo, IDOficina) VALUES (6, 4, 2);
 INSERT INTO Empleados (IDEMPLEADO, IDCargo, IDOficina) VALUES (7, 5, 2);
+INSERT INTO Empleados (IDEMPLEADO, IDCargo, IDOficina) VALUES (8, 2, 3);
+INSERT INTO Empleados (IDEMPLEADO, IDCargo, IDOficina) VALUES (9, 5, 4);
+
 
 -- Insert para la tabla UsuariosEmpleados
 INSERT INTO UsuariosEmpleados (ID, password) VALUES (1, 'clave123');
@@ -55,6 +63,8 @@ INSERT INTO UsuariosEmpleados (ID, password) VALUES (2, 'clave456');
 INSERT INTO UsuariosEmpleados (ID, password) VALUES (3, 'clave789');
 INSERT INTO UsuariosEmpleados (ID, password) VALUES (6, 'clave887');
 INSERT INTO UsuariosEmpleados (ID, password) VALUES (7, 'clave907');
+INSERT INTO UsuariosEmpleados (ID, password) VALUES (8, 'clave910');
+INSERT INTO UsuariosEmpleados (ID, password) VALUES (9, 'clave211');
 
 
 -- Insert para la tabla UsuariosClientes

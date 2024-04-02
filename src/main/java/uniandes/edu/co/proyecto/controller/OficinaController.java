@@ -10,29 +10,34 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import uniandes.edu.co.proyecto.modelo.Oficina;
 import uniandes.edu.co.proyecto.repositorio.OficinaRepository;
+import uniandes.edu.co.proyecto.repositorio.PersonaRepository;
+import uniandes.edu.co.proyecto.repositorio.UsuarioEmpleadoRepository;
 
 @Controller
 public class OficinaController {
 
     @Autowired
     private OficinaRepository oficinaRepository;
+    @Autowired
+    private UsuarioEmpleadoRepository usuarioEmpleadoRepository;
 
     @GetMapping("/oficinas")
     public String oficinas (Model model){
         model.addAttribute("oficinas", oficinaRepository.darOficinas());
-         return model.toString() ; //return "oficinas";
+        return "oficinas";
     }
 
     @GetMapping("/oficinas/new")
     public String oficinaForm(Model model) {
+        model.addAttribute("gerentes", usuarioEmpleadoRepository.darPersdeGerenteO());
         model.addAttribute("oficina", new Oficina());
         return "oficinaNuevo";
     }
 
     @PostMapping("/oficinas/new/save")
     public String oficinaGuardar(@ModelAttribute Oficina oficina) {
-        oficinaRepository.insertarOficina(oficina.getNOMBRE(), oficina.getDIRECCION());
-        return "redirect:/oficinas";
+        oficinaRepository.insertarOficina(oficina.getNOMBRE(), oficina.getDIRECCION(), oficina.getNUMEROPA(), oficina.getIDGERENTE());
+        return "redirect:/usuariosEmpleados";
     }
 
     @GetMapping("/oficinas/{id}/edit")
@@ -48,7 +53,7 @@ public class OficinaController {
 
     @PostMapping("/oficinas/{id}/edit/save")
     public String oficinaEditarGuardar(@PathVariable("id") int id, @ModelAttribute Oficina oficina) {
-        oficinaRepository.actualizarOficina(((int) id), oficina.getNOMBRE(), oficina.getDIRECCION());
+        oficinaRepository.actualizarOficina(((int) id), oficina.getNOMBRE(), oficina.getDIRECCION(), oficina.getNUMEROPA(), oficina.getIDGERENTE());
         return "redirect:/oficinas";
     }
 

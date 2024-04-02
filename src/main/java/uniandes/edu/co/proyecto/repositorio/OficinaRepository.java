@@ -21,13 +21,13 @@ public interface OficinaRepository extends JpaRepository<Oficina,Integer>{
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO OFICINAS (IDOFICINA, NOMBRE, DIRECCION) VALUES (oficinas_sequence.NEXTVAL, :NOMBRE, :DIRECCION)", nativeQuery=true)
-        void insertarOficina(@Param("NOMBRE") String NOMBRE, @Param("DIRECCION") String DIRECCION );
+    @Query(value = "INSERT INTO OFICINAS (IDOFICINA, NOMBRE, DIRECCION, NUMEROPA, IDGERENTE ) VALUES (oficinas_sequence.NEXTVAL, :NOMBRE, :DIRECCION, :NUMEROPA, :IDGERENTE)", nativeQuery=true)
+        void insertarOficina(@Param("NOMBRE") String NOMBRE, @Param("DIRECCION") String DIRECCION,  @Param("NUMEROPA") int NUMEROPA,  @Param("IDGERENTE") int IDGERENTE);
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE OFICINAS SET NOMBRE = :NOMBRE, DIRECCION = :DIRECCION WHERE IDOFICINA = :IDOFICINA", nativeQuery=true)
-        void actualizarOficina(@Param("IDOFICINA") int IDOFICINA,@Param("NOMBRE") String NOMBRE, @Param("DIRECCION") String DIRECCION);
+    @Query(value = "UPDATE OFICINAS SET NOMBRE = :NOMBRE, DIRECCION = :DIRECCION, NUMEROPA = :NUMEROPA, IDGERENTE  = :IDGERENTE WHERE IDOFICINA = :IDOFICINA", nativeQuery=true)
+        void actualizarOficina(@Param("IDOFICINA") int IDOFICINA,@Param("NOMBRE") String NOMBRE, @Param("DIRECCION") String DIRECCION, @Param("NUMEROPA") int NUMEROPA,  @Param("IDGERENTE") int IDGERENTE);
 
     @Modifying
     @Transactional

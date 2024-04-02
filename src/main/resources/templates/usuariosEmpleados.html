@@ -14,7 +14,7 @@
             <!-- Acciones según el cargo -->
             <div class="text-center">
                 <a th:href="@{/identificaciones/new(tipo='empleado')}" th:if="${cargo == 'Cajero' or cargo == 'GerenteOficina' or cargo == 'GerenteGeneral'}" class="btn btn-primary btn-action">Crear Empleado</a>
-                <button th:if="${cargo == 'Cajero' or cargo == 'GerenteOficina' or cargo == 'GerenteGeneral'}" class="btn btn-primary btn-action">Crear Oficina</button>
+                <a th:href="@{/oficinas/new}" th:if="${cargo == 'Cajero' or cargo == 'GerenteOficina' or cargo == 'GerenteGeneral'}" class="btn btn-primary btn-action">Crear Oficina</a>
                 <button th:if="${cargo == 'Cajero' or cargo == 'GerenteOficina' or cargo == 'GerenteGeneral'}" class="btn btn-primary btn-action">Crear o Borrar punto de atención</button>
 
                 <!-- Botones adicionales para Gerente de Oficina -->
