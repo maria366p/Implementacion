@@ -75,7 +75,7 @@ INSERT INTO UsuariosClientes (id, password) VALUES (5, 'pass345');
 
 -- Insert para la tabla PuntosAtencion
 INSERT INTO PuntosAtencion (IDPuntoAtencion, Tipo, UbicacionGeografica, Estado, IDOficina) VALUES (1, 'Personalizada', 'Centro Comercial 1', 'en revision', 1);
-INSERT INTO PuntosAtencion (IDPuntoAtencion, Tipo, UbicacionGeografica, Estado, IDOficina) VALUES (2, 'CajeroAutomatico', 'Calle 50 con 10', 'mantenimiento', 1);
+INSERT INTO PuntosAtencion (IDPuntoAtencion, Tipo, UbicacionGeografica, Estado, IDOficina) VALUES (2, 'CajeroAutomatico', 'Calle 50 con 10', 'mantenimiento', 2);
 INSERT INTO PuntosAtencion (IDPuntoAtencion, Tipo, UbicacionGeografica, Estado, IDOficina) VALUES (3, 'Digital', 'Internet', 'funcionando', NULL);
 INSERT INTO PuntosAtencion (IDPuntoAtencion, Tipo, UbicacionGeografica, Estado, IDOficina) VALUES (4, 'Personalizada', 'Centro Comercial 2', 'funcionando', 2);
 INSERT INTO PuntosAtencion (IDPuntoAtencion, Tipo, UbicacionGeografica, Estado, IDOficina) VALUES (5, 'CajeroAutomatico', 'Calle 90 con 15', 'funcionando', 2);
@@ -83,7 +83,7 @@ INSERT INTO PuntosAtencion (IDPuntoAtencion, Tipo, UbicacionGeografica, Estado, 
 -- Insert para la tabla OperacionesCuentas
 INSERT INTO OperacionesCuentas (IDOperacionCu, Monto, Fecha, TipoOC, idCuenta, idPuntoAtencion) VALUES (1, 500.00, TO_DATE('2023-03-15', 'YYYY-MM-DD'), 'Consignar', 101, 1);
 INSERT INTO OperacionesCuentas (IDOperacionCu, Monto, Fecha, TipoOC, idCuenta, idPuntoAtencion) VALUES (2, 200.00, TO_DATE('2023-03-16', 'YYYY-MM-DD'), 'Retirar', 102, 2);
-INSERT INTO OperacionesCuentas (IDOperacionCu, Monto, Fecha, TipoOC, idCuenta, idPuntoAtencion) VALUES (3, 1000.00, TO_DATE('2023-03-17', 'YYYY-MM-DD'), 'Consignar', 103, 1);
+INSERT INTO OperacionesCuentas (IDOperacionCu, Monto, Fecha, TipoOC, idCuenta, idPuntoAtencion) VALUES (3, 1000.00, TO_DATE('2023-03-17', 'YYYY-MM-DD'), 'Consignar', 103, 2);
 INSERT INTO OperacionesCuentas (IDOperacionCu, Monto, Fecha, TipoOC, idCuenta, idPuntoAtencion) VALUES (4, 300.00, TO_DATE('2023-03-18', 'YYYY-MM-DD'), 'Retirar', 104, 2);
 INSERT INTO OperacionesCuentas (IDOperacionCu, Monto, Fecha, TipoOC, idCuenta, idPuntoAtencion) VALUES (5, 1500.00, TO_DATE('2023-03-19', 'YYYY-MM-DD'), 'Consignar', 105, 1);
 
@@ -92,7 +92,7 @@ INSERT INTO Prestamos (IDPrestamo, Monto, Interes, NumeroCuotas, DiaPagoCuota, V
 INSERT INTO Prestamos (IDPrestamo, Monto, Interes, NumeroCuotas, DiaPagoCuota, ValorCuota, EstadoP, IDCliente) VALUES (2, 20000, 0.05, 24, TO_DATE('2023-02-15', 'YYYY-MM-DD'), 900, 'Aprobado', 2);
 INSERT INTO Prestamos (IDPrestamo, Monto, Interes, NumeroCuotas, DiaPagoCuota, ValorCuota, EstadoP, IDCliente) VALUES (3, 15000, 0.05, 12, TO_DATE('2023-03-15', 'YYYY-MM-DD'), 1300, 'Aprobado', 3);
 INSERT INTO Prestamos (IDPrestamo, Monto, Interes, NumeroCuotas, DiaPagoCuota, ValorCuota, EstadoP, IDCliente) VALUES (4, 5000, 0.05, 6, TO_DATE('2023-04-15', 'YYYY-MM-DD'), 850, 'Aprobado', 4);
-INSERT INTO Prestamos (IDPrestamo, Monto, Interes, NumeroCuotas, DiaPagoCuota, ValorCuota, EstadoP, IDCliente) VALUES (5, 8000, 0.05, 10, TO_DATE('2023-05-15', 'YYYY-MM-DD'), 820, 'Aprobado', 5);
+INSERT INTO Prestamos (IDPrestamo, Monto, Interes, NumeroCuotas, DiaPagoCuota, ValorCuota, EstadoP, IDCliente) VALUES (5, 8000, 0.05, 10, TO_DATE('2023-05-15', 'YYYY-MM-DD'), 820, 'Aprobado', 1);
 
 -- Insert para la tabla OperacionesPrestamos
 INSERT INTO OperacionesPrestamos (IDOperacionPrestamo, Tipo, Monto, Fecha, IDPrestamo, IDPuntoAtencion) VALUES (1, 'PagarCuota', 850, TO_DATE('2023-04-15', 'YYYY-MM-DD'), 1, 1);

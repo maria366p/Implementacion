@@ -127,7 +127,7 @@ CREATE TABLE Prestamos (
     DiaPagoCuota DATE,
     ValorCuota INTEGER,
     EstadoP VARCHAR2 (50),
-    CONSTRAINT estadoP CHECK ( EstadoP in ('Solicitado', 'Aprobado', 'Rechazado', 'Pagado')),
+    CONSTRAINT estadoP CHECK ( EstadoP in ('Solicitado', 'Aprobado', 'Rechazado', 'Pagado', 'Cerrado')),
     IDCliente Integer,
     CONSTRAINT PRESTAMO_CLIENTE_FK FOREIGN KEY (IDCliente) REFERENCES Clientes (IDCliente)
     
@@ -158,3 +158,29 @@ CREATE TABLE OperacionesTransferencias (
     IDPuntoAtencion INTEGER,
     CONSTRAINT OPERACIONTRANSFERENCIA_PUNTOATENCION_FK FOREIGN KEY (IDPuntoAtencion) REFERENCES PuntosAtencion (IDPuntoAtencion)
 );
+
+
+DROP SEQUENCE personas_sequence;
+DROP SEQUENCE cargos_sequence;
+DROP SEQUENCE cuentas_sequence;
+DROP SEQUENCE oficinas_sequence;
+DROP SEQUENCE operacionescuentas_sequence;
+DROP SEQUENCE operacionesprestamos_sequence;
+DROP SEQUENCE operacionestransferencias_sequence;
+DROP SEQUENCE prestamos_sequence;
+DROP SEQUENCE puntoatencion_sequence;
+
+DROP TABLE OperacionesTransferencias;
+DROP TABLE OperacionesPrestamos;
+DROP TABLE OperacionesCuentas;
+DROP TABLE UsuariosClientes;
+DROP TABLE UsuariosEmpleados;
+DROP TABLE Prestamos;
+DROP TABLE Cuentas;
+DROP TABLE Clientes;
+DROP TABLE Empleados;
+DROP TABLE PuntosAtencion;
+DROP TABLE Personas;
+DROP TABLE Oficinas;
+DROP TABLE Cargos;
+DROP TABLE Identificaciones;
