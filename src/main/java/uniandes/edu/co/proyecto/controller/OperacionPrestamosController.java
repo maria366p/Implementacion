@@ -30,7 +30,7 @@ public class OperacionPrestamosController {
 
     @PostMapping("/operacionPrestamos/new/save")
     public String operacionPrestamoGuardar(@ModelAttribute OperacionPrestamo operacionPrestamo) {
-        operacionPrestamoRepository.insertarOperacionPrestamo(operacionPrestamo.getTipo().name(), operacionPrestamo.getMonto(), operacionPrestamo.getFecha(), operacionPrestamo.getIDPRESTAMO().getIDPRESTAMO(),operacionPrestamo.getIDPUNTOATENCION().getIdPuntoAtencion());
+        operacionPrestamoRepository.insertarOperacionPrestamo(operacionPrestamo.getTipo().name(), operacionPrestamo.getMonto(), operacionPrestamo.getFecha(), operacionPrestamo.getIDPRESTAMO().getIDPRESTAMO(),operacionPrestamo.getIDPUNTOATENCION().getIDPUNTOATENCION());
         return "redirect:/operacionPrestamos";
     }
 
@@ -47,7 +47,7 @@ public class OperacionPrestamosController {
 
     @PostMapping("/operacionPrestamos/{id}/edit/save")
     public String operacionPrestamoEditarGuardar(@PathVariable("id") int id, @ModelAttribute OperacionPrestamo operacionPrestamo) {
-        operacionPrestamoRepository.actualizarOperacionPrestamo(((int) id), operacionPrestamo.getTipo().name(), operacionPrestamo.getMonto(), operacionPrestamo.getFecha(), operacionPrestamo.getIDPRESTAMO().getIDPRESTAMO(),operacionPrestamo.getIDPUNTOATENCION().getIdPuntoAtencion());
+        operacionPrestamoRepository.actualizarOperacionPrestamo(((int) id), operacionPrestamo.getTipo().name(), operacionPrestamo.getMonto(), operacionPrestamo.getFecha(), operacionPrestamo.getIDPRESTAMO().getIDPRESTAMO(),operacionPrestamo.getIDPUNTOATENCION().getIDPUNTOATENCION());
         return "redirect:/operacionPrestamos";
     }
 

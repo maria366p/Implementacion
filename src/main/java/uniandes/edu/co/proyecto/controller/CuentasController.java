@@ -11,11 +11,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import uniandes.edu.co.proyecto.modelo.Cuenta;
 import uniandes.edu.co.proyecto.repositorio.CuentaRepository;
-
+import uniandes.edu.co.proyecto.repositorio.ClienteRepository;
 @Controller
 public class CuentasController {
     @Autowired
     private CuentaRepository cuentaRepository;
+
+    @Autowired
+    private ClienteRepository clienteRepository;
 
     @GetMapping("/cuentas")
     public String cuentas (Model model){
@@ -26,13 +29,14 @@ public class CuentasController {
      @GetMapping("/cuentas/new")
     public String cuentaForm(Model model) {
         model.addAttribute("cuenta", new Cuenta());
+        model.addAttribute("clientes", clienteRepository.darClientes());
         return "cuentaNuevo";
     }
 
     @PostMapping("/cuentas/new/save")
     public String cuentaGuardar(@ModelAttribute Cuenta cuenta) {
-        cuentaRepository.insertarCuenta(cuenta.getTipoCuenta().name(), cuenta.getSaldo(), cuenta.getFechaUltimaTransaccion(), cuenta.getIDCLIENTE().getIDCLIENTE(), cuenta.getEstadoCuenta().name());
-        return "redirect:/cuentas";
+        cuentaRepository.insertarCuenta(cuenta.getTIPOCUENTA().name(), cuenta.getSALDO(), cuenta.getFECHAULTIMATRANSACCION(), cuenta.getIDCLIENTE().getIDCLIENTE(), cuenta.getESTADOCUENTA().name());
+        return "redirect:/usuariosEmpleados";
     }
 
     @GetMapping("/cuentas/{id}/edit")
@@ -48,7 +52,7 @@ public class CuentasController {
 
     @PostMapping("/cuentas/{id}/edit/save")
     public String cuentaEditarGuardar(@PathVariable("id") int id, @ModelAttribute Cuenta cuenta) {
-        cuentaRepository.actualizarCuenta(((int) id), cuenta.getTipoCuenta().name(), cuenta.getSaldo(), cuenta.getFechaUltimaTransaccion(), cuenta.getIDCLIENTE().getIDCLIENTE(), cuenta.getEstadoCuenta().name());
+        cuentaRepository.actualizarCuenta(((int) id), cuenta.getTIPOCUENTA().name(), cuenta.getSALDO(), cuenta.getFECHAULTIMATRANSACCION(), cuenta.getIDCLIENTE().getIDCLIENTE(), cuenta.getESTADOCUENTA().name());
         return "redirect:/cuentas";
     }
 

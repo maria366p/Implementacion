@@ -15,12 +15,13 @@
             <div class="text-center">
                 <a th:href="@{/identificaciones/new(tipo='empleado')}" th:if="${cargo == 'Cajero' or cargo == 'GerenteOficina' or cargo == 'GerenteGeneral'}" class="btn btn-primary btn-action">Crear Empleado</a>
                 <a th:href="@{/oficinas/new}" th:if="${cargo == 'Cajero' or cargo == 'GerenteOficina' or cargo == 'GerenteGeneral'}" class="btn btn-primary btn-action">Crear Oficina</a>
-                <button th:if="${cargo == 'Cajero' or cargo == 'GerenteOficina' or cargo == 'GerenteGeneral'}" class="btn btn-primary btn-action">Crear o Borrar punto de atención</button>
+                <a th:href="@{/puntosAtencion/new}" th:if="${cargo == 'Cajero' or cargo == 'GerenteOficina' or cargo == 'GerenteGeneral'}" class="btn btn-primary btn-action">Crear punto de atención</a>
+                <a th:href="@{/puntosAtencion}" th:if="${cargo == 'Cajero' or cargo == 'GerenteOficina' or cargo == 'GerenteGeneral'}" class="btn btn-primary btn-action">Lista de Puntos de Atencion</a>
 
                 <!-- Botones adicionales para Gerente de Oficina -->
                 <div th:if="${cargo == 'GerenteOficina'}">
                     <a th:href="@{/identificaciones/new(tipo='cliente')}" class="btn btn-primary btn-action">Crear Cliente</a>
-                    <button class="btn btn-primary btn-action">Crear Cuenta</button>
+                    <a th:href="@{/cuentas/new}" class="btn btn-primary btn-action">Crear Cuenta</a>
                     <button class="btn btn-primary btn-action">Cambiar estado Cuenta</button>
                     <button class="btn btn-primary btn-action">Crear Préstamo</button>
                     <button class="btn btn-primary btn-action">Actualizar Préstamo a cerrado</button>

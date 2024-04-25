@@ -18,6 +18,7 @@ public class PuntoAtencion {
     private int IDPUNTOATENCION;
     @Enumerated(EnumType.STRING)
     private TipoA TIPO;
+
     private String UBICACIONGEOGRAFICA;
     private String ESTADO;
 
@@ -38,27 +39,27 @@ public class PuntoAtencion {
     public PuntoAtencion(){
         ;
     }
-    public TipoA getTipo() {
+    public TipoA getTIPO() {
         return TIPO;
     }
 
-    public void setTipo(TipoA TIPO) {
+    public void setTIPO(TipoA TIPO) {
         this.TIPO = TIPO;
     }
 
-    public String getUbicacionGeografica() {
+    public String getUBICACIONGEOGRAFICA() {
         return UBICACIONGEOGRAFICA;
     }
 
-    public void setUbicacionGeografica(String UBICACIONGEOGRAFICA) {
+    public void setUBICACIONGEOGRAFICA(String UBICACIONGEOGRAFICA) {
         this.UBICACIONGEOGRAFICA = UBICACIONGEOGRAFICA;
     }
 
-    public String getEstado() {
+    public String getESTADO() {
         return ESTADO;
     }
 
-    public void setEstado(String ESTADO) {
+    public void setESTADO(String ESTADO) {
         this.ESTADO = ESTADO;
     }
 
@@ -70,7 +71,7 @@ public class PuntoAtencion {
         IDOFICINA = iDOficina;
     }
 
-    public int getIdPuntoAtencion() {
+    public int getIDPUNTOATENCION() {
         return IDPUNTOATENCION;
     }
 

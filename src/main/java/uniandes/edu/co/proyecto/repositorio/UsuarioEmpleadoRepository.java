@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import jakarta.transaction.Transactional;
-import uniandes.edu.co.proyecto.modelo.Persona;
+
 import uniandes.edu.co.proyecto.modelo.UsuarioEmpleado;
 
 

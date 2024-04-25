@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import uniandes.edu.co.proyecto.modelo.Oficina;
 import uniandes.edu.co.proyecto.repositorio.OficinaRepository;
-import uniandes.edu.co.proyecto.repositorio.PersonaRepository;
 import uniandes.edu.co.proyecto.repositorio.UsuarioEmpleadoRepository;
 
 @Controller

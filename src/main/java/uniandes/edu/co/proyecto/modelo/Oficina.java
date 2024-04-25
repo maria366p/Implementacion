@@ -34,7 +34,7 @@ public class Oficina {
         ;
     }
 
-    public int getIDOFICINA() {
+    public Integer getIDOFICINA() {
         return IDOFICINA;
     }
 

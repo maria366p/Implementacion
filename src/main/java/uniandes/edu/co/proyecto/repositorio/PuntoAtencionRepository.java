@@ -1,6 +1,7 @@
 package uniandes.edu.co.proyecto.repositorio;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -21,8 +22,9 @@ public interface PuntoAtencionRepository extends JpaRepository<PuntoAtencion, In
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO PUNTOSATENCION (IDPUNTOATENCION, TIPO, UBICACIONGEOGRAFICA, ESTADO, IDOFICINA) VALUES (puntoatencion_sequence.NEXTVAL, :TIPO, :UBICACIONGEOGRAFICA, :ESTADO, :IDOFICINA)", nativeQuery=true)
-        void insertarPuntoAtencion(@Param("TIPO") String TIPO, @Param("UBICACIONGEOGRAFICA") String UBICACIONGEOGRAFICA, @Param("ESTADO") String  ESTADO,  @Param("IDOFICINA") int IDOFICINA);
+    @Query(value = "INSERT INTO PUNTOSATENCION (IDPUNTOATENCION, TIPO, UBICACIONGEOGRAFICA, ESTADO, IDOFICINA) VALUES (puntoatencion_sequence.NEXTVAL, :TIPO, :UBICACIONGEOGRAFICA, :ESTADO, NULLIF(:IDOFICINA, 0))", nativeQuery = true)
+    void insertarPuntoAtencion(@Param("TIPO") String TIPO, @Param("UBICACIONGEOGRAFICA") String UBICACIONGEOGRAFICA, @Param("ESTADO") String ESTADO, @Param("IDOFICINA") Integer IDOFICINA);
+
 
     @Modifying
     @Transactional 
@@ -33,5 +35,23 @@ public interface PuntoAtencionRepository extends JpaRepository<PuntoAtencion, In
     @Transactional
     @Query(value = "DELETE FROM PUNTOSATENCION WHERE IDPUNTOATENCION = :IDPUNTOATENCION", nativeQuery=true)
         void eliminarPuntoAtencion(@Param("IDPUNTOATENCION") int IDPUNTOATENCION);
+
+     //QUERY que da los puntos de atencion asociados a una operacion de cuenta
+     @Query(value = "SELECT UNIQUE(P.IDPUNTOATENCION)\r\n"+ 
+     "FROM PUNTOSATENCION P \r\n"+
+     "INNER JOIN OPERACIONESCUENTAS OC ON P.IDPUNTOATENCION = OC.IDPUNTOATENCION\r\n"+
+     "WHERE P.IDPUNTOATENCION = :IDPUNTOATENCION \r\n"
+     , nativeQuery = true)
+     Integer darPuntosOC(@Param("IDPUNTOATENCION") Integer IDPUNTOATENCION);
+
+     //QUERY que da los puntos de atencion asociados a una operacion de prestamo
+
+     @Query(value = "SELECT UNIQUE(P.IDPUNTOATENCION)\r\n"+ 
+     "FROM PUNTOSATENCION P \r\n"+
+     "INNER JOIN OPERACIONESPRESTAMOS OP ON P.IDPUNTOATENCION = OP.IDPUNTOATENCION\r\n"+
+     "WHERE P.IDPUNTOATENCION = :IDPUNTOATENCION \r\n"
+     , nativeQuery = true)
+     Integer darPuntosOP(@Param("IDPUNTOATENCION") Integer IDPUNTOATENCION);
+
     
 }

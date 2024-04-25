@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Lista de Bares</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+    <script th:src="@{/css/jquery.min.js}"></script>
+    <script th:src="@{/css/bootstrap.min.js}"></script>
+</head>
+
+<body>
+    <div class="text-center">
+        <h1>Lista de Bares</h1>
+
+        <table class="table table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Tipo</th>
+                    <th>Ubicacion Geografica</th>
+                    <th>Estado</th>
+                    <th>ID oficina</th>
+                </tr>
+            </thead>
+            <th:block th:each="puntoAtencion : ${puntosAtencion}">
+                <tr>
+                    <td th:text="${puntoAtencion.IDPUNTOATENCION}"></td>
+                    <td th:text="${puntoAtencion.TIPO}"></td>
+                    <td th:text="${puntoAtencion.UBICACIONGEOGRAFICA}"></td>
+                    <td th:text="${puntoAtencion.ESTADO}"></td>
+                    <td th:text="${puntoAtencion.IDOFICINA}"></td>
+                    <td>
+                        <a th:href="@{puntosAtencion/{id}/delete(id=${puntoAtencion.IDPUNTOATENCION})}"
+                            onclick="return confirm('¿Estás seguro de borrar este punto de atención?')">Borrar</a>
+                    </td>
+                </tr>
+            </th:block>
+
+        </table>
+        <div>
+            <a th:href='@{/}' class="btn btn-primary">Volver Atrás</a>
+        </div>
+        <br />
+
+    </div>
+</body>
+
+</html>

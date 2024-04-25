@@ -97,14 +97,15 @@ CREATE TABLE Identificaciones (
 );
 
 CREATE TABLE PuntosAtencion (
-    IDPuntoAtencion Integer PRIMARY KEY,
-    Tipo VARCHAR2(50),
-    UbicacionGeografica VARCHAR2(500),
-    Estado varchar(100),
+    IDPuntoAtencion INTEGER PRIMARY KEY,
+    Tipo VARCHAR2(50) NOT NULL,
+    UbicacionGeografica VARCHAR2(500) NOT NULL,
+    Estado VARCHAR(100) NOT NULL,
     IDOficina INTEGER,
-    CONSTRAINT PUNTOATENCION_OFICINA_FK FOREIGN KEY (IDOficina) REFERENCES oficinas (IDOficina),
-    CONSTRAINT tipoA CHECK(Tipo in ('Personalizada', 'CajeroAutomatico', 'Digital'))
+    CONSTRAINT PUNTOATENCION_OFICINA_FK FOREIGN KEY (IDOficina) REFERENCES Oficinas (IDOficina),
+    CONSTRAINT tipoA CHECK (Tipo IN ('Personalizada', 'CajeroAutomatico', 'Digital'))
 );
+
 
 CREATE TABLE OperacionesCuentas (
     IDOperacionCu Integer PRIMARY KEY,

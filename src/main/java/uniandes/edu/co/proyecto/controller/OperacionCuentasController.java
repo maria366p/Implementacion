@@ -30,7 +30,7 @@ public class OperacionCuentasController {
 
     @PostMapping("/operacionCuentas/new/save")
     public String operacionCuentaGuardar(@ModelAttribute OperacionCuenta operacionCuenta) {
-        operacionCuentaRepository.insertarOperacionCuenta(operacionCuenta.getTipoOc().name(),  operacionCuenta.getMonto(), operacionCuenta.getFecha(), operacionCuenta.getIDCUENTA().getIDCUENTA(), operacionCuenta.getIDPUNTOATENCION().getIdPuntoAtencion());
+        operacionCuentaRepository.insertarOperacionCuenta(operacionCuenta.getTipoOc().name(),  operacionCuenta.getMonto(), operacionCuenta.getFecha(), operacionCuenta.getIDCUENTA().getIDCUENTA(), operacionCuenta.getIDPUNTOATENCION().getIDPUNTOATENCION());
         return "redirect:/operacionCuentas";
     }
 
@@ -47,7 +47,7 @@ public class OperacionCuentasController {
 
     @PostMapping("/operacionCuentas/{id}/edit/save")
     public String operacionCuentaEditarGuardar(@PathVariable("id") int id, @ModelAttribute OperacionCuenta operacionCuenta) {
-        operacionCuentaRepository.actualizarOperacionCuenta(((int) id), operacionCuenta.getTipoOc().name(),  operacionCuenta.getMonto(), operacionCuenta.getFecha(), operacionCuenta.getIDCUENTA().getIDCUENTA(), operacionCuenta.getIDPUNTOATENCION().getIdPuntoAtencion());
+        operacionCuentaRepository.actualizarOperacionCuenta(((int) id), operacionCuenta.getTipoOc().name(),  operacionCuenta.getMonto(), operacionCuenta.getFecha(), operacionCuenta.getIDCUENTA().getIDCUENTA(), operacionCuenta.getIDPUNTOATENCION().getIDPUNTOATENCION());
         return "redirect:/operacionCuentas";
     }
 

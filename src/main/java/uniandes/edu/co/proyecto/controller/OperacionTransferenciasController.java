@@ -30,7 +30,7 @@ public class OperacionTransferenciasController {
 
     @PostMapping("/operacionTransferencias/new/save")
     public String operacionTransferenciaGuardar(@ModelAttribute OperacionTransferencia operacionTransferencia) {
-        operacionTransferenciaRepository.insertarOperacionTransferencia(operacionTransferencia.getMonto(), operacionTransferencia.getFecha(), operacionTransferencia.getIDCUENTAORIGEN().getIDCUENTA(), operacionTransferencia.getIDCUENTADESTINO().getIDCUENTA(), operacionTransferencia.getIDPUNTOATENCION().getIdPuntoAtencion());
+        operacionTransferenciaRepository.insertarOperacionTransferencia(operacionTransferencia.getMonto(), operacionTransferencia.getFecha(), operacionTransferencia.getIDCUENTAORIGEN().getIDCUENTA(), operacionTransferencia.getIDCUENTADESTINO().getIDCUENTA(), operacionTransferencia.getIDPUNTOATENCION().getIDPUNTOATENCION());
         return "redirect:/operacionTransferencias";
     }
 
@@ -47,7 +47,7 @@ public class OperacionTransferenciasController {
 
     @PostMapping("/operacionTransferencias/{id}/edit/save")
     public String operacionTransferenciaEditarGuardar(@PathVariable("id") int id, @ModelAttribute OperacionTransferencia operacionTransferencia) {
-        operacionTransferenciaRepository.actualizarOperacionTransferencia(((int) id), operacionTransferencia.getMonto(), operacionTransferencia.getFecha(), operacionTransferencia.getIDCUENTAORIGEN().getIDCUENTA(), operacionTransferencia.getIDCUENTADESTINO().getIDCUENTA(), operacionTransferencia.getIDPUNTOATENCION().getIdPuntoAtencion());
+        operacionTransferenciaRepository.actualizarOperacionTransferencia(((int) id), operacionTransferencia.getMonto(), operacionTransferencia.getFecha(), operacionTransferencia.getIDCUENTAORIGEN().getIDCUENTA(), operacionTransferencia.getIDCUENTADESTINO().getIDCUENTA(), operacionTransferencia.getIDPUNTOATENCION().getIDPUNTOATENCION());
         return "redirect:/operacionTransferencias";
     }
 

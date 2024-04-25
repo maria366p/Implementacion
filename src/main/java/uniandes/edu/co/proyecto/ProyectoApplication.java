@@ -1,30 +1,16 @@
 package uniandes.edu.co.proyecto;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import uniandes.edu.co.proyecto.modelo.Identificacion;
-import uniandes.edu.co.proyecto.modelo.OperacionPrestamo;
-import uniandes.edu.co.proyecto.modelo.Prestamo;
-import uniandes.edu.co.proyecto.repositorio.IdentificacionRepository;
-import uniandes.edu.co.proyecto.repositorio.OperacionPrestamoRepository;
-import uniandes.edu.co.proyecto.repositorio.PrestamoRepository;
 
-import java.sql.Date;
-import java.time.LocalDate;
-import java.util.Collection;
-import org.slf4j.Logger;
 
 
 @SpringBootApplication
 public class ProyectoApplication implements CommandLineRunner {
 
-	private static final Logger logger = LoggerFactory.getLogger(ProyectoApplication.class);
-
-	@Autowired
-	private IdentificacionRepository identificacionRepository;
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoApplication.class, args);
 	}

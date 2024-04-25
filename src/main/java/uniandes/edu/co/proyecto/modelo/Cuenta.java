@@ -45,35 +45,35 @@ public class Cuenta {
         ;
     }
 
-    public TipoCuenta getTipoCuenta() {
+    public TipoCuenta getTIPOCUENTA() {
         return TIPOCUENTA;
     }
 
-    public void setTipoCuenta(TipoCuenta TIPOCUENTA) {
+    public void setTIPOCUENTA(TipoCuenta TIPOCUENTA) {
         this.TIPOCUENTA = TIPOCUENTA;
     }
 
-    public float getSaldo() {
+    public float getSALDO() {
         return SALDO;
     }
 
-    public void setSaldo(float SALDO) {
+    public void setSALDO(float SALDO) {
         this.SALDO = SALDO;
     }
 
-    public Date getFechaUltimaTransaccion() {
+    public Date getFECHAULTIMATRANSACCION() {
         return FECHAULTIMATRANSACCION;
     }
 
-    public void setFechaUltimaTransaccion(Date FECHAULTIMATRANSACCION) {
+    public void setFECHAULTIMATRANSACCION(Date FECHAULTIMATRANSACCION) {
         this.FECHAULTIMATRANSACCION = FECHAULTIMATRANSACCION;
     }
 
-    public EstadoC getEstadoCuenta() {
+    public EstadoC getESTADOCUENTA() {
         return ESTADOCUENTA;
     }
 
-    public void setEstadoCuenta(EstadoC ESTADOCUENTA) {
+    public void setESTADOCUENTA(EstadoC ESTADOCUENTA) {
         this.ESTADOCUENTA = ESTADOCUENTA;
     }
 
