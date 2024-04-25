@@ -43,9 +43,7 @@
         <div class="mb-3">
             <label for="ESTADOCUENTA">Tipo:</label>
             <select class="form-control" id="ESTADOCUENTA" name="ESTADOCUENTA" required>
-                <option value="Activa" th:selected="${cuenta.ESTADOCUENTA eq 'Activa'}">Ahorros</option>
-                <option value="Cerrada" th:selected="${cuenta.ESTADOCUENTA eq 'Cerrada'}">Corriente </option>
-                <option value="Desactivada" th:selected="${cuenta.ESTADOCUENTA eq 'Desactivada'}">AFC</option>
+                <option value="Activa" th:selected="${cuenta.ESTADOCUENTA eq 'Activa'}">Activada</option>
             </select>
         </div>
 
