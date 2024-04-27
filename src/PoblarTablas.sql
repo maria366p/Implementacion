@@ -44,8 +44,8 @@ INSERT INTO Clientes (IDCliente, rolC) VALUES (5, 'Natural');
 -- Insert para la tabla Oficinas
 INSERT INTO Oficinas (IDOficina, Nombre, Direccion, NUMEROPA,  IDGERENTE) VALUES (1, 'Oficina Principal', 'Calle Principal 123',3, 2);
 INSERT INTO Oficinas (IDOficina, Nombre, Direccion, NUMEROPA,  IDGERENTE) VALUES (2, 'Sucursal Norte', 'Avenida Norte 456',4, 7);
-INSERT INTO Oficinas (IDOficina, Nombre, Direccion, NUMEROPA,  IDGERENTE) VALUES (3, 'Sucursal Sur', 'Carrera Sur 789',4,8);
-INSERT INTO Oficinas (IDOficina, Nombre, Direccion, NUMEROPA,  IDGERENTE) VALUES (4, 'Sucursal Este', 'Diagonal Este 101',8,9);
+INSERT INTO Oficinas (IDOficina, Nombre, Direccion, NUMEROPA,  IDGERENTE) VALUES (3, 'Sucursal Sur', 'Carrera Sur 789',4,2);
+INSERT INTO Oficinas (IDOficina, Nombre, Direccion, NUMEROPA,  IDGERENTE) VALUES (4, 'Sucursal Este', 'Diagonal Este 101',8,7);
 
 -- Insert para la tabla Empleados
 INSERT INTO Empleados (IDEMPLEADO, IDCargo, IDOficina) VALUES (1, 1, 1);
@@ -102,11 +102,11 @@ INSERT INTO OperacionesPrestamos (IDOperacionPrestamo, Tipo, Monto, Fecha, IDPre
 
 
 -- Insert para la tabla Cuentas
-INSERT INTO Cuentas (IDCuenta, TipoCuenta, Saldo, FechaUltimaTransaccion, idCliente, EstadoCuenta) VALUES (101, 'Ahorros', 5000.00, TO_DATE('2024-03-10', 'YYYY-MM-DD'), 1, 'Activa');
-INSERT INTO Cuentas (IDCuenta, TipoCuenta, Saldo, FechaUltimaTransaccion, idCliente, EstadoCuenta) VALUES (102, 'Corriente', 10000.00, TO_DATE('2024-03-11', 'YYYY-MM-DD'), 2, 'Activa');
-INSERT INTO Cuentas (IDCuenta, TipoCuenta, Saldo, FechaUltimaTransaccion, idCliente, EstadoCuenta) VALUES (103, 'AFC', 20000.00, TO_DATE('2024-03-12', 'YYYY-MM-DD'), 3, 'Activa');
-INSERT INTO Cuentas (IDCuenta, TipoCuenta, Saldo, FechaUltimaTransaccion, idCliente, EstadoCuenta) VALUES (104, 'Ahorros', 15000.00, TO_DATE('2024-03-13', 'YYYY-MM-DD'), 4, 'Desactivada');
-INSERT INTO Cuentas (IDCuenta, TipoCuenta, Saldo, FechaUltimaTransaccion, idCliente, EstadoCuenta) VALUES (105, 'Corriente', 30000.00, TO_DATE('2024-03-14', 'YYYY-MM-DD'), 5, 'Cerrada');
+INSERT INTO Cuentas (IDCuenta, TipoCuenta, Saldo, FechaUltimaTransaccion, idCliente, EstadoCuenta, IDGERENTE) VALUES (101, 'Ahorros', 5000.00, TO_DATE('2024-03-10', 'YYYY-MM-DD'), 1, 'Activa',2);
+INSERT INTO Cuentas (IDCuenta, TipoCuenta, Saldo, FechaUltimaTransaccion, idCliente, EstadoCuenta, IDGERENTE) VALUES (102, 'Corriente', 10000.00, TO_DATE('2024-03-11', 'YYYY-MM-DD'), 2, 'Activa',7);
+INSERT INTO Cuentas (IDCuenta, TipoCuenta, Saldo, FechaUltimaTransaccion, idCliente, EstadoCuenta, IDGERENTE) VALUES (103, 'AFC', 20000.00, TO_DATE('2024-03-12', 'YYYY-MM-DD'), 3, 'Activa',2);
+INSERT INTO Cuentas (IDCuenta, TipoCuenta, Saldo, FechaUltimaTransaccion, idCliente, EstadoCuenta, IDGERENTE) VALUES (104, 'Ahorros', 15000.00, TO_DATE('2024-03-13', 'YYYY-MM-DD'), 4, 'Desactivada',7);
+INSERT INTO Cuentas (IDCuenta, TipoCuenta, Saldo, FechaUltimaTransaccion, idCliente, EstadoCuenta, IDGERENTE) VALUES (105, 'Corriente', 30000.00, TO_DATE('2024-03-14', 'YYYY-MM-DD'), 5, 'Cerrada',2);
 
 -- Insert para la tabla OperacionesTransferencias
 INSERT INTO OperacionesTransferencias (IDOperacionTrans, Monto, Fecha, IDCuentaOrigen, IDCuentaDestino, IDPuntoAtencion) VALUES (1, 100.50, TO_DATE('2024-03-22', 'YYYY-MM-DD'), 101, 102, 3);

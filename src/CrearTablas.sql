@@ -51,6 +51,7 @@ CREATE TABLE Cuentas (
     FechaUltimaTransaccion DATE NOT NULL,
     idCliente INTEGER NOT NULL,
     EstadoCuenta VARCHAR2(30) NOT NULL,
+    IDGERENTE INTEGER NOT NULL,
     CONSTRAINT TipoCuenta CHECK (TipoCuenta in ('Ahorros', 'Corriente', 'AFC')),
     CONSTRAINT EstadoCuenta CHECK (EstadoCuenta in ('Activa', 'Cerrada', 'Desactivada')),
     CONSTRAINT IDCliente FOREIGN KEY (IDCliente) REFERENCES Clientes (IDCliente)
@@ -122,11 +123,11 @@ CREATE TABLE OperacionesCuentas (
 
 CREATE TABLE Prestamos (
     IDPrestamo INTEGER PRIMARY KEY,
-    Monto INTEGER,
+    Monto Integer,
     Interes Float,
     NumeroCuotas INTEGER,
     DiaPagoCuota DATE,
-    ValorCuota INTEGER,
+    ValorCuota FLOAT,
     EstadoP VARCHAR2 (50),
     CONSTRAINT estadoP CHECK ( EstadoP in ('Solicitado', 'Aprobado', 'Rechazado', 'Pagado', 'Cerrado')),
     IDCliente Integer,

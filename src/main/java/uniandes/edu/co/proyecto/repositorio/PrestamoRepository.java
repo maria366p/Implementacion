@@ -23,15 +23,20 @@ public interface PrestamoRepository extends JpaRepository<Prestamo, Integer>{
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO PRESTAMOS (IDPRESTAMO, MONTO, INTERES, NUMEROCUOTAS, DIAPAGOCUOTA, VALORCUOTA, ESTADOP, IDCLIENTE) VALUES (operacionestransferencias_sequence.NEXTVAL, :MONTO, :INTERES, :NUMEROCUOTAS, :DIAPAGOCUOTA, :VALORCUOTA, :ESTADOP, :IDCLIENTE)", nativeQuery=true)
-        void insertarPrestamo( @Param("MONTO") float MONTO, @Param("INTERES") Float  INTERES, @Param("NUMEROCUOTAS") int NUMEROCUOTAS,  @Param("DIAPAGOCUOTA") Date DIAPAGOCUOTA, @Param("VALORCUOTA") int VALORCUOTA, @Param("ESTADOP") String ESTADOP, @Param("IDCLIENTE") int IDCLIENTE);
+        void insertarPrestamo( @Param("MONTO") int MONTO, @Param("INTERES") Float  INTERES, @Param("NUMEROCUOTAS") int NUMEROCUOTAS,  @Param("DIAPAGOCUOTA") Date DIAPAGOCUOTA, @Param("VALORCUOTA") float VALORCUOTA, @Param("ESTADOP") String ESTADOP, @Param("IDCLIENTE") int IDCLIENTE);
 
     @Modifying
     @Transactional 
     @Query(value = "UPDATE PRESTAMOS SET  MONTO = :MONTO, INTERES = :INTERES, NUMEROCUOTAS = :NUMEROCUOTAS, DIAPAGOCUOTA =:DIAPAGOCUOTA, VALORCUOTA = :VALORCUOTA, ESTADOP = :ESTADOP, IDCLIENTE = :IDCLIENTE WHERE IDPRESTAMO = :IDPRESTAMO", nativeQuery=true)
-        void actualizarPrestamo(@Param("IDPRESTAMO") int IDPRESTAMO, @Param("MONTO") float MONTO, @Param("INTERES") Float  INTERES,  @Param("NUMEROCUOTAS") int NUMEROCUOTAS, @Param("DIAPAGOCUOTA") Date DIAPAGOCUOTA, @Param("VALORCUOTA") int VALORCUOTA, @Param("ESTADOP") String ESTADOP, @Param("IDCLIENTE") int IDCLIENTE );
+        void actualizarPrestamo(@Param("IDPRESTAMO") int IDPRESTAMO, @Param("MONTO") int MONTO, @Param("INTERES") Float  INTERES,  @Param("NUMEROCUOTAS") int NUMEROCUOTAS, @Param("DIAPAGOCUOTA") Date DIAPAGOCUOTA, @Param("VALORCUOTA") float VALORCUOTA, @Param("ESTADOP") String ESTADOP, @Param("IDCLIENTE") int IDCLIENTE );
 
     @Modifying
     @Transactional
     @Query(value = "DELETE FROM PRESTAMOS WHERE IDPRESTAMO = :IDPRESTAMO", nativeQuery=true)
         void eliminarPrestamo(@Param("IDPRESTAMO") int IDPRESTAMO);
+
+    @Modifying
+    @Transactional 
+    @Query(value = "UPDATE PRESTAMOS SET  ESTADOP = :ESTADOP WHERE IDPRESTAMO = :IDPRESTAMO", nativeQuery=true)
+        void actualizarEstado(@Param("IDPRESTAMO") int IDPRESTAMO, @Param("ESTADOP") String ESTADOP);
 }

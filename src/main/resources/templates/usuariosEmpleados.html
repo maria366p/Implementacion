@@ -22,14 +22,14 @@
                 <div th:if="${cargo == 'GerenteOficina'}">
                     <a th:href="@{/identificaciones/new(tipo='cliente')}" class="btn btn-primary btn-action">Crear Cliente</a>
                     <a th:href="@{/cuentas/new}" class="btn btn-primary btn-action">Crear Cuenta</a>
-                    <button class="btn btn-primary btn-action">Cambiar estado Cuenta</button>
+                    <a th:href="@{/cuentas}"  class="btn btn-primary btn-action">Cambiar estado Cuenta</a>
                     <a  th:href="@{/prestamos/new}" class="btn btn-primary btn-action">Crear Préstamo</a>
-                    <button class="btn btn-primary btn-action">Actualizar Préstamo a cerrado</button>
+                    <a th:href="@{/prestamos}" class="btn btn-primary btn-action">Actualizar Préstamo a cerrado</a>
                 </div>
 
                 <!-- Botones adicionales para Cajero -->
                 <div th:if="${cargo == 'Cajero'}">
-                    <button class="btn btn-primary btn-action">Registrar operación sobre cuenta</button>
+                    <a th:href="@{/operacionCuentas/new}" class="btn btn-primary btn-action">Registrar operación sobre cuenta</a>
                     <button class="btn btn-primary btn-action">Registro de Operación sobre préstamo</button>
                 </div>
             </div>

@@ -47,27 +47,27 @@ public class OperacionCuenta {
         ;
     }
 
-    public Float getMonto() {
+    public Float getMONTO() {
         return MONTO;
     }
 
-    public void setMonto(Float MONTO) {
+    public void setMONTO(Float MONTO) {
         this.MONTO = MONTO;
     }
 
-    public Date getFecha() {
+    public Date getFECHA() {
         return FECHA;
     }
 
-    public void setFecha(Date FECHA) {
+    public void setFECHA(Date FECHA) {
         this.FECHA = FECHA;
     }
 
-    public TipoOc getTipoOc() {
+    public TipoOc getTIPOOC() {
         return TIPOOC;
     }
 
-    public void setTipoOc(TipoOc TIPOOC) {
+    public void setTIPOOC(TipoOc TIPOOC) {
         this.TIPOOC = TIPOOC;
     }
 

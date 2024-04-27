@@ -15,11 +15,11 @@
 
         <div class="mb-3">
             <label for="MONTO" class="form-label">Monto:</label>
-            <input class="form-control" type="number" id="MONTO" name="MONTO" required th:value="${prestamo.MONTO}">
+            <input class="form-control" type="number" id="MONTO" name="MONTO" th:value="${prestamo.MONTO}">
         </div>
         <div class="mb-3">
             <label for="INTERES" class="form-label">Interés:</label>
-            <input class="form-control" type="number" id="INTERES" name="INTERES" required th:value="${prestamo.INTERES}">
+            <input class="form-control" type="number" id="INTERES" name="INTERES" required step = "0.01" th:value="${prestamo.INTERES}">
         </div>
         <div class="mb-3">
             <label for="NUMEROCUOTAS" class="form-label">Numero de Cuotas:</label>
@@ -31,7 +31,7 @@
         </div>
         <div class="mb-3">
             <label for="VALORCUOTA" class="form-label">Valor de la cuota:</label>
-            <input class="form-control" type="date" id="VALORCUOTA" name="VALORCUOTA" required th:value="${prestamo.VALORCUOTA}">
+            <input class="form-control" type="number" id="VALORCUOTA" name="VALORCUOTA" required step = "0.01" th:value="${prestamo.VALORCUOTA}">
         </div>
 
         <div class="mb-3">
@@ -46,6 +46,13 @@
             </select>
         </div>
 
+        <label class="col-form-label" for="IDCLIENTE">ID Cliente:</label>
+        <select class="form-control" id="IDCLIENTE" name="IDCLIENTE" required> 
+            <th:block th:each="cliente : ${clientes}">
+                <option th:value="${cliente.IDCLIENTE}" th:text="${cliente.IDCLIENTE}" th:selected="${prestamo != null && prestamo.IDCLIENTE != null && prestamo.IDCLIENTE == cliente.IDCLIENTE}" >
+                </option>
+            </th:block>
+        </select><br>
 
         
 

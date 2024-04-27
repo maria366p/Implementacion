@@ -19,11 +19,11 @@ public class Prestamo {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int IDPRESTAMO;
     
-    private float MONTO;
+    private int MONTO;
     private Float INTERES;
     private int NUMEROCUOTAS;
     private Date DIAPAGOCUOTA;
-    private int VALORCUOTA;
+    private float VALORCUOTA;
     @Enumerated(EnumType.STRING)
     private EstadoP ESTADOP;
 
@@ -32,7 +32,7 @@ public class Prestamo {
     @JoinColumn(name = "IDCLIENTE", referencedColumnName = "IDCLIENTE")
     private Cliente IDCLIENTE;
 
-    public Prestamo(float MONTO, Float INTERES, int NUMEROCUOTAS, Date DIAPAGOCUOTA, int VALORCUOTA,
+    public Prestamo(int MONTO, Float INTERES, int NUMEROCUOTAS, Date DIAPAGOCUOTA, float VALORCUOTA,
             EstadoP ESTADOP, Cliente iDCliente) {
         this.MONTO = MONTO;
         this.INTERES = INTERES;
@@ -47,51 +47,51 @@ public class Prestamo {
         ;
     }
     
-    public float getMonto() {
+    public int getMONTO() {
         return MONTO;
     }
 
-    public void setMonto(float MONTO) {
+    public void setMONTO(int MONTO) {
         this.MONTO = MONTO;
     }
 
-    public Float getInteres() {
+    public Float getINTERES() {
         return INTERES;
     }
 
-    public void setInteres(Float INTERES) {
+    public void setINTERES(Float INTERES) {
         this.INTERES = INTERES;
     }
 
-    public int getNumeroCuotas() {
+    public int getNUMEROCUOTAS() {
         return NUMEROCUOTAS;
     }
 
-    public void setNumeroCuotas(int NUMEROCUOTAS) {
+    public void setNUMEROCUOTAS(int NUMEROCUOTAS) {
         this.NUMEROCUOTAS = NUMEROCUOTAS;
     }
 
-    public Date getDiaPagoCuota() {
+    public Date getDIAPAGOCUOTA() {
         return DIAPAGOCUOTA;
     }
 
-    public void setDiaPagoCuota(Date DIAPAGOCUOTA) {
+    public void setDIAPAGOCUOTA(Date DIAPAGOCUOTA) {
         this.DIAPAGOCUOTA = DIAPAGOCUOTA;
     }
 
-    public int getValorCuota() {
+    public float getVALORCUOTA() {
         return VALORCUOTA;
     }
 
-    public void setValorCuota(int VALORCUOTA) {
+    public void setVALORCUOTA(float VALORCUOTA) {
         this.VALORCUOTA = VALORCUOTA;
     }
 
-    public EstadoP getEstadoP() {
+    public EstadoP getESTADOP() {
         return ESTADOP;
     }
 
-    public void setEstadoP(EstadoP ESTADOP) {
+    public void setESTADOP(EstadoP ESTADOP) {
         this.ESTADOP = ESTADOP;
     }
 

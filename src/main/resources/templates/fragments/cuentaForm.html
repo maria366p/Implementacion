@@ -47,6 +47,14 @@
             </select>
         </div>
 
+        <label class="col-form-label" for="IDGERENTE">ID del Gerente de la Oficina:</label>
+        <select class="form-control" id="IDGERENTE" name="IDGERENTE" required> 
+            <th:block th:each="IDgerente : ${gerentes}">
+                <option th:value="${IDgerente}" th:text="${IDgerente}" >
+                </option>
+            </th:block>
+        </select>
+
 
         <div class="d-flex justify-content-between">
             <input type="submit" value="Guardar" class="btn btn-primary">

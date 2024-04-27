@@ -27,18 +27,22 @@ public class Cuenta {
     @Enumerated(EnumType.STRING)
     private EstadoC ESTADOCUENTA;
 
+    //TODO: Hacer relacion cardinalidad del gerente
+    private int IDGERENTE;
+
     //Cuenta se lleva el atributo IDCLIENTE
     @ManyToOne
     @JoinColumn(name = "IDCLIENTE", referencedColumnName = "IDCLIENTE")
     private Cliente IDCLIENTE;
 
     public Cuenta(TipoCuenta TIPOCUENTA, float SALDO, Date FECHAULTIMATRANSACCION, EstadoC ESTADOCUENTA,
-            Cliente iDCliente) {
+            Cliente iDCliente, int IDGERENTE) {
         this.TIPOCUENTA = TIPOCUENTA;
         this.SALDO = SALDO;
         this.FECHAULTIMATRANSACCION = FECHAULTIMATRANSACCION;
         this.ESTADOCUENTA = ESTADOCUENTA;
         IDCLIENTE = iDCliente;
+        this.IDGERENTE = IDGERENTE;
     }
 
     public Cuenta(){
@@ -83,6 +87,14 @@ public class Cuenta {
 
     public void setIDCLIENTE(Cliente iDCliente) {
         IDCLIENTE = iDCliente;
+    }
+
+    public int getIDGERENTE() {
+        return IDGERENTE;
+    }
+
+    public void setIDGERENTE(int iDGERENTE) {
+        IDGERENTE = iDGERENTE;
     }
 
     public int getIDCUENTA() {
