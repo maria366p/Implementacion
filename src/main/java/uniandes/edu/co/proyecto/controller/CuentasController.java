@@ -100,9 +100,33 @@ public class CuentasController {
         
     }
 
+    @GetMapping("/cuentas/extracto")
+    public String todasLasCuentas(Model model,
+                                  @RequestParam(required = false) Integer idCuenta,
+                                  @RequestParam(required = false)  Date fechaInicio,
+                                  @RequestParam(required = false)  Date fechaFin) {
+        System.out.println("IDCUENTA"+idCuenta);
+        System.out.println("fechaInicio" + fechaInicio);
+        System.out.println("fechaFin" + fechaFin);
+        if (idCuenta != null && fechaInicio != null && fechaFin != null) {
+            System.out.println("IDCUENTA"+idCuenta);
+            System.out.println("fechaInicio" + fechaInicio);
+            System.out.println("fechaFin" + fechaFin);
+            model.addAttribute("idCuenta", idCuenta);
+            model.addAttribute("saldoI", cuentaRepository.obtenerSaldoInicial(idCuenta, fechaInicio));
+            model.addAttribute("Consignaciones", cuentaRepository.obtenerOperacionesConsignacionRetiro(idCuenta, fechaInicio, fechaFin));
+            model.addAttribute("transferencias", cuentaRepository.obtenerOperacionesTransferencias(idCuenta, fechaInicio, fechaFin));
+            model.addAttribute("saldoF", cuentaRepository.obtenerSaldoFinal(idCuenta));
+        }
+
+
+        return "extractoCuenta";
+    }
     
 
-     @GetMapping("/cuentas/new")
+    
+
+    @GetMapping("/cuentas/new")
     public String cuentaForm(Model model) {
         model.addAttribute("cuenta", new Cuenta());
         model.addAttribute("clientes", clienteRepository.darClientes());

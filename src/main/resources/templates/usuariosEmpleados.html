@@ -17,6 +17,7 @@
                 <a th:href="@{/oficinas/new}" th:if="${cargo == 'Cajero' or cargo == 'GerenteOficina' or cargo == 'GerenteGeneral'}" class="btn btn-primary btn-action">Crear Oficina</a>
                 <a th:href="@{/puntosAtencion/new}" th:if="${cargo == 'Cajero' or cargo == 'GerenteOficina' or cargo == 'GerenteGeneral'}" class="btn btn-primary btn-action">Crear punto de atención</a>
                 <a th:href="@{/puntosAtencion}" th:if="${cargo == 'Cajero' or cargo == 'GerenteOficina' or cargo == 'GerenteGeneral'}" class="btn btn-primary btn-action">Lista de Puntos de Atencion</a>
+                <a th:href="@{/cuentas/extracto}" th:if="${cargo == 'Cajero' or cargo == 'GerenteOficina' or cargo == 'GerenteGeneral'}" class="btn btn-primary btn-action">Extracto bancario</a>
 
                 <!-- Botones adicionales para Gerente de Oficina -->
                 <div th:if="${cargo == 'GerenteOficina'}">
@@ -25,6 +26,7 @@
                     <a th:href="@{/cuentas(tipo='gerenteOficina', IDEMP=${IDEMP} )}" class="btn btn-primary btn-action">Lista de Cuentas, cambiar Estado</a>
                     <a  th:href="@{/prestamos/new}" class="btn btn-primary btn-action">Crear Préstamo</a>
                     <a th:href="@{/prestamos}" class="btn btn-primary btn-action">Actualizar Préstamo a cerrado</a>
+                    <a th:href="@{/clientes(tipo='gerenteOficina', IDEMP=${IDEMP})}" class="btn btn-primary btn-action">Info Prestamos y Cuentas</a>
                 </div>
 
                 <!-- Botones adicionales para Cajero -->
@@ -35,6 +37,7 @@
                 <!-- Botones adicionales para Gerente General -->
                 <div th:if="${cargo == 'GerenteGeneral'}">
                     <a th:href="@{/cuentas(tipo='gerenteGeneral')}" class="btn btn-primary btn-action">Lista de Cuentas</a>
+                    <a th:href="@{/clientes(tipo='gerenteGeneral')}" class="btn btn-primary btn-action">Info Prestamos y Cuentas</a>
                 </div>
             </div>
         </div>

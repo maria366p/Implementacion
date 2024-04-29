@@ -2,6 +2,7 @@ package uniandes.edu.co.proyecto.repositorio;
 
 import java.sql.Date;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -83,6 +84,48 @@ public interface CuentaRepository extends JpaRepository<Cuenta,Integer> {
         "WHERE IDCUENTA = :IDCUENTA ", nativeQuery = true)
     void retirarSaldo(@Param("IDCUENTA") Integer IDCUENTA, @Param("SALDO") Float SALDO) ;
 
+
+    //TODO: Implementar los querys en el controller, y la vista, pensar como hacer la vista
+    @Query(value = "SELECT " +
+               "(CU.Saldo - " +
+               "(COALESCE((SELECT SUM(Monto) FROM OperacionesCuentas WHERE TipoOC = 'Retirar' AND idCuenta = CU.IDCuenta AND Fecha < :fechaInicio), 0)) " +
+               "+ (COALESCE((SELECT SUM(Monto) FROM OperacionesCuentas WHERE TipoOC = 'Consignar' AND idCuenta = CU.IDCuenta AND Fecha < :fechaInicio), 0))) " +
+               "AS SaldoInicial " +
+               "FROM Cuentas CU " +
+               "WHERE CU.IDCuenta = :idCuenta", nativeQuery = true)
+    Integer obtenerSaldoInicial(@Param("idCuenta") int idCuenta, @Param("fechaInicio") Date fechaInicio);
+
+    @Query(value = "SELECT " +
+                "CU.IDCuenta, " +
+                "O.Fecha, " +
+                "O.Monto, " +
+                "O.TipoOC " +
+                "FROM Cuentas CU " +
+                "JOIN OperacionesCuentas O ON CU.IDCuenta = O.idCuenta " +
+                "WHERE CU.IDCuenta = :idCuenta " +
+                "AND O.Fecha BETWEEN :fechaInicio AND :fechaFin " +
+                "AND O.TipoOC IN ('Consignar', 'Retirar') " +
+                "ORDER BY O.Fecha", nativeQuery = true)
+    List<Object[]> obtenerOperacionesConsignacionRetiro(@Param("idCuenta") int idCuenta, @Param("fechaInicio") Date fechaInicio, @Param("fechaFin") Date fechaFin);
+
+    @Query(value = "SELECT " +
+                "CU.IDCuenta, " +
+                "T.Fecha, " +
+                "T.Monto, " +
+                "CASE WHEN T.IDCuentaOrigen = CU.IDCuenta THEN 'Transferencia Enviada' " +
+                "ELSE 'Transferencia Recibida' END " +
+                "FROM Cuentas CU " +
+                "JOIN OperacionesTransferencias T ON CU.IDCuenta = T.IDCuentaOrigen OR CU.IDCuenta = T.IDCuentaDestino " +
+                "WHERE CU.IDCuenta = :idCuenta " +
+                "AND T.Fecha BETWEEN :fechaInicio AND :fechaFin " +
+                "ORDER BY T.Fecha", nativeQuery = true)
+    List<Object[]> obtenerOperacionesTransferencias(@Param("idCuenta") int idCuenta, @Param("fechaInicio") Date fechaInicio, @Param("fechaFin") Date fechaFin);
+
+    @Query(value = "SELECT " +
+                "CU.Saldo AS SaldoFinal " +
+                "FROM Cuentas CU " +
+                "WHERE CU.IDCuenta = :idCuenta", nativeQuery = true)
+    Integer obtenerSaldoFinal(@Param("idCuenta") int idCuenta);
 
 
 

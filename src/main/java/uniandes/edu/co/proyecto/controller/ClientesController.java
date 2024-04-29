@@ -22,8 +22,25 @@ public class ClientesController {
     @Autowired
     private PersonaRepository personaRepository; 
     @GetMapping("/clientes")
-    public String clientes (Model model){
-        model.addAttribute("clientes", clienteRepository.darClientes());
+    public String clientes (Model model, @RequestParam(required = false) Integer IDEMP, @RequestParam String tipo, @RequestParam(required = false) Integer IDCLI ){
+
+        if(tipo.equals("gerenteOficina")){
+            model.addAttribute("cuentas", clienteRepository.obtenerInfoCuentasPorGerenteOficina(IDEMP));
+            model.addAttribute("prestamos", clienteRepository.obtenerPrestamosPorGerenteOficina(IDEMP));
+
+        }
+        else if (tipo.equals("cliente")){
+            model.addAttribute("cuentas", clienteRepository.obtenerInfoCliente(IDCLI));
+            model.addAttribute("prestamos", clienteRepository.obtenerPrestamosCliente(IDCLI));
+
+        }
+        else if (tipo.equals("gerenteGeneral")){
+            model.addAttribute("cuentas", clienteRepository.obtenerInfoCuentasParaGerenteGeneral());
+            model.addAttribute("prestamos", clienteRepository.obtenerInfoPrestamosParaGerenteGeneral());
+
+        }
+       
+        model.addAttribute("tipo", tipo);
         return "clientes";
     }
 

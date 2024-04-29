@@ -44,7 +44,7 @@ public class OperacionPrestamosController {
         }
 
 
-        //TODO: asignar par actualizar el tipo pasado como requestparam, terminar cuotaForm, hacer extraForm, verficar si ambos se muestran los formularios bien, actualizar el saldo del prestamo en ambos casos
+        
         return "usuariosEmpleados";
     }
 

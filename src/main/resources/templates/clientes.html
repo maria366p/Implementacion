@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Información Cuentas y Prestamos</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        
+        <h1 class="text-center mb-4">Información del Cliente</h1>
+
+        <!-- Tabla de Cuentas -->
+        <h2>Cuentas</h2>
+        <table class="table table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>NombrePersona</th>
+                    <th>TipoCliente</th>
+                    <th>IDCuenta</th>
+                    <th>TipoCuenta</th>
+                    <th>SaldoCuenta</th>
+                    <th>NombreOficina</th>
+                    <th th:if="${tipo == 'gerenteOficina' or tipo == 'gerenteGeneral'}">IDGerente</th>
+                </tr>
+            </thead>
+            <tbody th:if="${cuentas}">
+                <tr th:each="cuenta : ${cuentas}">
+                    <td th:text="${cuenta[0]}"></td>
+                    <td th:text="${cuenta[1]}"></td>
+                    <td th:text="${cuenta[2]}"></td>
+                    <td th:text="${cuenta[3]}"></td>
+                    <td th:text="${cuenta[4]}"></td>
+                    <td th:text="${cuenta[5]}"></td>
+                    <td th:if="${tipo == 'gerenteOficina' or tipo == 'gerenteGeneral'}" th:text="${cuenta[6]}"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Tabla de Préstamos -->
+        <h2>Préstamos</h2>
+        <table class="table table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>NombrePersona</th>
+                    <th>TipoCliente</th>
+                    <th>IDPrestamo</th>
+                    <th>MontoPrestamo</th>
+                    <th>EstadoPrestamo</th>
+                    <th th:if="${tipo == 'gerenteOficina' or tipo == 'gerenteGeneral'}">IDGerente</th>
+                </tr>
+            </thead>
+            <tbody th:if="${prestamos}">
+                <tr th:each="prestamo : ${prestamos}">
+                    <td th:text="${prestamo[0]}"></td>
+                    <td th:text="${prestamo[1]}"></td>
+                    <td th:text="${prestamo[2]}"></td>
+                    <td th:text="${prestamo[3]}"></td>
+                    <td th:text="${prestamo[4]}"></td>
+                    <td th:if="${tipo == 'gerenteOficina' or tipo == 'gerenteGeneral'}" th:text="${prestamo[5]}"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Botón de regreso -->
+        <div>
+            <a th:href='@{/}' class="btn btn-primary">Volver Atrás</a>
+        </div>
+    </div>
+</body>
+</html>

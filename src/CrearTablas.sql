@@ -1,12 +1,12 @@
-create sequence personas_sequence start with 6;
-create sequence cargos_sequence start with 6;
-create sequence cuentas_sequence start with 106;
-create sequence oficinas_sequence start with 6;
-create sequence operacionescuentas_sequence start with 6;
-create sequence operacionesprestamos_sequence start with 6;
-create sequence operacionestransferencias_sequence start with 6;
-create sequence prestamos_sequence start with 6;
-create sequence puntoatencion_sequence start with 6;
+create sequence personas_sequence start with 13;
+create sequence cargos_sequence start with 13;
+create sequence cuentas_sequence start with 112;
+create sequence oficinas_sequence start with 13;
+create sequence operacionescuentas_sequence start with 110;
+create sequence operacionesprestamos_sequence start with 8;
+create sequence operacionestransferencias_sequence start with 13;
+create sequence prestamos_sequence start with 13;
+create sequence puntoatencion_sequence start with 13;
 
 CREATE TABLE Cargos (
     IDCargo INTEGER NOT NULL,

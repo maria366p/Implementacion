@@ -113,3 +113,68 @@ INSERT INTO OperacionesTransferencias (IDOperacionTrans, Monto, Fecha, IDCuentaO
 INSERT INTO OperacionesTransferencias (IDOperacionTrans, Monto, Fecha, IDCuentaOrigen, IDCuentaDestino, IDPuntoAtencion) VALUES (3, 75.25, TO_DATE('2024-03-21', 'YYYY-MM-DD'), 103, 104, 5);
 INSERT INTO OperacionesTransferencias (IDOperacionTrans, Monto, Fecha, IDCuentaOrigen, IDCuentaDestino, IDPuntoAtencion) VALUES (4, 500.00, TO_DATE('2024-03-19', 'YYYY-MM-DD'), 104, 105, 1);
 INSERT INTO OperacionesTransferencias (IDOperacionTrans, Monto, Fecha, IDCuentaOrigen, IDCuentaDestino, IDPuntoAtencion) VALUES (5, 200.00, TO_DATE('2024-03-18', 'YYYY-MM-DD'), 105, 101, 2);
+
+-- Asegúrate de que el cliente 3 tenga varias cuentas y préstamos asociados
+INSERT INTO Cuentas (IDCuenta, TipoCuenta, Saldo, FechaUltimaTransaccion, idCliente, EstadoCuenta, IDGERENTE) VALUES (106, 'Ahorros', 25000.00, TO_DATE('2024-03-15', 'YYYY-MM-DD'), 3, 'Activa', 2);
+INSERT INTO Cuentas (IDCuenta, TipoCuenta, Saldo, FechaUltimaTransaccion, idCliente, EstadoCuenta, IDGERENTE) VALUES (107, 'AFC', 12000.00, TO_DATE('2024-03-16', 'YYYY-MM-DD'), 3, 'Activa', 7);
+INSERT INTO Cuentas (IDCuenta, TipoCuenta, Saldo, FechaUltimaTransaccion, idCliente, EstadoCuenta, IDGERENTE) VALUES (108, 'Corriente', 18000.00, TO_DATE('2024-03-17', 'YYYY-MM-DD'), 3, 'Activa', 2);
+
+-- Añadir préstamos al cliente 3
+INSERT INTO Prestamos (IDPrestamo, Monto, Interes, NumeroCuotas, DiaPagoCuota, ValorCuota, EstadoP, IDCliente) VALUES (6, 5000, 0.04, 10, TO_DATE('2024-03-10', 'YYYY-MM-DD'), 510, 'Aprobado', 3);
+INSERT INTO Prestamos (IDPrestamo, Monto, Interes, NumeroCuotas, DiaPagoCuota, ValorCuota, EstadoP, IDCliente) VALUES (7, 3000, 0.06, 5, TO_DATE('2024-04-10', 'YYYY-MM-DD'), 620, 'Aprobado', 3);
+
+-- Operaciones de cuentas para el cliente 3
+INSERT INTO OperacionesCuentas (IDOperacionCu, Monto, Fecha, TipoOC, idCuenta, idPuntoAtencion) VALUES (6, 200.00, TO_DATE('2024-03-18', 'YYYY-MM-DD'), 'Consignar', 106, 1);
+INSERT INTO OperacionesCuentas (IDOperacionCu, Monto, Fecha, TipoOC, idCuenta, idPuntoAtencion) VALUES (7, 100.00, TO_DATE('2024-03-19', 'YYYY-MM-DD'), 'Retirar', 107, 2);
+
+-- Operaciones de préstamos para el cliente 3
+INSERT INTO OperacionesPrestamos (IDOperacionPrestamo, Tipo, Monto, Fecha, IDPrestamo, IDPuntoAtencion) VALUES (5, 'PagarCuota', 510, TO_DATE('2024-03-10', 'YYYY-MM-DD'), 6, 1);
+INSERT INTO OperacionesPrestamos (IDOperacionPrestamo, Tipo, Monto, Fecha, IDPrestamo, IDPuntoAtencion) VALUES (6, 'PagarCuota', 620, TO_DATE('2024-04-10', 'YYYY-MM-DD'), 7, 2);
+
+-- Asegurarse de que las oficinas estén asociadas con las cuentas del cliente 3 a través del IDGERENTE
+-- Suponemos que el gerente con ID 2 maneja la Oficina Principal y la Sucursal Sur, y el gerente con ID 7 la Sucursal Norte
+-- Las oficinas ya han sido insertadas anteriormente y no requieren cambios
+-- Primero, insertar la identificación correspondiente al docId
+INSERT INTO Identificaciones (tipo, numero) VALUES ('CC', 88888888);
+INSERT INTO Identificaciones (tipo, numero) VALUES ('CC', 77777777);
+INSERT INTO Identificaciones (tipo, numero) VALUES ('CC', 66666666);
+
+-- Insertar nuevas personas
+INSERT INTO Personas (ID, nombre, datosContacto, direccionFisica, direccionElectronica, telefono, ciudad, departamento, codigoPostal, fechaRegistro, docId) 
+VALUES (10, 'Roberto García', 'roberto.garcia@example.com', 'Calle Falsa 123', 'roberto.garcia@example.com', 1234567890, 'Ciudad Ficticia', 'Departamento Ficticio', 12345, TO_DATE('2023-03-01', 'YYYY-MM-DD'), 88888888);
+
+INSERT INTO Personas (ID, nombre, datosContacto, direccionFisica, direccionElectronica, telefono, ciudad, departamento, codigoPostal, fechaRegistro, docId) 
+VALUES (11, 'Sofía Martín', 'sofia.martin@example.com', 'Avenida Siempre Viva 456', 'sofia.martin@example.com', 9876543210, 'Ciudad Ficticia', 'Departamento Ficticio', 67890, TO_DATE('2023-03-02', 'YYYY-MM-DD'), 77777777);
+
+INSERT INTO Personas (ID, nombre, datosContacto, direccionFisica, direccionElectronica, telefono, ciudad, departamento, codigoPostal, fechaRegistro, docId) 
+VALUES (12, 'Carlos Estévez', 'carlos.estevez@example.com', 'Diagonal Perdida 789', 'carlos.estevez@example.com', 2345678901, 'Ciudad Ficticia', 'Departamento Ficticio', 10112, TO_DATE('2023-03-03', 'YYYY-MM-DD'), 66666666);
+
+-- Insertar nuevos clientes
+INSERT INTO Clientes (IDCliente, rolC) VALUES (10, 'Natural');
+INSERT INTO Clientes (IDCliente, rolC) VALUES (11, 'Juridico');
+INSERT INTO Clientes (IDCliente, rolC) VALUES (12, 'Natural');
+
+-- Insertar cuentas para los nuevos clientes
+-- Asegúrate de que los IDGERENTE asignados existan en la tabla Empleados o en la tabla Oficinas como gerentes
+INSERT INTO Cuentas (IDCuenta, TipoCuenta, Saldo, FechaUltimaTransaccion, idCliente, EstadoCuenta, IDGERENTE) VALUES (109, 'Ahorros', 8000.00, TO_DATE('2023-03-05', 'YYYY-MM-DD'), 10, 'Activa', 2);
+INSERT INTO Cuentas (IDCuenta, TipoCuenta, Saldo, FechaUltimaTransaccion, idCliente, EstadoCuenta, IDGERENTE) VALUES (110, 'Corriente', 10000.00, TO_DATE('2023-03-06', 'YYYY-MM-DD'), 11, 'Activa', 7);
+INSERT INTO Cuentas (IDCuenta, TipoCuenta, Saldo, FechaUltimaTransaccion, idCliente, EstadoCuenta, IDGERENTE) VALUES (111, 'AFC', 15000.00, TO_DATE('2023-03-07', 'YYYY-MM-DD'), 12, 'Activa', 2);
+
+-- Insertar operaciones de consignación y retiro para las nuevas cuentas
+-- Asegúrate de que los IDPuntoAtencion asignados existan en la tabla PuntosAtencion
+INSERT INTO OperacionesCuentas (IDOperacionCu, Monto, Fecha, TipoOC, idCuenta, idPuntoAtencion) VALUES (8, 300.00, TO_DATE('2023-03-05', 'YYYY-MM-DD'), 'Consignar', 109, 1);
+INSERT INTO OperacionesCuentas (IDOperacionCu, Monto, Fecha, TipoOC, idCuenta, idPuntoAtencion) VALUES (9, 200.00, TO_DATE('2023-03-06', 'YYYY-MM-DD'), 'Retirar', 110, 2);
+
+-- Insertar operaciones de transferencia entre las nuevas cuentas
+INSERT INTO OperacionesTransferencias (IDOperacionTrans, Monto, Fecha, IDCuentaOrigen, IDCuentaDestino, IDPuntoAtencion) VALUES (6, 500.00, TO_DATE('2023-03-05', 'YYYY-MM-DD'), 109, 110, 1);
+INSERT INTO OperacionesTransferencias (IDOperacionTrans, Monto, Fecha, IDCuentaOrigen, IDCuentaDestino, IDPuntoAtencion) VALUES (7, 1000.00, TO_DATE('2023-03-07', 'YYYY-MM-DD'), 110, 111, 2);
+
+-- Añadir préstamos adicionales para los clientes 10 y 11
+-- Asegúrate de que las fechas de DiaPagoCuota sean coherentes con el ciclo de pago del préstamo
+INSERT INTO Prestamos (IDPrestamo, Monto, Interes, NumeroCuotas, DiaPagoCuota, ValorCuota, EstadoP, IDCliente) VALUES (8, 6000, 0.04, 12, TO_DATE('2023-03-05', 'YYYY-MM-DD'), 520, 'Aprobado', 10);
+INSERT INTO Prestamos (IDPrestamo, Monto, Interes, NumeroCuotas, DiaPagoCuota, ValorCuota, EstadoP, IDCliente) VALUES (9, 4000, 0.06, 6, TO_DATE('2023-03-06', 'YYYY-MM-DD'), 680, 'Aprobado', 11);
+
+-- Insertar operaciones de préstamos para los clientes 10 y 11
+INSERT INTO OperacionesPrestamos (IDOperacionPrestamo, Tipo, Monto, Fecha, IDPrestamo, IDPuntoAtencion) VALUES (9, 'PagarCuota', 520, TO_DATE('2023-03-10', 'YYYY-MM-DD'), 8, 1);
+INSERT INTO OperacionesPrestamos (IDOperacionPrestamo, Tipo, Monto, Fecha, IDPrestamo, IDPuntoAtencion) VALUES (10, 'PagarCuota', 680, TO_DATE('2023-03-10', 'YYYY-MM-DD'), 9, 2);
+
