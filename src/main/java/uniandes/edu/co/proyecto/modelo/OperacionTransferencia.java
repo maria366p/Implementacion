@@ -48,19 +48,19 @@ public class OperacionTransferencia {
         ;
     }
 
-    public int getMonto() {
+    public int getMONTO() {
         return MONTO;
     }
 
-    public void setMonto(int MONTO) {
+    public void setMONTO(int MONTO) {
         this.MONTO = MONTO;
     }
 
-    public Date getFecha() {
+    public Date getFECHA() {
         return FECHA;
     }
 
-    public void setFecha(Date FECHA) {
+    public void setFECHA(Date FECHA) {
         this.FECHA = FECHA;
     }
 

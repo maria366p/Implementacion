@@ -22,15 +22,19 @@
                 <div th:if="${cargo == 'GerenteOficina'}">
                     <a th:href="@{/identificaciones/new(tipo='cliente')}" class="btn btn-primary btn-action">Crear Cliente</a>
                     <a th:href="@{/cuentas/new}" class="btn btn-primary btn-action">Crear Cuenta</a>
-                    <a th:href="@{/cuentas}"  class="btn btn-primary btn-action">Cambiar estado Cuenta</a>
+                    <a th:href="@{/cuentas(tipo='gerenteOficina', IDEMP=${IDEMP} )}" class="btn btn-primary btn-action">Lista de Cuentas, cambiar Estado</a>
                     <a  th:href="@{/prestamos/new}" class="btn btn-primary btn-action">Crear Préstamo</a>
                     <a th:href="@{/prestamos}" class="btn btn-primary btn-action">Actualizar Préstamo a cerrado</a>
                 </div>
 
                 <!-- Botones adicionales para Cajero -->
                 <div th:if="${cargo == 'Cajero'}">
-                    <a th:href="@{/operacionCuentas/new}" class="btn btn-primary btn-action">Registrar operación sobre cuenta</a>
-                    <button class="btn btn-primary btn-action">Registro de Operación sobre préstamo</button>
+                    <a th:href="@{/operacionCuentas}" class="btn btn-primary btn-action">Registrar operación sobre cuenta</a>
+                    <a th:href="@{/operacionPrestamos}" class="btn btn-primary btn-action">Registro de Operación sobre préstamo</a>
+                </div>
+                <!-- Botones adicionales para Gerente General -->
+                <div th:if="${cargo == 'GerenteGeneral'}">
+                    <a th:href="@{/cuentas(tipo='gerenteGeneral')}" class="btn btn-primary btn-action">Lista de Cuentas</a>
                 </div>
             </div>
         </div>

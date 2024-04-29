@@ -36,6 +36,7 @@ public class UsuariosEmpleadosController {
                 model.addAttribute("error", "ID o contraseña incorrectos.");
             }
         } 
+        model.addAttribute("IDEMP", ID);
         return "usuariosEmpleados";
     }
     

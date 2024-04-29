@@ -140,7 +140,7 @@ CREATE TABLE Prestamos (
 CREATE TABLE OperacionesPrestamos(
     IDOperacionPrestamo INTEGER PRIMARY KEY,
     Tipo VARCHAR2 (50),
-    CONSTRAINT tipoP CHECK (Tipo in ('Solicitar', 'Aprobar', 'Rechazar', 'PagarCuota', ' PagarCuotaExtraordinaria', 'PagarCuotaOrdinaria', 'Cerrar')),
+    CONSTRAINT tipoP CHECK (Tipo in ('Solicitar', 'Aprobar', 'Rechazar', 'PagarCuota', 'PagarCuotaExtraordinaria', 'PagarCuotaOrdinaria', 'Cerrar')),
     Monto float,
     Fecha Date,
     IDPrestamo INTEGER, 

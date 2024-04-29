@@ -34,4 +34,14 @@ public interface UsuarioClienteRepository extends JpaRepository<UsuarioCliente, 
     @Transactional
     @Query(value = "DELETE FROM USUARIOSCLIENTES WHERE ID = :ID", nativeQuery=true)
         void eliminarUsuarioCliente(@Param("ID") int ID);
+
+    //QUERY QUE de el nombre y busque POR ID Y CONTRASEÑA DEL CLIENTE
+    @Query(value = "SELECT P.NOMBRE\r\n"+ 
+                    "FROM USUARIOSCLIENTES E \r\n"+
+                    "INNER JOIN PERSONAS P ON E.ID = P.ID\r\n"+
+                    "WHERE E.ID = :ID  AND E.PASSWORD = :PASSWORD\r\n", nativeQuery = true)
+    String darNombrePconIDyPas(@Param("ID") Integer ID, @Param("PASSWORD") String PASSWORD);
+
+
+
 } 

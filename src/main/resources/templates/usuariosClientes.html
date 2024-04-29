@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Fragmento</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+    <div class="container">
+        <!-- Bienvenida y cargo -->
+        <div th:if="${nombrePersona}" class="alert alert-success text-center">
+            <h2>Bienvenido, <span th:text="${nombrePersona}">Nombre de Usuario</span>!</h2>
+
+            <!-- Acciones botones -->
+            <div class="text-center">
+                <a th:href="@{/operacionCuentas}" class="btn btn-primary btn-action">Registrar operación sobre cuenta</a>
+                <a th:href="@{/cuentas(tipo='cliente', IDCLI=${IDCLI})}" class="btn btn-primary btn-action">Lista de Cuentas Asociadas</a>
+            </div>
+        </div>
+
+        <!-- Mensaje de error -->
+        <div th:if="${error}" class="alert alert-danger text-center">
+            <h2 th:text="${error}">Mensaje de error</h2>
+        </div>
+
+        <!-- Formulario de login -->
+        <div class="form-container" th:unless="${nombrePersona}">
+            <form th:action="@{/usuariosClientes}" method="get">
+                <div class="form-group">
+                    <label for="ID" class="form-label">ID:</label>
+                    <input type="number" class="form-control" id="ID" name="ID" required />
+                </div>
+                <div class="form-group">
+                    <label for="PASSWORD" class="form-label">CONTRASEÑA:</label>
+                    <input type="text" class="form-control" id="PASSWORD" name="PASSWORD" required />
+                </div>
+                <button type="submit" class="btn btn-primary btn-login">Hacer LogIn</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+

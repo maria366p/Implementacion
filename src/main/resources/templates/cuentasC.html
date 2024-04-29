@@ -12,20 +12,50 @@
     <div class="text-center">
         <h1>Lista de Cuentas</h1>
 
+        
+
         <!-- Mensaje de error -->
         <div th:if="${error}" class="alert alert-danger" role="alert">
             <p th:text="${error}"></p>
         </div>
 
-        <form th:action="@{cuentas}" method="get">
-            <div class="input-group input-group-sm mb-2 justify-content-center">
-                <input class='w-25' id="txtSearch" type="number" name="IDGERENTE">
-                <div class="input-group-append">
-                    <button type="submit" class="btn btn-secondary">Buscar por IDGERENTE</button>
+        <div class="container w-25">
+            <div class="card border border-2 mx-auto">
+                <h5 class="card-header" role='button' id="headingOne">
+                    <a href="@{/cuentas}" class="collapsed d-block" data-toggle="collapse" data-target="#busqueda">
+                        Búsqueda avanzada
+                    </a>
+                </h5>
+                <div id="busqueda" class="collapse">
+                    <form th:action="@{cuentas}" method="get">
+                        <label class="col-form-label">Tipo de Cuenta:</label>
+                        <input class="form-control" type="text" id="TipoCF" name="TipoCF" />
+        
+                        <label class="col-form-label">Saldo Mínimo:</label>
+                        <input class="form-control" type="number" id="saldoMin" name="saldoMin" placeholder="Saldo mínimo" />
+        
+                        <label class="col-form-label">Saldo Máximo:</label>
+                        <input class="form-control" type="number" id="saldoMax" name="saldoMax" placeholder="Saldo máximo" />
+
+                        <label for="FECHAULTIMATRANSACCION" class="form-label">Fecha Última Transacción:</label>
+                        <input class="form-control" type="date" id="FECHAULTIMATRANSACCION" name="fechaUltima">
+
+        
+                        <input type="hidden" name="tipo" th:value="${tipoA}" />
+                        <input type="hidden" name="IDCLI" th:value="${IDCLIA}" />
+        
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-secondary">Buscar</button>
+                        </div>
+                        <br />
+                    </form>
                 </div>
             </div>
-        </form>
-        <br />
+        </div>
+            
+      
+          
+
 
 
         <table class="table table-hover table-bordered">
@@ -51,9 +81,6 @@
                     <td th:text="${cuenta.FECHAULTIMATRANSACCION}"></td>
                     <td th:text="${cuenta.IDCLIENTE.IDCLIENTE}"></td>
                     <td th:text="${cuenta.IDGERENTE}"></td>
-                    <td>
-                        <a th:href="@{cuentas/{id}/edit(id=${cuenta.IDCUENTA}, estado = ${cuenta.ESTADOCUENTA})}">Editar</a>
-                    </td>
                 </tr>
             </th:block>
 

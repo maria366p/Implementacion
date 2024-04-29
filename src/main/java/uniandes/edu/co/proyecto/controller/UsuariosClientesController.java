@@ -24,8 +24,21 @@ public class UsuariosClientesController {
 
 
     @GetMapping("/usuariosClientes")
-    public String usuariosClientes (Model model){
-        model.addAttribute("usuariosClientes", usuarioClienteRepository.darUsuarioClientes());
+    public String usuariosClientes (Model model, @RequestParam(required = false) Integer ID, @RequestParam(required = false) String PASSWORD){
+        System.out.println("ID:"+ID);
+        System.out.println("PASSWORD:"+PASSWORD);
+        // Comprueba si el ID y la contraseña están presentes
+        if (ID != null && PASSWORD != null && !PASSWORD.isEmpty()) {
+            String nombrePersona = usuarioClienteRepository.darNombrePconIDyPas(ID, PASSWORD);
+            // Si los credenciales son correctos, se añade el nombre de la persona y su cargo al modelo
+            if (nombrePersona != null && !nombrePersona.isEmpty()) {
+                model.addAttribute("nombrePersona", nombrePersona);
+            } else {
+                // Si los credenciales son incorrectos, se añade un mensaje de error al modelo
+                model.addAttribute("error", "ID o contraseña incorrectos.");
+            }
+        } 
+        model.addAttribute("IDCLI", ID);
         return "usuariosClientes";
     }
 

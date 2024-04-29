@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import uniandes.edu.co.proyecto.modelo.OperacionCuenta;
 import uniandes.edu.co.proyecto.repositorio.CuentaRepository;
@@ -27,7 +28,7 @@ public class OperacionCuentasController {
     @GetMapping("/operacionCuentas")
     public String operacionCuentas (Model model){
         model.addAttribute("operacionCuentas", operacionCuentaRepository.darOperacionCuentas());
-         return model.toString() ; //return "operacionCuentas";
+        return "operacionCuentas";
     }
 
     @GetMapping("/operacionCuentas/new")
@@ -39,11 +40,32 @@ public class OperacionCuentasController {
     }
 
     @PostMapping("/operacionCuentas/new/save")
-    public String operacionCuentaGuardar(@ModelAttribute OperacionCuenta operacionCuenta) {
+    public String operacionCuentaGuardar(@ModelAttribute OperacionCuenta operacionCuenta, @RequestParam("MONTO") Float MONTO, @RequestParam("TIPOOC") String TIPOOC ) {
+    
+    System.out.println("Monto recibido operacion: " + MONTO);
+    System.out.println("TIPOOC actual: " + TIPOOC);
+    System.out.println("ID CUENTA recibido: " +  operacionCuenta.getIDCUENTA().getIDCUENTA());
+    
+   
+    if (MONTO != null && TIPOOC != null){
         operacionCuentaRepository.insertarOperacionCuenta(operacionCuenta.getTIPOOC().name(),  operacionCuenta.getMONTO(), operacionCuenta.getFECHA(), operacionCuenta.getIDCUENTA().getIDCUENTA(), operacionCuenta.getIDPUNTOATENCION().getIDPUNTOATENCION());
-       //TODO:Actualizar el saldo de la cuenta creando un query en el cuentaRepository que haga update del saldo, llamar el saldo del html de este par ahacer el update
-       
-        return "redirect:/usuariosEmpleados";
+        int saldoC = cuentaRepository.darSaldo(operacionCuenta.getIDCUENTA().getIDCUENTA());
+        String estado = operacionCuenta.getIDCUENTA().getESTADOCUENTA().name();
+        System.out.println("Saldo Cuenta Actual : " +  saldoC);
+        boolean total = saldoC - MONTO > 0;
+        System.out.println("TOTAL : " +  total);
+
+        if (TIPOOC.equals("Consignar")&& estado.equals("Activa")){
+            cuentaRepository.consignarSaldo(operacionCuenta.getIDCUENTA().getIDCUENTA(), MONTO);
+            return "redirect:/usuariosEmpleados";
+        }
+        else if (TIPOOC.equals("Retirar") && saldoC - MONTO > 0 && estado.equals("Activa")){
+            cuentaRepository.retirarSaldo(operacionCuenta.getIDCUENTA().getIDCUENTA(), MONTO);
+            return "redirect:/usuariosEmpleados";
+        }
+        
+    }
+        return "index";
     }
 
     @GetMapping("/operacionCuentas/{id}/edit")

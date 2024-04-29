@@ -53,27 +53,27 @@ public class OperacionPrestamo {
     }
 
 
-    public TipoOP getTipo() {
+    public TipoOP getTIPO() {
         return TIPO;
     }
 
-    public void setTipo(TipoOP TIPO) {
+    public void setTIPO(TipoOP TIPO) {
         this.TIPO = TIPO;
     }
 
-    public int getMonto() {
+    public int getMONTO() {
         return MONTO;
     }
 
-    public void setMonto(int MONTO) {
+    public void setMONTO(int MONTO) {
         this.MONTO = MONTO;
     }
 
-    public Date getFecha() {
+    public Date getFECHA() {
         return FECHA;
     }
 
-    public void setFecha(Date FECHA) {
+    public void setFECHA(Date FECHA) {
         this.FECHA = FECHA;
     }
 

@@ -4,8 +4,7 @@ INSERT INTO Cargos (IDCargo, Nombre) VALUES (2, 'GerenteOficina');
 INSERT INTO Cargos (IDCargo, Nombre) VALUES (3, 'Cajero');
 INSERT INTO Cargos (IDCargo, Nombre) VALUES (4, 'Asistente');
 INSERT INTO Cargos (IDCargo, Nombre) VALUES (5, 'Analista Financiero');
-INSERT INTO Cargos (IDCargo, Nombre) VALUES (4, 'Cajero');
-INSERT INTO Cargos (IDCargo, Nombre) VALUES (5, 'GerenteOficina');
+
 
 
 -- Insert para la tabla Identificaciones

@@ -8,12 +8,27 @@
 </head>
 
 <body>
-    <div class="container border border-2 w-25 my-3" th:fragment="opCuForm(titulo)">
+    <div class="container border border-2 w-25 my-3" th:fragment="opTranForm(titulo)">
         <h1 class="text-center" th:text="${titulo}"></h1>
     
     <form>
-        <label class="col-form-label" for="IDCUENTA">ID Cuenta:</label>
-        <select class="form-control" id="IDCUENTA" name="IDCUENTA" required> 
+       
+
+        <div class="mb-3">
+            <label for="MONTO" class="form-label">Monto:</label>
+            <input class="form-control" type="number" id="MONTO" name="MONTO" required step = "0.01" th:value="${opTran.MONTO}">
+        </div>
+
+        <label class="col-form-label" for="IDCUENTAORIGEN">ID Cuenta Origen:</label>
+        <select class="form-control" id="IDCUENTAORIGEN" name="IDCUENTAORIGEN" required> 
+            <th:block th:each="cuenta : ${cuentas}">
+                <option th:value="${cuenta.IDCUENTA}" th:text="${cuenta.IDCUENTA}"  >
+                </option>
+            </th:block>
+        </select><br>
+
+        <label class="col-form-label" for="IDCUENTADESTINO">ID Cuenta Destino:</label>
+        <select class="form-control" id="IDCUENTADESTINO" name="IDCUENTADESTINO" required> 
             <th:block th:each="cuenta : ${cuentas}">
                 <option th:value="${cuenta.IDCUENTA}" th:text="${cuenta.IDCUENTA}"  >
                 </option>
@@ -21,21 +36,8 @@
         </select><br>
 
         <div class="mb-3">
-            <label for="MONTO" class="form-label">Monto:</label>
-            <input class="form-control" type="number" id="MONTO" name="MONTO" required step = "0.01" th:value="${opCu.MONTO}">
-        </div>
-
-        <div class="mb-3">
             <label for="FECHA" class="form-label">Fecha de la Operación:</label>
-            <input class="form-control" type="date" id="FECHA" name="FECHA" required th:value="${opCu.FECHA}">
-        </div>
-
-        <div class="mb-3">
-            <label for="TIPOOC">Tipo:</label>
-            <select class="form-control" id="TIPOOC" name="TIPOOC">
-                <option value="Consignar" th:selected="${opCu.TIPOOC eq 'Consignar'}">Consignar</option>
-                <option value="Retirar" th:selected="${opCu.TIPOOC eq 'Retirar'}">Retirar</option>
-            </select>
+            <input class="form-control" type="date" id="FECHA" name="FECHA" required th:value="${opTran.FECHA}">
         </div>
 
         <label class="col-form-label" for="IDPUNTOATENCION">ID Punto de Atención:</label>

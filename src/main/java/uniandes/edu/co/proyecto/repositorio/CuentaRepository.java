@@ -19,9 +19,25 @@ public interface CuentaRepository extends JpaRepository<Cuenta,Integer> {
         Collection<Cuenta> darCuentasIDGer(@Param("IDGERENTE") Integer IDGERENTE);
 
     @Query(value = "SELECT * \r\n" + //
-        "FROM CUENTAS C\r\n" //
+        "FROM CUENTAS C\r\n"+
+        "WHERE IDCLIENTE = :IDCLIENTE" //
         , nativeQuery = true)
-        Collection<Cuenta> darCuentas();
+        Collection<Cuenta> darCuentasC(@Param("IDCLIENTE") int IDCLIENTE);
+
+    @Query(value = "SELECT * \r\n" + //
+    "FROM CUENTAS C\r\n"
+    , nativeQuery = true)
+    Collection<Cuenta> darCuentas();    
+    
+
+    @Query(value = "SELECT * FROM CUENTAS C WHERE  C.IDCLIENTE = :ID AND C.TIPOCUENTA = :TIPOC AND C.SALDO >= :saldoMin AND C.SALDO <= :saldoMax AND C.FECHAULTIMATRANSACCION <= :fechaUltima", nativeQuery = true)
+    Collection<Cuenta> darCuentasCF( @Param("ID") int ID, @Param("TIPOC") String TIPOC, @Param("saldoMin") int saldoMin, @Param("saldoMax") int saldoMax, @Param("fechaUltima") Date fechaUltima);
+
+    @Query(value = "SELECT * FROM CUENTAS C WHERE  C.IDGERENTE = :ID AND C.TIPOCUENTA = :TIPOC AND C.SALDO >= :saldoMin AND C.SALDO <= :saldoMax AND C.FECHAULTIMATRANSACCION <= :fechaUltima", nativeQuery = true)
+    Collection<Cuenta> darCuentasEF( @Param("ID") int ID, @Param("TIPOC") String TIPOC, @Param("saldoMin") int saldoMin, @Param("saldoMax") int saldoMax, @Param("fechaUltima") Date fechaUltima);
+
+
+    
 
     @Query(value = "SELECT * FROM CUENTAS WHERE IDCUENTA = :IDCUENTA", nativeQuery = true)
     Cuenta darCuenta(@Param("IDCUENTA") int IDCUENTA);
@@ -37,10 +53,16 @@ public interface CuentaRepository extends JpaRepository<Cuenta,Integer> {
     @Query(value = "UPDATE CUENTAS SET TIPOCUENTA = :TIPOCUENTA, SALDO = :SALDO, FECHAULTIMATRANSACCION = :FECHAULTIMATRANSACCION, IDCLIENTE = :IDCLIENTE, ESTADOCUENTA = :ESTADOCUENTA, IDGERENTE = :IDGERENTE WHERE IDCUENTA = :IDCUENTA", nativeQuery=true)
         void actualizarCuenta(@Param("IDCUENTA") int IDCUENTA,@Param("TIPOCUENTA") String TIPOCUENTA, @Param("SALDO") Float SALDO, @Param("FECHAULTIMATRANSACCION") Date  FECHAULTIMATRANSACCION,  @Param("IDCLIENTE") int IDCLIENTE, @Param("ESTADOCUENTA") String ESTADOCUENTA, @Param("IDGERENTE") int IDGERENTE);
 
-        @Modifying
+    @Modifying
     @Transactional 
     @Query(value = "UPDATE CUENTAS SET  SALDO = :SALDO, ESTADOCUENTA = :ESTADOCUENTA WHERE IDCUENTA = :IDCUENTA", nativeQuery=true)
         void actualizarCuentaP(@Param("IDCUENTA") int IDCUENTA, @Param("SALDO") Float SALDO,  @Param("ESTADOCUENTA") String ESTADOCUENTA);
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE CUENTAS SET SALDO = SALDO + :SALDO WHERE IDCUENTA = :IDCUENTA ", nativeQuery = true)
+    void consignarSaldo(@Param("IDCUENTA") Integer IDCUENTA, @Param("SALDO") Float SALDO) ;
+
 
     @Modifying
     @Transactional
@@ -51,6 +73,17 @@ public interface CuentaRepository extends JpaRepository<Cuenta,Integer> {
         "FROM CUENTAS C\r\n" + //
         "WHERE C.IDCUENTA = :IDCUENTA ", nativeQuery = true)
     int darSaldo(@Param("IDCUENTA") Integer IDCUENTA);
+
+
+
+    @Modifying
+    @Transactional 
+    @Query(value = "UPDATE cuentas\r\n" + //
+        "SET SALDO = SALDO - :SALDO\r\n" + //
+        "WHERE IDCUENTA = :IDCUENTA ", nativeQuery = true)
+    void retirarSaldo(@Param("IDCUENTA") Integer IDCUENTA, @Param("SALDO") Float SALDO) ;
+
+
 
 
 
