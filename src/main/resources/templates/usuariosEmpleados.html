@@ -18,6 +18,8 @@
                 <a th:href="@{/puntosAtencion/new}" th:if="${cargo == 'Cajero' or cargo == 'GerenteOficina' or cargo == 'GerenteGeneral'}" class="btn btn-primary btn-action">Crear punto de atención</a>
                 <a th:href="@{/puntosAtencion}" th:if="${cargo == 'Cajero' or cargo == 'GerenteOficina' or cargo == 'GerenteGeneral'}" class="btn btn-primary btn-action">Lista de Puntos de Atencion</a>
                 <a th:href="@{/cuentas/extracto}" th:if="${cargo == 'Cajero' or cargo == 'GerenteOficina' or cargo == 'GerenteGeneral'}" class="btn btn-primary btn-action">Extracto bancario</a>
+                <a th:href="@{/cuentas/bloqueoS}" th:if="${cargo == 'Cajero' or cargo == 'GerenteOficina' or cargo == 'GerenteGeneral'}" class="btn btn-primary btn-action">Operaciones de una Cuenta S (RFC4)</a>
+                <a th:href="@{/cuentas/bloqueoR}" th:if="${cargo == 'Cajero' or cargo == 'GerenteOficina' or cargo == 'GerenteGeneral'}" class="btn btn-primary btn-action">Operaciones de una Cuenta R (RFC5)</a>
 
                 <!-- Botones adicionales para Gerente de Oficina -->
                 <div th:if="${cargo == 'GerenteOficina'}">

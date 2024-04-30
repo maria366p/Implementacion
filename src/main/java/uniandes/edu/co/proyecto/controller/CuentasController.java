@@ -9,14 +9,17 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.sql.Date;
+import java.util.Calendar;
 import java.util.Collection;
 
 import uniandes.edu.co.proyecto.modelo.Cuenta;
 import uniandes.edu.co.proyecto.repositorio.CuentaRepository;
 import uniandes.edu.co.proyecto.repositorio.EmpleadoRepository;
 import uniandes.edu.co.proyecto.repositorio.UsuarioEmpleadoRepository;
+import uniandes.edu.co.proyecto.servicios.cuentasServicio;
 import uniandes.edu.co.proyecto.repositorio.ClienteRepository;
 @Controller
 public class CuentasController {
@@ -31,6 +34,9 @@ public class CuentasController {
 
     @Autowired
     private EmpleadoRepository empleadoRepository;
+
+    @Autowired
+    private cuentasServicio cuentaServicio;
 
     @GetMapping("/cuentas")
     public String cuentas(Model model, @RequestParam(required = false) Integer IDEMP, @RequestParam String tipo, @RequestParam(required = false) Integer IDCLI,  @RequestParam(required = false) String TipoCF, 
@@ -122,6 +128,81 @@ public class CuentasController {
 
         return "extractoCuenta";
     }
+    
+    @GetMapping("cuentas/bloqueoS")
+    public String consultarOperacionesC(Model model, RedirectAttributes redirectAttributes, @RequestParam(required = false) Integer idCuenta){
+        int retryCount = 0; // Contador de reintentos
+        while (true) {
+
+            try{
+                
+
+                if (idCuenta != null) {
+                    Calendar calendar = Calendar.getInstance();
+                    Date fechaFin = new Date(calendar.getTime().getTime()); // Fecha actual como java.sql.Date
+                
+                    calendar.add(Calendar.DAY_OF_MONTH, -30); // Retrocede 30 días
+                    Date fechaInicio = new Date(calendar.getTime().getTime()); // Fecha de inicio hace 30 días como java.sql.Date
+                    System.out.println("IDCUENTA"+idCuenta);
+                    System.out.println("fechaInicio" + fechaInicio);
+                    System.out.println("fechaFin" + fechaFin);
+                //indicar el id de la cuenta a consultar
+                model.addAttribute("idCuenta", idCuenta);
+                model.addAttribute("saldoI", cuentaRepository.obtenerSaldoInicial(idCuenta, fechaInicio));
+                model.addAttribute("Consignaciones",cuentaServicio.consultarConsu(idCuenta, fechaInicio, fechaFin));
+                model.addAttribute("transferencias",cuentaServicio.consultarTrans(idCuenta, fechaInicio, fechaFin));
+                model.addAttribute("saldoF", cuentaRepository.obtenerSaldoFinal(idCuenta));
+                }
+
+                return "extractoCuenta2";
+            }
+
+            catch (Exception e){
+                System.out.println("Intento " + (retryCount + 1) + ": " + e);
+                System.err.println("Error durante la consulta de Cuentas: " + e.getMessage());
+                redirectAttributes.addFlashAttribute("errorMessage", "No se pudo consultar las cuentas correctamente.");
+                return "redirect:/usuariosEmpleados";
+            }
+        }
+    }
+
+    @GetMapping("cuentas/bloqueoR")
+    public String consultarOperacionesR(Model model, RedirectAttributes redirectAttributes, @RequestParam(required = false) Integer idCuenta){
+        int retryCount = 0; // Contador de reintentos
+        while (true) {
+
+            try{
+                
+
+                if (idCuenta != null) {
+                    Calendar calendar = Calendar.getInstance();
+                    Date fechaFin = new Date(calendar.getTime().getTime()); // Fecha actual como java.sql.Date
+                
+                    calendar.add(Calendar.DAY_OF_MONTH, -30); // Retrocede 30 días
+                    Date fechaInicio = new Date(calendar.getTime().getTime()); // Fecha de inicio hace 30 días como java.sql.Date
+                    System.out.println("IDCUENTA"+idCuenta);
+                    System.out.println("fechaInicio" + fechaInicio);
+                    System.out.println("fechaFin" + fechaFin);
+                //indicar el id de la cuenta a consultar
+                model.addAttribute("idCuenta", idCuenta);
+                model.addAttribute("saldoI", cuentaRepository.obtenerSaldoInicial(idCuenta, fechaInicio));
+                model.addAttribute("Consignaciones",cuentaServicio.consultarConsuR(idCuenta, fechaInicio, fechaFin));
+                model.addAttribute("transferencias",cuentaServicio.consultarTransR(idCuenta, fechaInicio, fechaFin));
+                model.addAttribute("saldoF", cuentaRepository.obtenerSaldoFinal(idCuenta));
+                }
+
+                return "extractoCuenta3";
+            }
+
+            catch (Exception e){
+                System.out.println("Intento " + (retryCount + 1) + ": " + e);
+                System.err.println("Error durante la consulta de Cuentas: " + e.getMessage());
+                redirectAttributes.addFlashAttribute("errorMessage", "No se pudo consultar las cuentas correctamente.");
+                return "redirect:/usuariosEmpleados";
+            }
+        }
+    }
+    
     
 
     

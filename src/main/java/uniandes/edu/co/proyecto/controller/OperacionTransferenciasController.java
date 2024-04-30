@@ -8,12 +8,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 import uniandes.edu.co.proyecto.modelo.OperacionTransferencia;
 import uniandes.edu.co.proyecto.repositorio.CuentaRepository;
 import uniandes.edu.co.proyecto.repositorio.OperacionTransferenciaRepository;
 import uniandes.edu.co.proyecto.repositorio.PuntoAtencionRepository;
+import uniandes.edu.co.proyecto.servicios.cuentasServicio;
+import uniandes.edu.co.proyecto.servicios.operacionTransferenciasServicio;
 
 @Controller
 public class OperacionTransferenciasController {
@@ -25,6 +28,12 @@ public class OperacionTransferenciasController {
 
     @Autowired
     private PuntoAtencionRepository puntoAtencionRepository;
+
+    @Autowired
+    private cuentasServicio cuentasServicio;
+
+    @Autowired
+    private operacionTransferenciasServicio operacionTransferenciasServicio;
 
     @GetMapping("/operacionTransferencias")
     public String operacionTransferencias (Model model){
@@ -41,15 +50,33 @@ public class OperacionTransferenciasController {
     }
 
     @PostMapping("/operacionTransferencias/new/save")
-    public String operacionTransferenciaGuardar(@ModelAttribute OperacionTransferencia operacionTransferencia, @RequestParam("MONTO") Float MONTO) {
+    public String operacionTransferenciaGuardar(@ModelAttribute OperacionTransferencia operacionTransferencia, @RequestParam("MONTO") Float MONTO, RedirectAttributes redirectAttributes) {
         Float saldoO = operacionTransferencia.getIDCUENTAORIGEN().getSALDO();
         String estadoO = operacionTransferencia.getIDCUENTAORIGEN().getESTADOCUENTA().name();
         String estadoD = operacionTransferencia.getIDCUENTADESTINO().getESTADOCUENTA().name();
 
         if (saldoO-MONTO>0 && estadoO.equals("Activa")&& estadoD.equals("Activa")){
-            operacionTransferenciaRepository.insertarOperacionTransferencia(operacionTransferencia.getMONTO(), operacionTransferencia.getFECHA(), operacionTransferencia.getIDCUENTAORIGEN().getIDCUENTA(), operacionTransferencia.getIDCUENTADESTINO().getIDCUENTA(), operacionTransferencia.getIDPUNTOATENCION().getIDPUNTOATENCION());
-            cuentaRepository.consignarSaldo(operacionTransferencia.getIDCUENTADESTINO().getIDCUENTA(), MONTO);
-            cuentaRepository.retirarSaldo(operacionTransferencia.getIDCUENTAORIGEN().getIDCUENTA(), MONTO);
+
+            try {
+                operacionTransferenciasServicio.actualizar(operacionTransferencia.getMONTO(), operacionTransferencia.getFECHA(), operacionTransferencia.getIDCUENTAORIGEN().getIDCUENTA(), operacionTransferencia.getIDCUENTADESTINO().getIDCUENTA(), operacionTransferencia.getIDPUNTOATENCION().getIDPUNTOATENCION());
+            } catch (InterruptedException e) {
+                System.err.println("Error insertando la operacion transferencia: " + e.getMessage());
+                redirectAttributes.addFlashAttribute("errorMessage", "No se pudo insertar la operacion transferencia (log).");
+            }
+
+            
+            try {
+                cuentasServicio.consignar(operacionTransferencia.getIDCUENTADESTINO().getIDCUENTA(), MONTO);
+            } catch (InterruptedException e) {
+                System.err.println("Error consignando a la cuenta: " + e.getMessage());
+                redirectAttributes.addFlashAttribute("errorMessage", "No se pudo completar la consignacion de la cuenta.");
+            }
+            try {
+                cuentasServicio.retirar(operacionTransferencia.getIDCUENTAORIGEN().getIDCUENTA(), MONTO);
+            } catch (InterruptedException e) {
+                System.err.println("Error retirando de la cuenta: " + e.getMessage());
+                redirectAttributes.addFlashAttribute("errorMessage", "No se pudo completar el retiro de la cuenta.");
+            }
         }
         
         return "redirect:/usuariosEmpleados";

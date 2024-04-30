@@ -40,7 +40,7 @@ public interface CuentaRepository extends JpaRepository<Cuenta,Integer> {
 
     
 
-    @Query(value = "SELECT * FROM CUENTAS WHERE IDCUENTA = :IDCUENTA", nativeQuery = true)
+    @Query(value = "SELECT * FROM CUENTAS WHERE IDCUENTA = :IDCUENTA FOR UPDATE", nativeQuery = true)
     Cuenta darCuenta(@Param("IDCUENTA") int IDCUENTA);
 
 
@@ -126,6 +126,8 @@ public interface CuentaRepository extends JpaRepository<Cuenta,Integer> {
                 "FROM Cuentas CU " +
                 "WHERE CU.IDCuenta = :idCuenta", nativeQuery = true)
     Integer obtenerSaldoFinal(@Param("idCuenta") int idCuenta);
+
+    
 
 
 
