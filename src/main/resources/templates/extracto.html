@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Información Usuarios</title>
+    <title>Información consultas</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -13,14 +13,21 @@
 </head>
 <body>
     <main>
-        <h1> Clientes</h1>
-        <div th:replace="~{../components/Usuarios/clientesTable.html}"></div>
-        <div th:replace="~{../components/Usuarios/clienteNuevo.html}"></div>
-        
-        <!-- Botón de regreso -->
+        <h1> Extracto bancario</h1>
+        <div>
+            <form th:action="@{/extracto/generar}" method="GET">
+                <label for="tipo">Numero de Cuenta:</label>
+                <input type="number" id="tipo" name="cuenta" required>
+                <label for="fecha">Fecha Inicial:</label>
+                <input type="date" id="fecha" name="fechaInit" required>
+                <label for="fecha">Fecha final:</label>
+                <input type="date" id="fecha" name="fechaFin" required>
+                <button type="submit">Generar extracto</button>
+            </form>
+        </div>
+        <div th:replace="~{../components/Cuentas/extractoTable.html}"></div>
         <div>
             <a th:href='@{/}' class="btn btn-primary">Volver Atrás</a>
         </div>
-    </div>
 </body>
 </html>

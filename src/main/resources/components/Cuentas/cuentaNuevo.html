@@ -1,0 +1,29 @@
+<div>
+    <div class="add-service-container-card">
+        <h2  class="add-service-container-card-title"> Agregar cuenta </h2>
+        <div class="add-service-container-card-horizontal-flex">
+            <form th:action="@{/cuentas/new/save}" th:object="${NewCuenta}" method="post">
+                <div>
+                    <label for="tipo">Tipo de Cuenta:</label>
+                    <select th:field="*{tipo}">
+                        <option value="ahorros">Ahorros</option>
+                        <option value="corriente">Corriente</option>
+                        <option value="AFC">AFC</option>
+                      </select>
+                </div>
+                <div>
+                    <label for="saldo">Saldo:</label>
+                    <input type="number" id="saldo" th:field="*{saldo}" required step="0.01">
+                </div>
+                <div>
+                    <select id="seleccion" name="seleccion" th:field="*{cliente}">
+                        <option th:each="cliente : ${valores}" th:value="${cliente.nombre}" th:text="${cliente.nombre}"></option>
+                    </select>
+                </div>
+                <div>
+                    <button type="submit">Guardar Cuenta</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

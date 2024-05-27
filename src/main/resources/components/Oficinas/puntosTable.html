@@ -1,0 +1,31 @@
+<div class="component_box get_puntos" id="get_puntos">
+    <div class="search_container">
+        <h2>Consultar puntos de atencion</h2>
+        <div class="search_container">
+            <form class="search_form" method="GET" th:action="@{/oficinas/getPuntos}">
+                <input class="search" type="text" name="id" placeholder="ID de la oficina" />
+                <input class="search-btn" type="submit" value="" />
+            </form>
+        </div>
+    <div class="table_container">
+        <div class="table">
+            <ul>
+                <li class="table-header">
+                    <div>ID</div>
+                    <div>Tipo</div>
+                    <div>Latitud</div>
+                    <div>Longitud</div>
+                </li>
+                <th:block th:each="punto : ${puntos}">
+                    <li class="table-content">
+                        <div th:text="${punto.id}"></div>
+                        <div th:text="${punto.tipo}"></div>
+                        <div th:text="${punto.latitud}"></div>
+                        <div th:text="${punto.longitud}"></div>
+                    </li>
+                </th:block>
+            </ul>
+        </div>
+
+    </div>
+</div>

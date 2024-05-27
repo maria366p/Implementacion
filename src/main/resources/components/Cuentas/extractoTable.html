@@ -1,0 +1,8 @@
+<div class="component_box getCuentas" id="getCuentas">
+
+        <p>Numero cuenta: <span th:text="${numCuenta}"></span></p>
+        <p>Saldo inicial: <span th:text="${saldoInit}"></span></p>
+        <p>Saldo final: <span th:text="${saldoFinal}"></span></p>
+    </div>
+    <div th:replace="~{../components/Cuentas/operacionesExtracto.html}"></div>
+</div>

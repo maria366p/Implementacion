@@ -1,0 +1,37 @@
+<div>
+    <div class="add-service-container-card">
+        <h2  class="add-service-container-card-title"> Agregar operacion </h2>
+        <div class="add-service-container-card-horizontal-flex">
+            <form th:action="@{/cuentas/new/operacion/save}" th:object="${NewOperacion}" method="post">
+                <div>
+                    <label for="saldo">Cuenta:</label>
+                    <input type="text" id="cuenta" name="cuenta" required step="0.01">
+                </div>
+                <div>
+                    <label for="saldo">Cuenta de llegada:</label>
+                    <input type="text" id="cuenta" th:field="*{cuentaDestino}" required step="0.01">
+                </div>
+                <div>
+                    <label for="tipo">Tipo de operacion:</label>
+                    <select th:field="*{tipo}">
+                        <option value="Consignar">Consignar</option>
+                        <option value="Retirar">Retirar</option>
+                        <option value="Transferir">Transferir</option>
+                      </select>
+                </div>
+                <div>
+                    <label for="saldo">Valor:</label>
+                    <input type="number" id="saldo" th:field="*{valor}" required step="0.01">
+                </div>
+                <div>
+                    <select id="seleccion" name="seleccion" th:field="*{puntoAtencion}">
+                        <option th:each="punto : ${puntos}" th:value="${punto.id}" th:text="(${punto.latitud} + ' ' + ${punto.longitud})"></option>
+                    </select>
+                </div>
+                <div>
+                    <button type="submit">Guardar operacion</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

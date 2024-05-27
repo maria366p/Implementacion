@@ -1,0 +1,39 @@
+<div class="component_box get_clientes" id="get_clientes">
+    <div class="table_container">
+        <div class="table">
+            <ul>
+                <li class="table-header">
+                    <div>ID</div>
+                    <div>Tipo DNI</div>
+                    <div>DNI</div>
+                    <div>Nombre</div>
+                    <div>Nacionalidad</div>
+                    <div>Dirección</div>
+                    <div>Email</div>
+                    <div>Teléfono</div>
+                    <div>Ciudad</div>
+                    <div>Departamento</div>
+                    <div>Código Postal</div>
+                    <div>Tipo</div>
+                </li>
+                <th:block th:each="cliente : ${clientes}">
+                    <li class="table-content">
+                        <div th:text="${cliente.id}"></div>
+                        <div th:text="${cliente.tipoDni}"></div>
+                        <div th:text="${cliente.dni}"></div>
+                        <div th:text="${cliente.nombre}"></div>
+                        <div th:text="${cliente.nacionalidad}"></div>
+                        <div th:text="${cliente.direccion}"></div>
+                        <div th:text="${cliente.email}"></div>
+                        <div th:text="${cliente.telefono}"></div>
+                        <div th:text="${cliente.ciudad}"></div>
+                        <div th:text="${cliente.departamento}"></div>
+                        <div th:text="${cliente.codigoPostal}"></div>
+                        <div th:text="${cliente.tipo}"></div>
+                    </li>
+                </th:block>
+            </ul>
+        </div>
+
+    </div>
+</div>

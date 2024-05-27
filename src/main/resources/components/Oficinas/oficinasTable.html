@@ -1,0 +1,25 @@
+<div class="component_box get_oficinas" id="get_oficinas">
+    <div class="table_container">
+        <div class="table">
+            <ul>
+                <li class="table-header">
+                    <div>Id</div>
+                    <div>Nombre</div>
+                    <div>Direccion</div>
+                    <div>Numero de puntos</div>
+                    <div>Gerente</div>
+                </li>
+                <th:block th:each="oficina : ${oficinas}">
+                    <li class="table-content">
+                        <div th:text="${oficina.id}"></div>
+                        <div th:text="${oficina.nombre}"></div>
+                        <div th:text="${oficina.direccion}"></div>
+                        <div th:text="${oficina.numPuntos}"></div>
+                        <div th:text="${oficina.gerente}"></div>
+                    </li>
+                </th:block>
+            </ul>
+        </div>
+
+    </div>
+</div>

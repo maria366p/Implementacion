@@ -1,0 +1,28 @@
+<div class="component_box get_puntos" id="get_puntos">
+    <div class="table_container">
+        <div class="table">
+            <ul>
+                <li class="table-header">
+                    <div>ID</div>
+                    <div>Tipo</div>
+                    <div>Latitud</div>
+                    <div>Longitud</div>
+                </li>
+                <th:block th:each="puntoAtencion : ${puntosAtencion}">
+                    <li class="table-content">
+                        <div th:text="${puntoAtencion.id}"></div>
+                        <div th:text="${puntoAtencion.tipo}"></div>
+                        <div th:text="${puntoAtencion.latitud}"></div>
+                        <div th:text="${puntoAtencion.longitud}"></div>
+                        <span class="operation_buttons">
+                            <a th:href="@{/puntosAtencion/delete/{id}(id=${puntoAtencion.getId()})}">
+                                <button class="delete">Borrar</button>
+                            </a>
+                        </span>
+                    </li>
+                </th:block>
+            </ul>
+        </div>
+
+    </div>
+</div>

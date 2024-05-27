@@ -1,0 +1,35 @@
+<div class="component_box getCuentas" id="getCuentas">
+    <div class="table_container">
+        <div class="table">
+            <ul>
+                <li class="table-header">
+                    <div>Id</div>
+                    <div>Numero</div>
+                    <div>Tipo</div>
+                    <div>Saldo</div>
+                    <div>Estado</div>
+                    <div>Ultima transaccion</div>
+                </li>
+                <th:block th:each="cuenta : ${cuentas}">
+                    <li class="table-content">
+                        <div th:text="${cuenta.id}"></div>
+                        <div th:text="${cuenta.numero}"></div>
+                        <div th:text="${cuenta.tipo}"></div>
+                        <div th:text="${cuenta.saldo}"></div>
+                        <div th:text="${cuenta.estado}"></div>
+                        <div th:text="${cuenta.ultimaTransaccion}"></div>
+                        <span class="operation_buttons">
+                            <a th:href="@{/cuentas/cerrar/{id}(id=${cuenta.getId()})}">
+                                <button class="delete">Cerrar</button>
+                            </a>
+                            <a th:href="@{/cuentas/desactivar/{id}(id=${cuenta.getId()})}">
+                                <button class="delete">Desactivar</button>
+                            </a>
+                        </span>
+                    </li>
+                </th:block>
+            </ul>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="component_box get_empleados" id="get_empleados">
+    <div class="table_container">
+        <div class="table">
+            <ul>
+                <li class="table-header">
+                    <div>ID</div>
+                    <div>Tipo DNI</div>
+                    <div>DNI</div>
+                    <div>Nombre</div>
+                    <div>Nacionalidad</div>
+                    <div>Dirección</div>
+                    <div>Email</div>
+                    <div>Teléfono</div>
+                    <div>Ciudad</div>
+                    <div>Departamento</div>
+                    <div>Código Postal</div>
+                    <div>Cargo</div>
+                </li>
+                <th:block th:each="empleado : ${empleados}">
+                    <li class="table-content">
+                        <div th:text="${empleado.id}"></div>
+                        <div th:text="${empleado.tipoDni}"></div>
+                        <div th:text="${empleado.dni}"></div>
+                        <div th:text="${empleado.nombre}"></div>
+                        <div th:text="${empleado.nacionalidad}"></div>
+                        <div th:text="${empleado.direccion}"></div>
+                        <div th:text="${empleado.email}"></div>
+                        <div th:text="${empleado.telefono}"></div>
+                        <div th:text="${empleado.ciudad}"></div>
+                        <div th:text="${empleado.departamento}"></div>
+                        <div th:text="${empleado.codigoPostal}"></div>
+                        <div th:text="${empleado.cargo}"></div>
+                    </li>
+                </th:block>
+            </ul>
+        </div>
+
+    </div>
+</div>

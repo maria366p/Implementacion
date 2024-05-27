@@ -1,0 +1,24 @@
+<div>
+    <div class="add-service-container-card">
+        <h2  class="add-service-container-card-title"> Agregar oficina </h2>
+        <div class="add-service-container-card-horizontal-flex">
+            <form th:action="@{/oficinas/new/save}"  th:object="${NewOficina}" method="post">
+                <label for="tipoDni">Nombre:</label>
+                <input type="text" id="tipoDni" th:field="*{nombre}" required>
+
+                <label for="tipoDni">Direccion:</label>
+                <input type="text" id="tipoDni" th:field="*{direccion}" required>
+
+                <label for="dni">Numero de puntos:</label>
+                <input type="text" id="dni" th:field="*{numPuntos}" required>
+
+                <label for="nombre">Gerente:</label>
+                <select id="seleccion" name="seleccion" th:field="*{gerente}">
+                    <option th:each="empleado : ${valores}" th:value="${empleado.nombre}" th:text="${empleado.nombre}"></option>
+                </select>
+
+                <input type="submit" value="Crear oficina">
+            </form>
+        </div>
+    </div>
+</div>

@@ -13,10 +13,12 @@
 </head>
 <body>
     <main>
-        <h1> Clientes</h1>
-        <div th:replace="~{../components/Usuarios/clientesTable.html}"></div>
-        <div th:replace="~{../components/Usuarios/clienteNuevo.html}"></div>
         
+        <h1> Empleados</h1>
+        <div th:replace="~{../components/Usuarios/empleadosTable.html}"></div>
+        <div th:replace="~{../components/Usuarios/empleadoNuevo.html}"></div>
+
+
         <!-- Botón de regreso -->
         <div>
             <a th:href='@{/}' class="btn btn-primary">Volver Atrás</a>

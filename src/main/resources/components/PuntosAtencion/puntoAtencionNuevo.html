@@ -1,0 +1,22 @@
+<div>
+    <div class="add-service-container-card">
+        <h2  class="add-service-container-card-title"> Agregar Punto de atencion </h2>
+        <div class="add-service-container-card-horizontal-flex">
+            <form th:action="@{/puntosAtencion/new/save}"  th:object="${NewPuntoAtencion}" method="post">
+                <label for="nombre">Tipo:</label>
+                <select th:field="*{tipo}">
+                    <option value="Atención personalizada">Atención personalizada</option>
+                    <option value="Cajero automático">Cajero automático</option>
+                    <option value="Digital">Digital</option>
+                  </select>
+                <label for="tipoDni">Latitud:</label>
+                <input type="text" id="latitud" th:field="*{latitud}" required>
+
+                <label for="dni">Longitud:</label>
+                <input type="text" id="longitud" th:field="*{longitud}" required>
+
+                <input type="submit" value="Crear oficina">
+            </form>
+        </div>
+    </div>
+</div>

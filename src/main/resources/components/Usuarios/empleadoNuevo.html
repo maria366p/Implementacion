@@ -1,0 +1,43 @@
+<div>
+    <div class="add-service-container-card">
+        <h2  class="add-service-container-card-title"> Agregar empleado </h2>
+        <div class="add-service-container-card-horizontal-flex">
+            <form th:action="@{/empleados/new/save}"  th:object="${NewEmpleado}" method="post">
+                <label for="tipoDni">Tipo de DNI:</label>
+                <input type="text" id="tipoDni" th:field="*{tipoDni}" required>
+
+                <label for="dni">DNI:</label>
+                <input type="text" id="dni" th:field="*{dni}" required>
+
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" th:field="*{nombre}" required>
+
+                <label for="nacionalidad">Nacionalidad:</label>
+                <input type="text" id="nacionalidad" th:field="*{nacionalidad}" required>
+
+                <label for="direccion">Dirección:</label>
+                <input type="text" id="direccion" th:field="*{direccion}" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" th:field="*{email}" required>
+
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" th:field="*{telefono}" required>
+
+                <label for="ciudad">Ciudad:</label>
+                <input type="text" id="ciudad" th:field="*{ciudad}" required>
+
+                <label for="departamento">Departamento:</label>
+                <input type="text" id="departamento" th:field="*{departamento}" required>
+
+                <label for="codigoPostal">Código Postal:</label>
+                <input type="number" id="codigoPostal" th:field="*{codigoPostal}" required>
+
+                <label for="tipo">Cargo:</label>
+                <input type="text" id="cargo" th:field="*{cargo}" required>
+
+                <input type="submit" value="Crear empleado">
+            </form>
+        </div>
+    </div>
+</div>
